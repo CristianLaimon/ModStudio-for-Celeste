@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ModStudio Logic\ModStudioLogic.csproj" />
+    <ProjectReference Include="..\modstudiologic\ModStudioLogic.csproj" />
   </ItemGroup>
 
 </Project>

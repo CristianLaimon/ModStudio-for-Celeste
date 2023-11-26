@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModStudioLogic", "modstudio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModStudioTesting", "modstudiotesting\ModStudioTesting.csproj", "{1F251D80-C822-43F7-B9F4-E5FA10C4E1BC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModStudio for Celeste", "modstudioform\ModStudio for Celeste.csproj", "{C3AE4098-DFF6-46FB-9785-7754C031BDDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModStudioForm", "modstudioform\ModStudioForm.csproj", "{9D17B3C1-1B7A-4BD3-91AD-5400F09F4D64}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{1F251D80-C822-43F7-B9F4-E5FA10C4E1BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F251D80-C822-43F7-B9F4-E5FA10C4E1BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F251D80-C822-43F7-B9F4-E5FA10C4E1BC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C3AE4098-DFF6-46FB-9785-7754C031BDDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C3AE4098-DFF6-46FB-9785-7754C031BDDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C3AE4098-DFF6-46FB-9785-7754C031BDDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C3AE4098-DFF6-46FB-9785-7754C031BDDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D17B3C1-1B7A-4BD3-91AD-5400F09F4D64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D17B3C1-1B7A-4BD3-91AD-5400F09F4D64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D17B3C1-1B7A-4BD3-91AD-5400F09F4D64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D17B3C1-1B7A-4BD3-91AD-5400F09F4D64}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

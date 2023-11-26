@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using ModStudioLogic.ModProject;
+using System.Windows.Forms;
 
 namespace ModStudioLogic
 {
@@ -8,7 +9,7 @@ namespace ModStudioLogic
         /// Opens a directory and returns the directory selected. 
         /// </summary>
         /// <returns>True if it success with a string of the new path otherwise false and ""</returns>
-        public static bool TryOpenNewDirectory(out string openedDirectoryPath)
+        public static bool ShowOpenDirectoryDialog(out string openedDirectoryPath)
         {
             using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
             {
@@ -35,8 +36,24 @@ namespace ModStudioLogic
         /// <returns>True if it's a valid directory otherwise false</returns>
         public static bool IsValidModProyect(string directoryPath)
         {
+            //TODO: Check if has a valid mod structure... subfolders and that stuff
             string[] directoryFiles = Directory.GetFiles(directoryPath, "everest.yaml");
             return directoryFiles.Any() ? true : false;
+        }
+
+        /// <summary>
+        /// Get all data related to project: ModName, Author... from directory mod. This store that info into GlobalProyect class (temp info)
+        /// </summary>
+        /// <returns>True if operation sucess otherwise false</returns>
+        //public static bool GetProjectDataFromDirectory(string directoryPath)
+        //{
+        //    if (!Directory.Exists(directoryPath) || !IsValidModProyect(directoryPath))
+        //        return false;
+        //}
+
+        public static void CreateSubDirsWithProjectFeatures(Project project)
+        {
+            
         }
     }
 }

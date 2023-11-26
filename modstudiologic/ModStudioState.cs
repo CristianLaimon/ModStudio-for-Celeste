@@ -3,17 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ModStudioLogic.Enums;
 
-namespace ModStudio_Logic
+namespace ModStudioLogic
 {
-    public enum State
-    {
-        Default,
-        Startup,
-        ChoosingFile, 
-        Choosing,
-        ChoosingDirectory
-    }
+
 
     public class ModStudioState
     {

@@ -38,17 +38,24 @@
             openExistingProyectToolStripMenuItem = new ToolStripMenuItem();
             createNewModProyectToolStripMenuItem = new ToolStripMenuItem();
             toolStripSplitButtonNew = new ToolStripSplitButton();
+            LeftPanel = new Panel();
+            RightPanel = new Panel();
+            PanelWithTabControl = new Panel();
+            tabControl1 = new TabControl();
+            tabPage2 = new TabPage();
             statusStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
+            PanelWithTabControl.SuspendLayout();
+            tabControl1.SuspendLayout();
             SuspendLayout();
             // 
             // statusStrip1
             // 
             statusStrip1.ImageScalingSize = new Size(20, 20);
             statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabelStatus });
-            statusStrip1.Location = new Point(0, 502);
+            statusStrip1.Location = new Point(0, 598);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(978, 26);
+            statusStrip1.Size = new Size(1069, 26);
             statusStrip1.TabIndex = 0;
             statusStrip1.Text = "statusStrip1";
             // 
@@ -64,7 +71,7 @@
             toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripDropDownButtonNew, toolStripDropDownButtonOpen });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(978, 27);
+            toolStrip1.Size = new Size(1069, 27);
             toolStrip1.TabIndex = 1;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -118,11 +125,59 @@
             toolStripSplitButtonNew.Size = new Size(58, 24);
             toolStripSplitButtonNew.Text = "New";
             // 
+            // LeftPanel
+            // 
+            LeftPanel.Dock = DockStyle.Left;
+            LeftPanel.Location = new Point(0, 27);
+            LeftPanel.Name = "LeftPanel";
+            LeftPanel.Size = new Size(168, 571);
+            LeftPanel.TabIndex = 3;
+            // 
+            // RightPanel
+            // 
+            RightPanel.Dock = DockStyle.Right;
+            RightPanel.Location = new Point(865, 27);
+            RightPanel.Name = "RightPanel";
+            RightPanel.Size = new Size(204, 571);
+            RightPanel.TabIndex = 4;
+            // 
+            // PanelWithTabControl
+            // 
+            PanelWithTabControl.Controls.Add(tabControl1);
+            PanelWithTabControl.Dock = DockStyle.Fill;
+            PanelWithTabControl.Location = new Point(168, 27);
+            PanelWithTabControl.Name = "PanelWithTabControl";
+            PanelWithTabControl.Size = new Size(697, 571);
+            PanelWithTabControl.TabIndex = 5;
+            // 
+            // tabControl1
+            // 
+            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Dock = DockStyle.Fill;
+            tabControl1.Location = new Point(0, 0);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(697, 571);
+            tabControl1.TabIndex = 0;
+            // 
+            // tabPage2
+            // 
+            tabPage2.Location = new Point(4, 29);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(689, 538);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "Blank Project";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(978, 528);
+            ClientSize = new Size(1069, 624);
+            Controls.Add(PanelWithTabControl);
+            Controls.Add(RightPanel);
+            Controls.Add(LeftPanel);
             Controls.Add(toolStrip1);
             Controls.Add(statusStrip1);
             Name = "Main";
@@ -131,6 +186,8 @@
             statusStrip1.PerformLayout();
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
+            PanelWithTabControl.ResumeLayout(false);
+            tabControl1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -146,5 +203,10 @@
         private ToolStripMenuItem createNewModProyectToolStripMenuItem1;
         private ToolStripMenuItem createNewModProyectToolStripMenuItem;
         private ToolStripSplitButton toolStripSplitButtonNew;
+        private Panel LeftPanel;
+        private Panel RightPanel;
+        private Panel PanelWithTabControl;
+        private TabControl tabControl1;
+        private TabPage tabPage2;
     }
 }

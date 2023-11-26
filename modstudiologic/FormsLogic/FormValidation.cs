@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ModStudio_Logic
+namespace ModStudioLogic.FormsLogic
 {
     public class FormValidation
     {
@@ -13,7 +13,7 @@ namespace ModStudio_Logic
         {
             bool theyreValid = true;
 
-            foreach(var txtBox in textBoxes)
+            foreach (var txtBox in textBoxes)
             {
                 if (txtBox == null || txtBox.Text == "")
                 {
