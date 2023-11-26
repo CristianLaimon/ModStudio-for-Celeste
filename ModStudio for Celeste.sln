@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModStudio for Celeste", "ModStudio for Celeste\ModStudio for Celeste.csproj", "{0812DBC6-5ED0-43C2-81F1-65D3D8ED95C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModStudioLogic", "modstudiologic\ModStudioLogic.csproj", "{E4FE9F28-EFBB-49F3-AF31-1B01969968A4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModStudioLogic", "ModStudio Logic\ModStudioLogic.csproj", "{F6484335-6577-476A-9489-6C19E8668331}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModStudioTesting", "modstudiotesting\ModStudioTesting.csproj", "{1F251D80-C822-43F7-B9F4-E5FA10C4E1BC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModStudioTesting", "ModStudioTesting\ModStudioTesting.csproj", "{6AB9F3E9-0C32-45C1-AC08-F3C78E2A493F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModStudio for Celeste", "modstudioform\ModStudio for Celeste.csproj", "{C3AE4098-DFF6-46FB-9785-7754C031BDDD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,18 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0812DBC6-5ED0-43C2-81F1-65D3D8ED95C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0812DBC6-5ED0-43C2-81F1-65D3D8ED95C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0812DBC6-5ED0-43C2-81F1-65D3D8ED95C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0812DBC6-5ED0-43C2-81F1-65D3D8ED95C2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F6484335-6577-476A-9489-6C19E8668331}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F6484335-6577-476A-9489-6C19E8668331}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F6484335-6577-476A-9489-6C19E8668331}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F6484335-6577-476A-9489-6C19E8668331}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6AB9F3E9-0C32-45C1-AC08-F3C78E2A493F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6AB9F3E9-0C32-45C1-AC08-F3C78E2A493F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6AB9F3E9-0C32-45C1-AC08-F3C78E2A493F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6AB9F3E9-0C32-45C1-AC08-F3C78E2A493F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4FE9F28-EFBB-49F3-AF31-1B01969968A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4FE9F28-EFBB-49F3-AF31-1B01969968A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4FE9F28-EFBB-49F3-AF31-1B01969968A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4FE9F28-EFBB-49F3-AF31-1B01969968A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F251D80-C822-43F7-B9F4-E5FA10C4E1BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F251D80-C822-43F7-B9F4-E5FA10C4E1BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F251D80-C822-43F7-B9F4-E5FA10C4E1BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F251D80-C822-43F7-B9F4-E5FA10C4E1BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3AE4098-DFF6-46FB-9785-7754C031BDDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3AE4098-DFF6-46FB-9785-7754C031BDDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3AE4098-DFF6-46FB-9785-7754C031BDDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3AE4098-DFF6-46FB-9785-7754C031BDDD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

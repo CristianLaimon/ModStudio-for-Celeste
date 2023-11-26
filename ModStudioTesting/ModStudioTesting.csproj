@@ -23,9 +23,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\ModStudio for Celeste\ModStudio for Celeste.csproj" />
-    <ProjectReference Include="..\ModStudio Logic\ModStudioLogic.csproj" />
-  </ItemGroup>
-
 </Project>
