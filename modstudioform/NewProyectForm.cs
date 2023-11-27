@@ -1,15 +1,15 @@
-﻿using ModStudioLogic;
+﻿using ModStudio_Logic;
 using System.Reflection.Metadata;
-using ModStudioLogic.Enums;
-using ModStudioLogic.ModProject;
-using ModStudioLogic.FormsLogic;
+using ModStudio_Logic.Enums;
+using ModStudio_Logic.ModProject;
+using ModStudio_Logic.FormsLogic;
 
 namespace ModStudio_for_Celeste
 {
     public partial class NewProyectForm : Form
     {
-        State _formState;
-        private State FormState
+        IModStudioState _formState;
+        private IModStudioState FormState
         {
             get { return _formState; }
             set
@@ -26,30 +26,30 @@ namespace ModStudio_for_Celeste
         private void InitialConfig()
         {
             this.CenterToScreen();
-            FormState = State.Default;
+            FormState = new DefaultState();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
         private void ChooseDirectory()
         {
-            FormState = State.ChoosingDirectory;
+            FormState = new ChoosingDirectory();
 
             if (FileManager.ShowOpenDirectoryDialog(out string dir))
             {
                 textBoxDirectorySelected.Text = dir;
             }
 
-            FormState = State.Default;
+            FormState = new DefaultState();
         }
         private void GetModProject()
         {
             if (FormValidation.TextBoxesAreValid(this.Controls.OfType<TextBox>().ToArray()))
             {
-                Project newProject = new Project();
+                ModProject newProject = new ModProject();
                 newProject.ParentDirPath = textBoxDirectorySelected.Text;
-                newProject.ModVersion = "0.0.1";
+                newProject.Version = "0.0.1";
                 newProject.CampaignName = textBoxCampaignName.Text;
-                newProject.ModName = textBoxModName.Text;
-                newProject.ModAuthor = textBoxUsernameMod.Text;
+                newProject.Name = textBoxModName.Text;
+                newProject.Author = textBoxUsernameMod.Text;
                 ProjectManager.AddProject(newProject);
 
                 DialogResult = DialogResult.OK;
@@ -61,16 +61,16 @@ namespace ModStudio_for_Celeste
         }
         private void CreateModFolders()
         {
-            Project project = ProjectManager.GetLastProjectAdded();
+            ModProject project = ProjectManager.GetLastProjectAdded();
 
-            DirectoryInfo projectPath = Directory.CreateDirectory(Path.Combine(project.ParentDirPath, project.ModName));
+            DirectoryInfo projectPath = Directory.CreateDirectory(Path.Combine(project.ParentDirPath, project.Name));
             string dirPath = projectPath.FullName;
 
-            Directory.CreateDirectory(Path.Combine(dirPath, project.))
+            //Directory.CreateDirectory(Path.Combine(dirPath, project.))
         }
-        private void UpdateStatusStringForm(State newState)
+        private void UpdateStatusStringForm(IModStudioState newState)
         {
-            stripLabelActualStatus.Text = ModStudioState.GetMessageByState(newState);
+            stripLabelActualStatus.Text = StateFormat.GetFormattedMessage(newState);
         }
 
         #region FormEvents

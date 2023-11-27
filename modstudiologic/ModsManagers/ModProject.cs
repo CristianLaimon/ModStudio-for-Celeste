@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ModStudioLogic.Enums;
+using ModStudio_Logic.Enums;
 
-namespace ModStudioLogic.ModProject
+namespace ModStudio_Logic.ModProject
 {
-    public class Project
+    public class ModProject
     {
         public string ParentDirPath = string.Empty;
-        public string ProjectPath = string.Empty;
-        public string ModVersion = "0.0.1";
-        public string ModName = string.Empty;
-        public string ModAuthor = string.Empty;
+        public string Path = string.Empty;
+        public string Version = "0.0.1";
+        public string Name = string.Empty;
+        public string Author = string.Empty;
         public string CampaignName = string.Empty;
         public List<ModFeatures> ProjectFeatures = new List<ModFeatures>();
     }

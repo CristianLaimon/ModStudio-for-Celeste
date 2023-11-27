@@ -1,6 +1,6 @@
-using ModStudioLogic;
-using ModStudioLogic.Enums;
-using ModStudioLogic.ModProject;
+using ModStudio_Logic;
+using IStates;
+using ModStudio_Logic.ModProject;
 
 //https://www.reddit.com/r/celestegame/comments/e82ncn/madeline_fanart/ logo.png idea!, TODO:try to find original author...
 
@@ -8,51 +8,35 @@ namespace ModStudio_for_Celeste
 {
     public partial class Main : Form
     {
-        State _formState;
-        private State FormState
-        {
-            get { return _formState; }
-            set
-            {
-                _formState = value;
-                UpdateStatusStringForm(_formState);
-            }
-        }
+        IModStudioState _formState;
+
         public Main()
         {
             InitializeComponent();
-            InitialConfig();
-        }
-
-        private void InitialConfig()
-        {
-            FormState = State.Startup;
+            SetState(new FormStateStartup());
             this.CenterToScreen();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
-        private void ShowNewProjectForm()
-        {
-            var newProyectForm = new NewProyectForm();
-            DialogResult result = newProyectForm.ShowDialog();
-        }
         private void OpenNewProject()
         {
-            FormState = State.ChoosingDirectory;
+            SetState(new FormStateChoosingDirectory());
             if (FileManager.ShowOpenDirectoryDialog(out string dir) && FileManager.IsValidModProyect(dir))
             {
-                Project opened = new Project();
+                ModProject opened = new ModProject();
                 opened.ParentDirPath = dir;
                 ProjectManager.AddProject(opened);
-                FormState = State.Default;
+                SetState(new FormStateDefault());
             }
             else
             {
-                toolStripStatusLabelStatus.Text = "Error: Opened Project is not a celeste mod or valid directory to work with";
+                SetState(new FormStateError("Error: Opened Project is not a celeste mod or valid directory to work with"));
             }
         }
-        private void UpdateStatusStringForm(State newState)
+        private void ShowNewProjectForm()
         {
-            toolStripStatusLabelStatus.Text = ModStudioState.GetMessageByState(newState);
+            SetState(new FormStateDefault());
+            var newProyectForm = new NewProyectForm();
+            newProyectForm.ShowDialog();
         }
 
         #region FormEvents
@@ -64,6 +48,15 @@ namespace ModStudio_for_Celeste
         {
             ShowNewProjectForm();
         }
+        #endregion
+
+        #region Utilities
+        private void SetState(IModStudioState newState)
+        {
+            _formState = newState;
+            toolStripStatusLabelStatus.Text = StateFormat.GetFormattedMessage(_formState);
+        }
+
         #endregion
     }
 }

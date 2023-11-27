@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ModStudioLogic.FormsLogic
+namespace ModStudio_Logic.FormsLogic
 {
     public class FormValidation
     {
