@@ -1,7 +1,7 @@
-﻿using ModStudio_Logic.ModProject;
+﻿using ModStudioLogic.ModManagers;
 using System.Windows.Forms;
 
-namespace ModStudio_Logic
+namespace ModStudioLogic
 {
     public class FileManager
     {
@@ -51,7 +51,7 @@ namespace ModStudio_Logic
         //        return false;
         //}
 
-        public static void CreateSubDirsWithProjectFeatures(ModProject.ModProject project)
+        public static void CreateSubDirsWithProjectFeatures(ModManagers.ModProject project)
         {
             //final
         }

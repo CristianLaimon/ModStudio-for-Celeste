@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ModStudio_Logic.ModProject
+﻿namespace ModStudioLogic.ModManagers
 {
     public class ModProject
     {
@@ -14,6 +8,6 @@ namespace ModStudio_Logic.ModProject
         public string Name = string.Empty;
         public string Author = string.Empty;
         public string CampaignName = string.Empty;
-        public List<ModFeatures> ProjectFeatures = new List<ModFeatures>();
+        public List<ModFeature> Features = new List<ModFeature>();
     }
 }

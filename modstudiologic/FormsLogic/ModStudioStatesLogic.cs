@@ -1,4 +1,6 @@
-﻿namespace IStates
+﻿using Microsoft.VisualBasic;
+
+namespace ModStudioLogic.FormsLogic
 {
     /// <summary>
     /// Class to manage IModStudio objects to interact with GUI forms
@@ -28,7 +30,7 @@
     {
         public string GetMessage()
         {
-            return "";
+            return "Running";
         }
     }
 
@@ -62,11 +64,11 @@
         {
             return "Choosing Directory";
         }
-    } 
+    }
 
     public class FormStateError : IModStudioState
     {
-        string _customMessage;
+        private string _customMessage;
         public FormStateError(string message)
         {
             _customMessage = message;
@@ -74,6 +76,14 @@
         public string GetMessage()
         {
             return _customMessage;
+        }
+    }
+
+    public class FormStateCreatingProject : IModStudioState
+    {
+        public string GetMessage()
+        {
+            return "Creating Project";
         }
     }
 }

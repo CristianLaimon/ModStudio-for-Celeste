@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace ModStudio_Logic.ModProject
+﻿namespace ModStudioLogic.ModManagers
 {
     public class ProjectManager
     {
@@ -33,5 +26,4 @@ namespace ModStudio_Logic.ModProject
             return _openedProjects.Last();
         }
     }
-
 }

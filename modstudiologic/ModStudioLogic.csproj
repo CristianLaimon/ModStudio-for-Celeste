@@ -1,17 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <RootNamespace>ModStudio_Logic</RootNamespace>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <RootNamespace>ModStudioLogic</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="asdfsadf\**" />
-    <EmbeddedResource Remove="asdfsadf\**" />
-    <None Remove="asdfsadf\**" />
-  </ItemGroup>
 
   <ItemGroup>
     <Reference Include="System.Windows.Forms">
