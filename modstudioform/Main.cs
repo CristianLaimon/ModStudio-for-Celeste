@@ -1,7 +1,8 @@
 using ModStudioLogic;
 using ModStudioLogic.FormsLogic;
-using ModStudioLogic.ModManagers;
+using ModStudioLogic.Mods;
 //https://www.reddit.com/r/celestegame/comments/e82ncn/madeline_fanart/ logo.png idea!, TODO:try to find original author...
+//Probably are better ways to implement state pattern, i just wanna learn to use polymorphism. It's curious
 
 namespace ModStudio_for_Celeste
 {
@@ -22,7 +23,7 @@ namespace ModStudio_for_Celeste
             SetState(new FormStateChoosingDirectory());
             if (FileManager.ShowOpenDirectoryDialog(out string dir) && FileManager.IsValidModProyect(dir))
             {
-                ModProject opened = new ModProject();
+                Project opened = new Project();
                 opened.ParentDirPath = dir;
                 ProjectManager.AddProject(opened);
                 SetState(new FormStateDefault());

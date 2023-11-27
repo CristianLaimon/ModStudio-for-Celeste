@@ -1,5 +1,5 @@
 ﻿using ModStudioLogic;
-using ModStudioLogic.ModManagers;
+using ModStudioLogic.Mods;
 using ModStudioLogic.FormsLogic;
 
 namespace ModStudio_for_Celeste
@@ -30,7 +30,14 @@ namespace ModStudio_for_Celeste
         {
             if (FormValidation.TextBoxesAreValid(this.Controls.OfType<TextBox>().ToArray()))
             {
-                ModProject newProject = new ModProject();
+                using (var confirmationForm = new ConfirmationForm())
+                {
+                    DialogResult result = confirmationForm.ShowDialog();
+                    if (result == DialogResult.Cancel)
+                        return;
+                }
+
+                Project newProject = new Project();
                 newProject.ParentDirPath = textBoxDirectorySelected.Text;
                 newProject.Version = "0.0.1";
                 newProject.CampaignName = textBoxCampaignName.Text;
@@ -43,18 +50,14 @@ namespace ModStudio_for_Celeste
             }
             else
             {
-                
+
                 stripLabelActualStatus.Text = "No valid input. Please try again";
             }
         }
         private void CreateModFolders()
         {
-            ModProject project = ProjectManager.GetLastProjectAdded();
-
-            DirectoryInfo projectPath = Directory.CreateDirectory(Path.Combine(project.ParentDirPath, project.Name));
-            string dirPath = projectPath.FullName;
-
-            //Directory.CreateDirectory(Path.Combine(dirPath, project.))
+            Project project = ProjectManager.GetLastProjectAdded();
+            FileManager.CreateSubDirsWithProject(project);
         }
 
         #region FormEvents
@@ -64,7 +67,8 @@ namespace ModStudio_for_Celeste
         }
         private void buttonOk_Click(object sender, EventArgs e)
         {
-            GetModProject();
+            
+                    GetModProject();
         }
         private void buttonCancel_Click(object sender, EventArgs e)
         {
@@ -80,5 +84,13 @@ namespace ModStudio_for_Celeste
         }
 
         #endregion
+
+        private void textBoxModName_TextChanged(object sender, EventArgs e)
+        {
+            if(textBoxDirectorySelected.Text != String.Empty)
+            {
+
+            }
+        }
     }
 }

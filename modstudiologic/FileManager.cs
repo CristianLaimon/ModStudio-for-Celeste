@@ -1,4 +1,4 @@
-﻿using ModStudioLogic.ModManagers;
+﻿using ModStudioLogic.Mods;
 using System.Windows.Forms;
 
 namespace ModStudioLogic
@@ -51,9 +51,15 @@ namespace ModStudioLogic
         //        return false;
         //}
 
-        public static void CreateSubDirsWithProjectFeatures(ModManagers.ModProject project)
+        public static void CreateSubDirsWithProject(Project project)
         {
-            //final
+            DirectoryInfo modFolderPath =  Directory.CreateDirectory(Path.Combine(project.ParentDirPath, project.Name));
+            
+            foreach(ModFeature modf in project.Features)
+            {
+                Directory.CreateDirectory(Path.Combine(modFolderPath.FullName, modf.FolderName));
+            }
+
         }
     }
 }

@@ -1,6 +1,6 @@
-﻿namespace ModStudioLogic.ModManagers
+﻿namespace ModStudioLogic.Mods
 {
-    public class ModProject
+    public class Project
     {
         public string ParentDirPath = string.Empty;
         public string Path = string.Empty;
