@@ -8,13 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="System.Windows.Forms">
-      <HintPath>System.Windows.Forms.dll</HintPath>
-    </Reference>
+    <Compile Remove="asdfsadf\**" />
+    <EmbeddedResource Remove="asdfsadf\**" />
+    <None Remove="asdfsadf\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Enums\" />
+    <Reference Include="System.Windows.Forms">
+      <HintPath>System.Windows.Forms.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

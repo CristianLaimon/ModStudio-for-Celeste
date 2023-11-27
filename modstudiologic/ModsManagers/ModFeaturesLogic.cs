@@ -10,4 +10,6 @@ namespace ModStudio_Logic.ModProject
     {
 
     }
+
+    internal class Feature
 }
