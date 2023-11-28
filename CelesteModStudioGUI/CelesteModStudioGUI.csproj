@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\modstudiologic\ModStudioLogic.csproj" />
+    <ProjectReference Include="..\ModStudioWinForms\ModStudioWinForms.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -42,6 +42,10 @@ namespace ModStudio_for_Celeste
                 newProject.Version = "0.0.1";
                 newProject.Name = textBoxModName.Text;
                 newProject.Author = textBoxUsernameMod.Text;
+
+                foreach (ModFeature m in GetFeaturesSelected())
+                    newProject.Features.Add(m);
+
                 ProjectManager.AddProject(newProject);
                 CreateModFolders();
 
@@ -49,7 +53,6 @@ namespace ModStudio_for_Celeste
             }
             else
             {
-
                 stripLabelActualStatus.Text = "No valid input. Please try again";
             }
         }
@@ -57,6 +60,27 @@ namespace ModStudio_for_Celeste
         {
             Project project = ProjectManager.GetLastProjectAdded();
             FileManager.CreateSubDirsWithProject(project); //Working on it....
+        }
+        private ModFeature[] GetFeaturesSelected()
+        {
+            List<ModFeature> features = new List<ModFeature>();
+
+            foreach (CheckBox ch in this.Controls.OfType<CheckBox>())
+            {
+                if (ch.Checked)
+                    features.Add(ModFeatureFactory.GetFeatureByName(ch.Text));
+            }
+
+            foreach (GroupBox groupBox in this.Controls.OfType<GroupBox>())
+            {
+                foreach (CheckBox ch in groupBox.Controls.OfType<CheckBox>())
+                {
+                    if (ch.Checked)
+                        features.Add(ModFeatureFactory.GetFeatureByName(ch.Text));
+                }
+            }
+
+            return features.ToArray();
         }
 
         #region FormEvents
@@ -66,8 +90,7 @@ namespace ModStudio_for_Celeste
         }
         private void buttonOk_Click(object sender, EventArgs e)
         {
-            
-                    GetModProject();
+            GetModProject();
         }
         private void buttonCancel_Click(object sender, EventArgs e)
         {

@@ -13,7 +13,6 @@ namespace ModStudioLogic.FormsLogic
         }
     }
 
-
     public interface IModStudioState
     {
         string GetMessage();

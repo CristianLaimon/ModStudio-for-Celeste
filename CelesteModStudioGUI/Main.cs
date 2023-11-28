@@ -4,6 +4,12 @@ using ModStudioLogic.Mods;
 //https://www.reddit.com/r/celestegame/comments/e82ncn/madeline_fanart/ logo.png idea!, TODO:try to find original author...
 //Probably are better ways to implement state pattern, i just wanna learn to use polymorphism. It's curious
 
+
+
+//TODO: Make UnitTesting of all this methods
+//En base a los features elegidos, poner su correspondiente form de configuración
+//hacer que el método de añadir features a proyecto sea "params Feature[]" y acepte cualquier cantidad. "Comodidad"
+//Hacer que el visual studio pueda agrupar los #regions con el atajo para hacer fold a los métodos. ay dios, que enfadoso
 namespace ModStudio_for_Celeste
 {
     public partial class Main : Form
