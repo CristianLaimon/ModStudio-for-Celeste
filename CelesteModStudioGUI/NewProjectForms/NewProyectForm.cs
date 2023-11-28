@@ -56,7 +56,7 @@ namespace ModStudio_for_Celeste
         private void CreateModFolders()
         {
             Project project = ProjectManager.GetLastProjectAdded();
-            FileManager.CreateSubDirsWithProject(project);
+            FileManager.CreateSubDirsWithProject(project); //Working on it....
         }
 
         #region FormEvents

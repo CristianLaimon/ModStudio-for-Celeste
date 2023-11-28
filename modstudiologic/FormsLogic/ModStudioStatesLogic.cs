@@ -13,19 +13,12 @@ namespace ModStudioLogic.FormsLogic
         }
     }
 
-    /// <summary>
-    /// A new state has to implement this interface to be visible in forms of this project
-    /// </summary>
+
     public interface IModStudioState
     {
-        /// <summary>
-        /// Gets the corresponding message for visual feedback
-        /// </summary>
-        /// <returns>A string with the state message of the form</returns>
         string GetMessage();
     }
 
-    //All states available (~half plugins) for GUI messages! -----------------------
     public class FormStateDefault : IModStudioState
     {
         public string GetMessage()

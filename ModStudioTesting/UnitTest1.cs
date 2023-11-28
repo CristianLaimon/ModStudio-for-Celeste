@@ -1,3 +1,4 @@
+global using Xunit;
 namespace ModStudioTesting
 {
     public class UnitTest1

@@ -42,7 +42,7 @@ namespace ModStudioLogic
         }
 
         /// <summary>
-        /// Get all data related to project: ModName, Author... from directory mod. This store that info into GlobalProyect class (temp info)
+        /// Get all data related to project: ModName, Author... from directory mod. This store that info into project manager class (temp info)
         /// </summary>
         /// <returns>True if operation sucess otherwise false</returns>
         //public static bool GetProjectDataFromDirectory(string directoryPath)
