@@ -40,7 +40,6 @@ namespace ModStudio_for_Celeste
                 Project newProject = new Project();
                 newProject.ParentDirPath = textBoxDirectorySelected.Text;
                 newProject.Version = "0.0.1";
-                newProject.CampaignName = textBoxCampaignName.Text;
                 newProject.Name = textBoxModName.Text;
                 newProject.Author = textBoxUsernameMod.Text;
                 ProjectManager.AddProject(newProject);
@@ -85,12 +84,5 @@ namespace ModStudio_for_Celeste
 
         #endregion
 
-        private void textBoxModName_TextChanged(object sender, EventArgs e)
-        {
-            if(textBoxDirectorySelected.Text != String.Empty)
-            {
-
-            }
-        }
     }
 }

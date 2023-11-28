@@ -35,16 +35,14 @@
             label2 = new Label();
             textBoxModName = new TextBox();
             textBoxUsernameMod = new TextBox();
-            labelCampaignName = new Label();
-            textBoxCampaignName = new TextBox();
             buttonOk = new Button();
             buttonCancel = new Button();
             statusStripStatus = new StatusStrip();
             stripLabelActualStatus = new ToolStripStatusLabel();
             groupBox1 = new GroupBox();
-            checkBoxMaps = new CheckBox();
-            checkBoxDialog = new CheckBox();
             checkBoxGraphics = new CheckBox();
+            checkBoxDialog = new CheckBox();
+            checkBoxMaps = new CheckBox();
             checkBoxAhorn = new CheckBox();
             checkBoxLoenn = new CheckBox();
             groupBox2 = new GroupBox();
@@ -104,7 +102,6 @@
             textBoxModName.Name = "textBoxModName";
             textBoxModName.Size = new Size(217, 27);
             textBoxModName.TabIndex = 5;
-            textBoxModName.TextChanged += textBoxModName_TextChanged;
             // 
             // textBoxUsernameMod
             // 
@@ -112,22 +109,6 @@
             textBoxUsernameMod.Name = "textBoxUsernameMod";
             textBoxUsernameMod.Size = new Size(158, 27);
             textBoxUsernameMod.TabIndex = 6;
-            // 
-            // labelCampaignName
-            // 
-            labelCampaignName.AutoSize = true;
-            labelCampaignName.Location = new Point(21, 152);
-            labelCampaignName.Name = "labelCampaignName";
-            labelCampaignName.Size = new Size(121, 20);
-            labelCampaignName.TabIndex = 7;
-            labelCampaignName.Text = "Campaign Name";
-            // 
-            // textBoxCampaignName
-            // 
-            textBoxCampaignName.Location = new Point(148, 149);
-            textBoxCampaignName.Name = "textBoxCampaignName";
-            textBoxCampaignName.Size = new Size(189, 27);
-            textBoxCampaignName.TabIndex = 8;
             // 
             // buttonOk
             // 
@@ -176,15 +157,15 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Basic Mod Features";
             // 
-            // checkBoxMaps
+            // checkBoxGraphics
             // 
-            checkBoxMaps.AutoSize = true;
-            checkBoxMaps.Location = new Point(23, 37);
-            checkBoxMaps.Name = "checkBoxMaps";
-            checkBoxMaps.Size = new Size(67, 24);
-            checkBoxMaps.TabIndex = 0;
-            checkBoxMaps.Text = "Maps";
-            checkBoxMaps.UseVisualStyleBackColor = true;
+            checkBoxGraphics.AutoSize = true;
+            checkBoxGraphics.Location = new Point(23, 97);
+            checkBoxGraphics.Name = "checkBoxGraphics";
+            checkBoxGraphics.Size = new Size(88, 24);
+            checkBoxGraphics.TabIndex = 2;
+            checkBoxGraphics.Text = "Graphics";
+            checkBoxGraphics.UseVisualStyleBackColor = true;
             // 
             // checkBoxDialog
             // 
@@ -196,15 +177,15 @@
             checkBoxDialog.Text = "Dialog";
             checkBoxDialog.UseVisualStyleBackColor = true;
             // 
-            // checkBoxGraphics
+            // checkBoxMaps
             // 
-            checkBoxGraphics.AutoSize = true;
-            checkBoxGraphics.Location = new Point(23, 97);
-            checkBoxGraphics.Name = "checkBoxGraphics";
-            checkBoxGraphics.Size = new Size(88, 24);
-            checkBoxGraphics.TabIndex = 2;
-            checkBoxGraphics.Text = "Graphics";
-            checkBoxGraphics.UseVisualStyleBackColor = true;
+            checkBoxMaps.AutoSize = true;
+            checkBoxMaps.Location = new Point(23, 37);
+            checkBoxMaps.Name = "checkBoxMaps";
+            checkBoxMaps.Size = new Size(67, 24);
+            checkBoxMaps.TabIndex = 0;
+            checkBoxMaps.Text = "Maps";
+            checkBoxMaps.UseVisualStyleBackColor = true;
             // 
             // checkBoxAhorn
             // 
@@ -247,8 +228,6 @@
             Controls.Add(statusStripStatus);
             Controls.Add(buttonCancel);
             Controls.Add(buttonOk);
-            Controls.Add(textBoxCampaignName);
-            Controls.Add(labelCampaignName);
             Controls.Add(textBoxUsernameMod);
             Controls.Add(textBoxModName);
             Controls.Add(label2);
@@ -277,8 +256,6 @@
         private Label label2;
         private TextBox textBoxModName;
         private TextBox textBoxUsernameMod;
-        private Label labelCampaignName;
-        private TextBox textBoxCampaignName;
         private Button buttonOk;
         private Button buttonCancel;
         private StatusStrip statusStripStatus;

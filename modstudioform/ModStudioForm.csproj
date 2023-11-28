@@ -13,4 +13,8 @@
     <ProjectReference Include="..\modstudiologic\ModStudioLogic.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="NewProjectForms\FeaturesForms\" />
+  </ItemGroup>
+
 </Project>

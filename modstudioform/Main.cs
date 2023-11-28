@@ -9,7 +9,6 @@ namespace ModStudio_for_Celeste
     public partial class Main : Form
     {
         private IModStudioState _formState;
-
         public Main()
         {
             InitializeComponent();
@@ -17,7 +16,6 @@ namespace ModStudio_for_Celeste
             this.CenterToScreen();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
-
         private void OpenProject()
         {
             SetState(new FormStateChoosingDirectory());
