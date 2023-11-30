@@ -1,4 +1,4 @@
-﻿namespace ModStudio_for_Celeste
+﻿namespace CelesteModStudioGUI
 {
     partial class Main
     {

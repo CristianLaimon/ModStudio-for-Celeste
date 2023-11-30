@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ModStudio_for_Celeste
+namespace CelesteModStudioGUI
 {
     public partial class ConfirmationForm : Form
     {

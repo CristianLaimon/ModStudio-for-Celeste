@@ -10,7 +10,7 @@ using ModStudioLogic.Mods;
 //En base a los features elegidos, poner su correspondiente form de configuración
 //hacer que el método de añadir features a proyecto sea "params Feature[]" y acepte cualquier cantidad. "Comodidad"
 //Hacer que el visual studio pueda agrupar los #regions con el atajo para hacer fold a los métodos. ay dios, que enfadoso
-namespace ModStudio_for_Celeste
+namespace CelesteModStudioGUI
 {
     public partial class Main : Form
     {
@@ -28,7 +28,7 @@ namespace ModStudio_for_Celeste
             if (FileManager.ShowOpenDirectoryDialog(out string dir) && FileManager.IsValidModProyect(dir))
             {
                 Project opened = new Project();
-                opened.ParentDirPath = dir;
+                opened.FullPath = dir;
                 ProjectManager.AddProject(opened);
                 SetState(new FormStateDefault());
             }

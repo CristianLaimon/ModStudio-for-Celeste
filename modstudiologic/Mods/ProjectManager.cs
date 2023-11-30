@@ -16,7 +16,7 @@
 
         public static Project GetProjectByPath(string projectPath)
         {
-            Project? found = _openedProjects.Find(p => p.ParentDirPath == projectPath);
+            Project? found = _openedProjects.Find(p => p.FullPath == projectPath);
 
             return found == null ? new Project() : found;
         }

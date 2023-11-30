@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace CelesteModStudioGUI.NewProjectForms.FeaturesForms
 {
-    public partial class FeatureForm : Form
+    public partial class Form5 : Form
     {
-        public FeatureForm()
+        public Form5()
         {
             InitializeComponent();
-            this.Size = new Size(676, 370);
-        }
-
-        private void buttonNext_Click(object sender, EventArgs e)
-        {
-            this.Dispose();
         }
     }
 }

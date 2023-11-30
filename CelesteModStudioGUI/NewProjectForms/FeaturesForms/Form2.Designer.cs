@@ -1,6 +1,6 @@
 ﻿namespace CelesteModStudioGUI.NewProjectForms.FeaturesForms
 {
-    partial class FeatureForm
+    partial class Form2
     {
         /// <summary>
         /// Required designer variable.
@@ -28,45 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            buttonNext = new Button();
-            buttonReturn = new Button();
             SuspendLayout();
             // 
-            // buttonNext
-            // 
-            buttonNext.Location = new Point(427, 272);
-            buttonNext.Name = "buttonNext";
-            buttonNext.Size = new Size(94, 29);
-            buttonNext.TabIndex = 0;
-            buttonNext.Text = "Next";
-            buttonNext.UseVisualStyleBackColor = true;
-            buttonNext.Click += buttonNext_Click;
-            // 
-            // buttonReturn
-            // 
-            buttonReturn.Location = new Point(539, 272);
-            buttonReturn.Name = "buttonReturn";
-            buttonReturn.Size = new Size(94, 29);
-            buttonReturn.TabIndex = 1;
-            buttonReturn.Text = "Return";
-            buttonReturn.TextAlign = ContentAlignment.TopCenter;
-            buttonReturn.UseVisualStyleBackColor = true;
-            // 
-            // FeatureForm
+            // Form2
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(658, 323);
-            Controls.Add(buttonReturn);
-            Controls.Add(buttonNext);
-            Name = "FeatureForm";
-            Text = "Form1";
+            Name = "Form2";
+            Text = "Form2";
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Button buttonNext;
-        private Button buttonReturn;
     }
 }

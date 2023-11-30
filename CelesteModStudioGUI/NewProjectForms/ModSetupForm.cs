@@ -1,4 +1,4 @@
-﻿using ModStudio_for_Celeste.NewProjectForms.FeaturesForms;
+﻿using CelesteModStudioGUI.NewProjectForms.FeaturesForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ModStudio_for_Celeste.NewProjectForms
+namespace CelesteModStudioGUI.NewProjectForms
 {
     public partial class ModSetupForm : Form
     {

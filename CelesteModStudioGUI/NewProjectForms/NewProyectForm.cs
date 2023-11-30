@@ -1,8 +1,9 @@
 ﻿using ModStudioLogic;
 using ModStudioLogic.Mods;
 using ModStudioLogic.FormsLogic;
+using ModStudioWinForms;
 
-namespace ModStudio_for_Celeste
+namespace CelesteModStudioGUI
 {
     public partial class NewProyectForm : Form
     {
@@ -26,7 +27,7 @@ namespace ModStudio_for_Celeste
 
             SetState(new FormStateDefault());
         }
-        private void GetModProject()
+        private void AddProjectToManager()
         {
             if (FormValidation.TextBoxesAreValid(this.Controls.OfType<TextBox>().ToArray()))
             {
@@ -38,10 +39,10 @@ namespace ModStudio_for_Celeste
                 }
 
                 Project newProject = new Project();
-                newProject.ParentDirPath = textBoxDirectorySelected.Text;
-                newProject.Version = "0.0.1";
-                newProject.Name = textBoxModName.Text;
-                newProject.Author = textBoxUsernameMod.Text;
+                newProject.FullPath = Path.Combine(textBoxDirectorySelected.Text, textBoxModName.Text);
+                newProject.ModVersion = "0.0.1";
+                newProject.ModName = textBoxModName.Text;
+                newProject.AuthorName = textBoxUsernameMod.Text;
 
                 foreach (ModFeature m in GetFeaturesSelected())
                     newProject.Features.Add(m);
@@ -90,7 +91,13 @@ namespace ModStudio_for_Celeste
         }
         private void buttonOk_Click(object sender, EventArgs e)
         {
-            GetModProject();
+            AddProjectToManager();
+            Project actualProj = ProjectManager.GetLastProjectAdded();
+
+            foreach(ModFeature mf in actualProj.Features)
+            {
+                NewProjectManager.Add(mf.form);
+            }
         }
         private void buttonCancel_Click(object sender, EventArgs e)
         {

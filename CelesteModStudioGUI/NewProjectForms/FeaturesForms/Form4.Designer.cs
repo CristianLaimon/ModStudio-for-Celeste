@@ -1,6 +1,6 @@
-﻿namespace CelesteModStudioGUI.NewProjectForms
+﻿namespace CelesteModStudioGUI.NewProjectForms.FeaturesForms
 {
-    partial class ModSetupForm
+    partial class Form4
     {
         /// <summary>
         /// Required designer variable.
@@ -28,30 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panelAllForms = new Panel();
-            SuspendLayout();
-            // 
-            // panelAllForms
-            // 
-            panelAllForms.Dock = DockStyle.Fill;
-            panelAllForms.Location = new Point(0, 0);
-            panelAllForms.Name = "panelAllForms";
-            panelAllForms.Size = new Size(676, 370);
-            panelAllForms.TabIndex = 0;
-            // 
-            // ModSetupForm
-            // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(676, 370);
-            Controls.Add(panelAllForms);
-            Name = "ModSetupForm";
-            Text = "Maps - Setup";
-            ResumeLayout(false);
+            this.components = new System.ComponentModel.Container();
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Text = "Form4";
         }
 
         #endregion
-
-        private Panel panelAllForms;
     }
 }

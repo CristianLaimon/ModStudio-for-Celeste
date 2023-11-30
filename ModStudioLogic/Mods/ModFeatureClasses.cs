@@ -1,25 +1,48 @@
-﻿using System.Security.Cryptography.X509Certificates;
-
+﻿
 namespace ModStudioLogic.Mods
 {
-    public class ModFeature
+    public abstract class ModFeature
     {
-        public virtual string FolderName { get { return "NAN"; } }
+        public abstract string FolderName { get; }
+        public virtual DirectoryInfo CreateFolders(Project project)
+        {
+            string path = Path.Combine(
+                project.FullPath,
+                FolderName
+                );
+
+            //hacre que salte la ventana de cada uno
+
+            return Directory.CreateDirectory(path);
+        }
     }
 
     public class FeatureMaps : ModFeature
     {
         public override string FolderName { get { return "Maps"; } }
+        public override DirectoryInfo CreateFolders(Project project)
+        {
+            string path = Path.Combine(
+                project.FullPath,
+                FolderName,
+                project.AuthorName,
+                project.CampaignName);
+
+            return Directory.CreateDirectory(path);
+        }
     }
 
     public class FeatureDialog : ModFeature
     {
         public override string FolderName { get { return "Dialog"; } }
+
+        
     }
 
     public class FeatureGraphics : ModFeature
     {
         public override string FolderName { get { return "Graphics"; } }
+
     }
 
     public class FeatureAhorn : ModFeature
@@ -40,6 +63,16 @@ namespace ModStudioLogic.Mods
     public class FeatureAudio : ModFeature
     {
         public override string FolderName { get { return "Audio"; } }
+    }
+
+    public class NullFeature : ModFeature
+    {
+        public override string FolderName => throw new NotImplementedException();
+
+        public override DirectoryInfo CreateFolders(Project project)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public static class ModFeatureFactory
@@ -63,7 +96,7 @@ namespace ModStudioLogic.Mods
                 case "audio":
                     return new FeatureAudio();
                 default:
-                    return new ModFeature();
+                    return new NullFeature();
             }
         }
     }

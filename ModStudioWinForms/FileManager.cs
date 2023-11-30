@@ -54,12 +54,9 @@ namespace ModStudioLogic
 
         public static void CreateSubDirsWithProject(Project project)
         {
-            DirectoryInfo modFolderPath =  Directory.CreateDirectory(Path.Combine(project.ParentDirPath, project.Name));
+            Directory.CreateDirectory(project.FullPath);
             
-            foreach(ModFeature modf in project.Features)
-            {
-                Directory.CreateDirectory(Path.Combine(modFolderPath.FullName, modf.FolderName));
-            }
+
 
         }
     }

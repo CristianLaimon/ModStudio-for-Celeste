@@ -1,6 +1,6 @@
-﻿namespace CelesteModStudioGUI.NewProjectForms
+﻿namespace CelesteModStudioGUI
 {
-    partial class ModSetupForm
+    partial class LoadForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,30 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panelAllForms = new Panel();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoadForm));
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // panelAllForms
+            // pictureBox1
             // 
-            panelAllForms.Dock = DockStyle.Fill;
-            panelAllForms.Location = new Point(0, 0);
-            panelAllForms.Name = "panelAllForms";
-            panelAllForms.Size = new Size(676, 370);
-            panelAllForms.TabIndex = 0;
+            pictureBox1.Dock = DockStyle.Fill;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(679, 388);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
             // 
-            // ModSetupForm
+            // LoadForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(676, 370);
-            Controls.Add(panelAllForms);
-            Name = "ModSetupForm";
-            Text = "Maps - Setup";
+            ClientSize = new Size(679, 388);
+            Controls.Add(pictureBox1);
+            Name = "LoadForm";
+            Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Panel panelAllForms;
+        private PictureBox pictureBox1;
     }
 }

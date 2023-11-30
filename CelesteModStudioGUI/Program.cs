@@ -1,6 +1,4 @@
-using ModStudio_for_Celeste.NewProjectForms;
-
-namespace ModStudio_for_Celeste
+namespace CelesteModStudioGUI
 {
     internal static class Program
     {
@@ -8,6 +6,7 @@ namespace ModStudio_for_Celeste
         static void Main()
         {
             ApplicationConfiguration.Initialize();
+            Application.Run(new LoadForm());
             Application.Run(new Main());
         }
     }
