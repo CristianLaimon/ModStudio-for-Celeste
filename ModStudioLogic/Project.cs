@@ -1,7 +1,7 @@
-﻿namespace ModStudioLogic.Mods
+﻿namespace ModStudioLogic
 {
     public class Project
-    { 
+    {
         /// <summary>
         /// This includes the full path including "...ParentFolder/ModName/..."
         /// </summary>

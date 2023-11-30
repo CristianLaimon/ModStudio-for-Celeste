@@ -1,6 +1,4 @@
 using ModStudioLogic;
-using ModStudioLogic.FormsLogic;
-using ModStudioLogic.Mods;
 //https://www.reddit.com/r/celestegame/comments/e82ncn/madeline_fanart/ logo.png idea!, TODO:try to find original author...
 //Probably are better ways to implement state pattern, i just wanna learn to use polymorphism. It's curious
 

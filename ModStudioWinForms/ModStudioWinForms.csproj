@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ModStudioLogic\ModStudioLogic.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Reference Include="System.Windows.Forms">
       <HintPath>System.Windows.Forms.dll</HintPath>
     </Reference>

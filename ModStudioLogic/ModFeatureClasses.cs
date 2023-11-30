@@ -1,5 +1,4 @@
-﻿
-namespace ModStudioLogic.Mods
+﻿namespace ModStudioLogic
 {
     public abstract class ModFeature
     {
@@ -11,7 +10,6 @@ namespace ModStudioLogic.Mods
                 FolderName
                 );
 
-            //hacre que salte la ventana de cada uno
 
             return Directory.CreateDirectory(path);
         }
@@ -36,7 +34,7 @@ namespace ModStudioLogic.Mods
     {
         public override string FolderName { get { return "Dialog"; } }
 
-        
+
     }
 
     public class FeatureGraphics : ModFeature

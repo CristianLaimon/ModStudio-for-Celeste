@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualBasic;
 
-namespace ModStudioLogic.FormsLogic
+namespace ModStudioLogic
 {
     /// <summary>
     /// Class to manage IModStudio objects to interact with GUI forms

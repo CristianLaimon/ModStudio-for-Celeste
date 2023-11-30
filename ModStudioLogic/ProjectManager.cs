@@ -1,4 +1,4 @@
-﻿namespace ModStudioLogic.Mods
+﻿namespace ModStudioLogic
 {
     public class ProjectManager
     {
