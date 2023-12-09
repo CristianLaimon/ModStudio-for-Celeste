@@ -1,6 +1,6 @@
 ﻿namespace CelesteModStudioGUI.NewProjectForms
 {
-    partial class FeaturesMultiSelectForm
+    partial class ModSetupForm
     {
         /// <summary>
         /// Required designer variable.

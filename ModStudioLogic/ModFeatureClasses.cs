@@ -20,8 +20,6 @@ namespace ModStudioLogic
 
     public class FeatureMaps : ModFeature
     {
-        public override UserControl SettingWindow => new UserControl1();
-
         public override string FolderName
         { get { return "Maps"; } }
 

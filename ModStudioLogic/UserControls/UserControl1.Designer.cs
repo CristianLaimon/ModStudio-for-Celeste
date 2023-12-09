@@ -1,4 +1,7 @@
-﻿namespace CelesteModStudioGUI.View.Forms
+﻿using System.Drawing;
+using System.Windows.Forms;
+
+namespace CelesteModStudioGUI.View.Forms
 {
     partial class UserControl1
     {

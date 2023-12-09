@@ -1,6 +1,4 @@
-﻿using CelesteModStudioGUI.Controller.ModStudioLogic;
-using CelesteModStudioGUI.Model;
-using CelesteModStudioGUI.NewProjectForms;
+﻿using CelesteModStudioGUI.NewProjectForms;
 using CelesteModStudioGUI.View;
 using ModStudioLogic;
 
@@ -26,7 +24,7 @@ namespace CelesteModStudioGUI
 
                 if (OutProject.Features.Any())
                 {
-                    Form setupForm = new FeaturesMultiSelectForm();
+                    Form setupForm = new ModSetupForm();
                     setupForm.ShowDialog(); //This expects a result
                 }
 
