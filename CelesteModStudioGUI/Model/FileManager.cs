@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace ModStudioLogic
+namespace CelesteModStudioGUI.Model
 {
     public class FileManager
     {
@@ -53,7 +53,7 @@ namespace ModStudioLogic
         public static void CreateSubDirsWithProject(Project project)
         {
             Directory.CreateDirectory(project.FullPath);
-            
+
 
 
         }

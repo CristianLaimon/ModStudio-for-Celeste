@@ -1,6 +1,6 @@
-﻿namespace CelesteModStudioGUI.NewProjectForms.FeaturesForms
+﻿namespace CelesteModStudioGUI.NewProjectForms
 {
-    partial class Form4
+    partial class FeaturesMultiSelectForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,10 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form4";
+            SuspendLayout();
+            // 
+            // ModSetupForm
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(640, 276);
+            Name = "ModSetupForm";
+            Text = "Maps - Setup";
+            ResumeLayout(false);
         }
 
         #endregion

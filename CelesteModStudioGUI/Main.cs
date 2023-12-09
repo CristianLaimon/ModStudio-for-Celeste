@@ -1,4 +1,6 @@
-using ModStudioLogic;
+using CelesteModStudioGUI.Controller.ModStudioLogic;
+using CelesteModStudioGUI.Model;
+
 //https://www.reddit.com/r/celestegame/comments/e82ncn/madeline_fanart/ logo.png idea!, TODO:try to find original author...
 //Probably are better ways to implement state pattern, i just wanna learn to use polymorphism. It's curious
 
@@ -39,8 +41,18 @@ namespace CelesteModStudioGUI
         {
             SetState(new FormStateCreatingProject());
             var newProyectForm = new NewProyectForm();
-            newProyectForm.ShowDialog();
-            SetState(new FormStateDefault());
+            DialogResult result = newProyectForm.ShowDialog();
+            
+            if (result == DialogResult.OK)
+            {
+                Project tempLast = ProjectManager.GetLastProjectAdded();
+                SetState(new FormStateCustomMessage("Project " + tempLast.ModName + " Version: " + tempLast.ModVersion.ToString() + " created"));
+            }
+            else
+            {
+                SetState(new FormStateCustomMessage("Canceled Project"));
+            }
+
         }
 
         #region FormEvents

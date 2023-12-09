@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using CelesteModStudioGUI.Controller.ModStudioLogic;
+using CelesteModStudioGUI.Model;
 using FluentAssertions;
 using Xunit;
 

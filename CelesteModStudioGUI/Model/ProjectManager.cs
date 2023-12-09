@@ -1,4 +1,6 @@
-﻿namespace ModStudioLogic
+﻿using CelesteModStudioGUI.Model;
+
+namespace CelesteModStudioGUI.Controller.ModStudioLogic
 {
     public class ProjectManager
     {
@@ -24,6 +26,11 @@
         public static Project GetLastProjectAdded()
         {
             return _openedProjects.Last();
+        }
+
+        public static void RemoveLastProject()
+        {
+            _openedProjects.Remove(_openedProjects.Last());
         }
 
     }

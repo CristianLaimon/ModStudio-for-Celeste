@@ -1,4 +1,4 @@
-﻿global using ModStudioLogic.Mods;
+﻿using CelesteModStudioGUI.Model;
 using FluentAssertions;
 using Xunit;
 

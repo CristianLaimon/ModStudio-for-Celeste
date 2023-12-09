@@ -1,3 +1,4 @@
+using CelesteModStudioGUI.Model;
 using Xunit;
 
 namespace ModStudioLogic

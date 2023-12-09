@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace ModStudioLogic.FormsLogic
+namespace CelesteModStudioGUI.View
 {
     public class FormValidation
     {

@@ -1,7 +1,11 @@
-﻿namespace ModStudioLogic
+﻿using CelesteModStudioGUI.NewProjectForms.FeaturesForms;
+using CelesteModStudioGUI.View.Forms;
+
+namespace CelesteModStudioGUI.Model
 {
     public abstract class ModFeature
     {
+        public virtual UserControl SettingWindow { get; }
         public abstract string FolderName { get; }
         public virtual DirectoryInfo CreateFolders(Project project)
         {
@@ -17,6 +21,7 @@
 
     public class FeatureMaps : ModFeature
     {
+        public override UserControl SettingWindow => new UserControl1();
         public override string FolderName { get { return "Maps"; } }
         public override DirectoryInfo CreateFolders(Project project)
         {
@@ -34,7 +39,6 @@
     {
         public override string FolderName { get { return "Dialog"; } }
 
-
     }
 
     public class FeatureGraphics : ModFeature
@@ -46,26 +50,31 @@
     public class FeatureAhorn : ModFeature
     {
         public override string FolderName { get { return "Ahorn"; } }
+
     }
 
     public class FeatureLoenn : ModFeature
     {
         public override string FolderName { get { return "Loenn"; } }
+
     }
 
     public class FeatureDLL : ModFeature
     {
         public override string FolderName { get { return "bin"; } }
+
     }
 
     public class FeatureAudio : ModFeature
     {
         public override string FolderName { get { return "Audio"; } }
+
     }
 
     public class NullFeature : ModFeature
     {
         public override string FolderName => throw new NotImplementedException();
+
 
         public override DirectoryInfo CreateFolders(Project project)
         {

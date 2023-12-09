@@ -1,4 +1,4 @@
-﻿namespace ModStudioLogic
+﻿namespace CelesteModStudioGUI.Model
 {
     public class Project
     {

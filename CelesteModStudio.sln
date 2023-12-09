@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModStudioTesting", "ModStud
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CelesteModStudioGUI", "CelesteModStudioGUI\CelesteModStudioGUI.csproj", "{0EF0E3F6-D976-4B0A-98D9-731139B72360}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewProjectGUI", "NewProjectGUI\NewProjectGUI.csproj", "{DA93821B-D948-411E-B022-D3A82019C231}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0EF0E3F6-D976-4B0A-98D9-731139B72360}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0EF0E3F6-D976-4B0A-98D9-731139B72360}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0EF0E3F6-D976-4B0A-98D9-731139B72360}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA93821B-D948-411E-B022-D3A82019C231}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA93821B-D948-411E-B022-D3A82019C231}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA93821B-D948-411E-B022-D3A82019C231}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA93821B-D948-411E-B022-D3A82019C231}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

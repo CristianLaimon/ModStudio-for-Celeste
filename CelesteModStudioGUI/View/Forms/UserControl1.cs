@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CelesteModStudioGUI.NewProjectForms.FeaturesForms
+namespace CelesteModStudioGUI.View.Forms
 {
-    public partial class Form5 : Form
+    public partial class UserControl1 : UserControl
     {
-        public Form5()
+        public UserControl1()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }

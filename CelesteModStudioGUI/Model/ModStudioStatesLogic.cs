@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualBasic;
 
-namespace ModStudioLogic
+namespace CelesteModStudioGUI.Model
 {
     /// <summary>
     /// Class to manage IModStudio objects to interact with GUI forms
@@ -76,6 +76,19 @@ namespace ModStudioLogic
         public string GetMessage()
         {
             return "Creating Project";
+        }
+    }
+
+    public class FormStateCustomMessage : IModStudioState
+    {
+        private string _message;
+        public FormStateCustomMessage(string message)
+        {
+            _message = message;
+        }
+        public string GetMessage()
+        {
+            return _message;
         }
     }
 }
