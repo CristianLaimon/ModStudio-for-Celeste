@@ -10,7 +10,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="View\Forms\NewProjectForms\FeaturesForms\" />
+    <ProjectReference Include="..\ModStudioLogic\ModStudioLogic.csproj" />
+    <ProjectReference Include="..\NewProjectGUI\NewProjectGUI.csproj" />
   </ItemGroup>
 
 </Project>

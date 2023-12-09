@@ -1,10 +1,7 @@
-using CelesteModStudioGUI.Controller.ModStudioLogic;
-using CelesteModStudioGUI.Model;
+using ModStudioLogic;
 
 //https://www.reddit.com/r/celestegame/comments/e82ncn/madeline_fanart/ logo.png idea!, TODO:try to find original author...
 //Probably are better ways to implement state pattern, i just wanna learn to use polymorphism. It's curious
-
-
 
 //TODO: Make UnitTesting of all this methods
 //En base a los features elegidos, poner su correspondiente form de configuración
@@ -15,6 +12,7 @@ namespace CelesteModStudioGUI
     public partial class Main : Form
     {
         private IModStudioState _formState;
+
         public Main()
         {
             InitializeComponent();
@@ -22,6 +20,7 @@ namespace CelesteModStudioGUI
             this.CenterToScreen();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
+
         private void OpenProject()
         {
             SetState(new FormStateChoosingDirectory());
@@ -37,12 +36,13 @@ namespace CelesteModStudioGUI
                 SetState(new FormStateError("Error: Opened Project is not a celeste mod or valid directory to work with"));
             }
         }
+
         private void CreateProject()
         {
             SetState(new FormStateCreatingProject());
             var newProyectForm = new NewProyectForm();
             DialogResult result = newProyectForm.ShowDialog();
-            
+
             if (result == DialogResult.OK)
             {
                 Project tempLast = ProjectManager.GetLastProjectAdded();
@@ -52,26 +52,30 @@ namespace CelesteModStudioGUI
             {
                 SetState(new FormStateCustomMessage("Canceled Project"));
             }
-
         }
 
         #region FormEvents
+
         private void openExistingProyectToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenProject();
         }
+
         private void createNewModProyectToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             CreateProject();
         }
+
         #endregion FormEvents
 
         #region Utilities
+
         private void SetState(IModStudioState newState)
         {
             _formState = newState;
             toolStripStatusLabelStatus.Text = StateFormat.GetFormattedMessage(_formState);
         }
+
         #endregion Utilities
     }
 }

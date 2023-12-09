@@ -4,7 +4,7 @@ namespace CelesteModStudioGUI
 {
     public partial class LoadForm : Form
     {
-        Timer timer;
+        private Timer timer;
 
         public LoadForm()
         {
@@ -18,6 +18,7 @@ namespace CelesteModStudioGUI
             this.FormBorderStyle = FormBorderStyle.None;
             this.CenterToScreen();
         }
+
         private void SetTimerLogic()
         {
             timer = new Timer();
@@ -25,6 +26,7 @@ namespace CelesteModStudioGUI
             timer.Interval = 2000;
             timer.Start();
         }
+
         private void ElapsedTime(object? sender, EventArgs e)
         {
             timer.Stop();

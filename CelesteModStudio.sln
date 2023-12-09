@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CelesteModStudioGUI", "Cele
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewProjectGUI", "NewProjectGUI\NewProjectGUI.csproj", "{DA93821B-D948-411E-B022-D3A82019C231}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StudioTesting", "StudioTesting", "{22481941-D768-45BE-BFDA-B692BC2A680C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModStudioLogic", "ModStudioLogic\ModStudioLogic.csproj", "{A439216D-3D8C-48B7-82EB-68C20CB41096}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,9 +31,16 @@ Global
 		{DA93821B-D948-411E-B022-D3A82019C231}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA93821B-D948-411E-B022-D3A82019C231}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA93821B-D948-411E-B022-D3A82019C231}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A439216D-3D8C-48B7-82EB-68C20CB41096}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A439216D-3D8C-48B7-82EB-68C20CB41096}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A439216D-3D8C-48B7-82EB-68C20CB41096}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A439216D-3D8C-48B7-82EB-68C20CB41096}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CEEABA49-AEFE-4792-BD82-E72607109A59} = {22481941-D768-45BE-BFDA-B692BC2A680C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9F80BC64-3C3C-4EE5-AF7E-7C06C4869449}

@@ -26,5 +26,9 @@
             return _openedProjects.Last();
         }
 
+        public static void RemoveLastProject()
+        {
+            _openedProjects.Remove(_openedProjects.Last());
+        }
     }
 }

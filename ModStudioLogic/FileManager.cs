@@ -1,11 +1,11 @@
 ﻿using System.Windows.Forms;
 
-namespace CelesteModStudioGUI.Model
+namespace ModStudioLogic
 {
     public class FileManager
     {
         /// <summary>
-        /// Opens a directory and returns the directory selected. 
+        /// Opens a directory and returns the directory selected.
         /// </summary>
         /// <returns>True if it success with a string of the new path otherwise false and ""</returns>
         public static bool ShowOpenDirectoryDialog(out string openedDirectoryPath)
@@ -53,9 +53,6 @@ namespace CelesteModStudioGUI.Model
         public static void CreateSubDirsWithProject(Project project)
         {
             Directory.CreateDirectory(project.FullPath);
-
-
-
         }
     }
 }
