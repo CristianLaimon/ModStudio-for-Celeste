@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ModStudioLogic\ModStudioLogic.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="ModSetupForm.cs">
       <SubType>Form</SubType>
     </Compile>

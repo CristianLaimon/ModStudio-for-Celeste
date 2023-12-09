@@ -2,12 +2,13 @@
 using CelesteModStudioGUI.Model;
 using CelesteModStudioGUI.NewProjectForms;
 using CelesteModStudioGUI.View;
+using ModStudioLogic;
 
 namespace CelesteModStudioGUI
 {
     public partial class NewProyectForm : Form
     {
-        IModStudioState _formState;
+        private IModStudioState _formState;
 
         public NewProyectForm()
         {
@@ -16,6 +17,7 @@ namespace CelesteModStudioGUI
             CenterToScreen();
             FormBorderStyle = FormBorderStyle.FixedSingle;
         }
+
         private void OKLogic()
         {
             if (TryGetProjectFromForm(out Project OutProject))
@@ -30,7 +32,7 @@ namespace CelesteModStudioGUI
 
                 Form confirmationForm = new ConfirmationForm();
                 DialogResult result = confirmationForm.ShowDialog();
-                
+
                 if (result == DialogResult.OK)
                 {
                     CreateModFolders();
@@ -46,6 +48,7 @@ namespace CelesteModStudioGUI
                 SetState(new FormStateError("No valid input. Please try again"));
             }
         }
+
         private bool TryGetProjectFromForm(out Project OutProject)
         {
             if (FormValidation.TextBoxesAreValid(this.Controls.OfType<TextBox>().ToArray()))
@@ -68,29 +71,36 @@ namespace CelesteModStudioGUI
                 return false;
             }
         }
+
         private void CancelLogic() => DialogResult = DialogResult.Cancel;
 
         #region FormEvents
+
         private void buttonSelectNewDirectory_Click(object sender, EventArgs e)
         {
             ChooseDirectory();
         }
+
         private void buttonOk_Click(object sender, EventArgs e)
         {
             OKLogic();
         }
+
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             CancelLogic();
         }
-        #endregion
+
+        #endregion FormEvents
 
         #region Utilities
+
         private void SetState(IModStudioState newState)
         {
             _formState = newState;
             stripLabelActualStatus.Text = StateFormat.GetFormattedMessage(newState);
         }
+
         private void ChooseDirectory()
         {
             SetState(new FormStateChoosingDirectory());
@@ -102,6 +112,7 @@ namespace CelesteModStudioGUI
 
             SetState(new FormStateDefault());
         }
+
         private ModFeature[] GetFeaturesSelected()
         {
             List<ModFeature> features = new List<ModFeature>();
@@ -123,12 +134,13 @@ namespace CelesteModStudioGUI
 
             return features.ToArray();
         }
+
         private void CreateModFolders()
         {
             Project project = ProjectManager.GetLastProjectAdded();
             FileManager.CreateSubDirsWithProject(project);
         }
-        #endregion
 
+        #endregion Utilities
     }
 }
