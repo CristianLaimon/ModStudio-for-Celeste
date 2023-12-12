@@ -36,7 +36,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(640, 276);
             Name = "ModSetupForm";
-            Text = "Maps - Setup";
+            Text = "Advanced Settings";
             ResumeLayout(false);
         }
 

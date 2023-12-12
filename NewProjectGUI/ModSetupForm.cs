@@ -1,21 +1,39 @@
-﻿using CelesteModStudioGUI.View.Forms;
+﻿using ModStudioLogic;
+using ModStudioLogic.BigClasses;
+using NewProjectGUI;
+using System.Xml;
 
 namespace CelesteModStudioGUI.NewProjectForms
 {
     public partial class ModSetupForm : Form
     {
+        private sbyte index;
+        private Project lastAdded;
+
         public ModSetupForm()
         {
             InitializeComponent();
-            Init();
+            Setup();
+            ShowNextForm();
         }
 
-        private void Init()
+        private void Setup()
         {
-            UserControl ch = new UserControl1();
-            ch.Dock = DockStyle.Fill;
-            this.Controls.Add(ch);
-            ch.Show();
+            lastAdded = ProjectManager.GetLastProjectAdded();
+            index = -1;
+        }
+
+        private void ShowNextForm()
+        {
+            index++;
+            ModFeature actualFeature = lastAdded.Features[index];
+            var actualControl = UserControlFabric.GetUserControlFrom(actualFeature);
+            this.Controls.Add(actualControl);
+            actualControl.Show();
+        }
+
+        private void UserControlClosed(object sender, EventArgs e)
+        {
         }
     }
 }

@@ -1,9 +1,8 @@
-﻿using CelesteModStudioGUI.Controller.ModStudioLogic;
-using CelesteModStudioGUI.Model;
-using FluentAssertions;
+﻿using FluentAssertions;
+using ModStudioLogic;
 using Xunit;
 
-namespace ModStudioLogic
+namespace ModStudioTesting.Useless
 {
     public class ProjectManagerTests
     {

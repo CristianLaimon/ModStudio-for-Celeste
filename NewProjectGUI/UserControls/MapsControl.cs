@@ -7,18 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NewProjectGUI.UserControls;
 
-namespace CelesteModStudioGUI.View.Forms
+namespace NewProjectGUI.View.Forms
 {
-    public partial class UserControl1 : UserControl
+    public partial class MapsControl : UserControl
     {
-        public UserControl1()
+        public MapsControl()
         {
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Closed?.Invoke(this, EventArgs.Empty);
             this.Dispose();
         }
     }

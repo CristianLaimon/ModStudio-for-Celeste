@@ -1,7 +1,7 @@
-using CelesteModStudioGUI.Model;
+using ModStudioLogic.BigClasses;
 using Xunit;
 
-namespace ModStudioLogic
+namespace ModStudioTesting.Useless
 {
     public class ModStudioState
     {

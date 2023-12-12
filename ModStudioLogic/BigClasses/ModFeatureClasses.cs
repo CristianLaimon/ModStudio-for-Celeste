@@ -1,10 +1,9 @@
 ﻿using System.Windows.Forms;
 
-namespace ModStudioLogic
+namespace ModStudioLogic.BigClasses
 {
     public abstract class ModFeature
     {
-        public virtual UserControl SettingWindow { get; }
         public abstract string FolderName { get; }
 
         public virtual DirectoryInfo CreateFolders(Project project)
@@ -18,7 +17,7 @@ namespace ModStudioLogic
         }
     }
 
-    public class FeatureMaps : ModFeature
+    public class ModFeatureMaps : ModFeature
     {
         public override string FolderName
         { get { return "Maps"; } }
@@ -35,7 +34,7 @@ namespace ModStudioLogic
         }
     }
 
-    public class FeatureDialog : ModFeature
+    public class ModFeatureDialog : ModFeature
     {
         public override string FolderName
         { get { return "Dialog"; } }
@@ -47,31 +46,31 @@ namespace ModStudioLogic
         { get { return "Graphics"; } }
     }
 
-    public class FeatureAhorn : ModFeature
+    public class ModFeatureAhorn : ModFeature
     {
         public override string FolderName
         { get { return "Ahorn"; } }
     }
 
-    public class FeatureLoenn : ModFeature
+    public class ModFeatureLoenn : ModFeature
     {
         public override string FolderName
         { get { return "Loenn"; } }
     }
 
-    public class FeatureDLL : ModFeature
+    public class ModFeatureDLL : ModFeature
     {
         public override string FolderName
         { get { return "bin"; } }
     }
 
-    public class FeatureAudio : ModFeature
+    public class ModFeatureAudio : ModFeature
     {
         public override string FolderName
         { get { return "Audio"; } }
     }
 
-    public class NullFeature : ModFeature
+    public class ModNullFeature : ModFeature
     {
         public override string FolderName => throw new NotImplementedException();
 
@@ -88,28 +87,28 @@ namespace ModStudioLogic
             switch (featureName.ToLower())
             {
                 case "maps":
-                    return new FeatureMaps();
+                    return new ModFeatureMaps();
 
                 case "dialog":
-                    return new FeatureDialog();
+                    return new ModFeatureDialog();
 
                 case "graphics":
                     return new FeatureGraphics();
 
                 case "ahorn":
-                    return new FeatureAhorn();
+                    return new ModFeatureAhorn();
 
                 case "loenn":
-                    return new FeatureLoenn();
+                    return new ModFeatureLoenn();
 
                 case "dll":
-                    return new FeatureDLL();
+                    return new ModFeatureDLL();
 
                 case "audio":
-                    return new FeatureAudio();
+                    return new ModFeatureAudio();
 
                 default:
-                    return new NullFeature();
+                    return new ModNullFeature();
             }
         }
     }

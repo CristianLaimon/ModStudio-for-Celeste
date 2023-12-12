@@ -1,17 +1,16 @@
-﻿using CelesteModStudioGUI.Model;
-using FluentAssertions;
+﻿using FluentAssertions;
+using ModStudioLogic.BigClasses;
 using Xunit;
 
-namespace ModStudioLogic
+namespace ModStudioTesting.Useless
 {
     public class ModFeatures
     {
-
         [Fact]
         public void FeatureMaps_FolderName_ReturnsMaps()
         {
             // Arrange
-            ModFeature modFeature = new FeatureMaps();
+            ModFeature modFeature = new ModFeatureMaps();
 
             // Act
             string result = modFeature.FolderName;
@@ -24,7 +23,7 @@ namespace ModStudioLogic
         public void FeatureDialog_FolderName_ReturnsDialog()
         {
             // Arrange
-            ModFeature modFeature = new FeatureDialog();
+            ModFeature modFeature = new ModFeatureDialog();
 
             // Act
             string result = modFeature.FolderName;
@@ -50,7 +49,7 @@ namespace ModStudioLogic
         public void FeatureAhorn_FolderName_ReturnsAhorn()
         {
             // Arrange
-            ModFeature modFeature = new FeatureAhorn();
+            ModFeature modFeature = new ModFeatureAhorn();
 
             // Act
             string result = modFeature.FolderName;
@@ -63,7 +62,7 @@ namespace ModStudioLogic
         public void FeatureLoenn_FolderName_ReturnsLoenn()
         {
             // Arrange
-            ModFeature modFeature = new FeatureLoenn();
+            ModFeature modFeature = new ModFeatureLoenn();
 
             // Act
             string result = modFeature.FolderName;
@@ -76,7 +75,7 @@ namespace ModStudioLogic
         public void FeatureDLL_FolderName_ReturnsBin()
         {
             // Arrange
-            ModFeature modFeature = new FeatureDLL();
+            ModFeature modFeature = new ModFeatureDLL();
 
             // Act
             string result = modFeature.FolderName;
@@ -89,7 +88,7 @@ namespace ModStudioLogic
         public void FeatureAudio_FolderName_ReturnsAudio()
         {
             // Arrange
-            ModFeature modFeature = new FeatureAudio();
+            ModFeature modFeature = new ModFeatureAudio();
 
             // Act
             string result = modFeature.FolderName;
@@ -112,13 +111,13 @@ namespace ModStudioLogic
         }
 
         [Theory]
-        [InlineData("maps", typeof(FeatureMaps))]
-        [InlineData("dialog", typeof(FeatureDialog))]
+        [InlineData("maps", typeof(ModFeatureMaps))]
+        [InlineData("dialog", typeof(ModFeatureDialog))]
         [InlineData("graphics", typeof(FeatureGraphics))]
-        [InlineData("ahorn", typeof(FeatureAhorn))]
-        [InlineData("loenn", typeof(FeatureLoenn))]
-        [InlineData("dll", typeof(FeatureDLL))]
-        [InlineData("audio", typeof(FeatureAudio))]
+        [InlineData("ahorn", typeof(ModFeatureAhorn))]
+        [InlineData("loenn", typeof(ModFeatureLoenn))]
+        [InlineData("dll", typeof(ModFeatureDLL))]
+        [InlineData("audio", typeof(ModFeatureAudio))]
         public void ModFeatureFactory_GetFeatureByName_ValidName_ReturnsCorrectType(string featureName, Type expectedType)
         {
             // Act

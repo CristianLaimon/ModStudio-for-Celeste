@@ -1,6 +1,6 @@
 ﻿using CelesteModStudioGUI.NewProjectForms;
-using CelesteModStudioGUI.View;
 using ModStudioLogic;
+using ModStudioLogic.BigClasses;
 
 namespace CelesteModStudioGUI
 {
@@ -53,7 +53,7 @@ namespace CelesteModStudioGUI
             {
                 Project newProject = new Project();
                 newProject.FullPath = Path.Combine(textBoxDirectorySelected.Text, textBoxModName.Text);
-                newProject.ModVersion = "0.0.1";
+                newProject.ModVersion = new ModStudioLogic.Version(0, 1, 0);
                 newProject.ModName = textBoxModName.Text;
                 newProject.AuthorName = textBoxUsernameMod.Text;
 

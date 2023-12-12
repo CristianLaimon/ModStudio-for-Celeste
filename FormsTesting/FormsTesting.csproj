@@ -9,22 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CelesteModStudioGUI\CelesteModStudioGUI.csproj" />
     <ProjectReference Include="..\ModStudioLogic\ModStudioLogic.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="ModSetupForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="NewProyectForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="UserControls\MapsControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Utils\ConfirmationForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <ProjectReference Include="..\ModStudioTesting\ModStudioTesting.csproj" />
+    <ProjectReference Include="..\NewProjectGUI\NewProjectGUI.csproj" />
   </ItemGroup>
 
 </Project>

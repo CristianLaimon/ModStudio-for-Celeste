@@ -4,6 +4,11 @@
     {
         private static List<Project> _openedProjects = new List<Project>();
 
+        public static int Count
+        {
+            get { return _openedProjects.Count; }
+        }
+
         public static void AddProject(Project project)
         {
             _openedProjects.Add(project);
