@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NewProjectGUI.UserControls
 {
-    internal abstract class BaseUserControl : UserControl
+    internal class BaseUserControl : UserControl
     {
         internal delegate void ClosedUserControl(object obj, EventArgs e);
 

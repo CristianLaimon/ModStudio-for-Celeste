@@ -11,7 +11,7 @@ using NewProjectGUI.UserControls;
 
 namespace NewProjectGUI.View.Forms
 {
-    public partial class MapsControl : UserControl
+    internal partial class MapsControl : UserControl
     {
         public MapsControl()
         {
@@ -20,7 +20,6 @@ namespace NewProjectGUI.View.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Closed?.Invoke(this, EventArgs.Empty);
             this.Dispose();
         }
     }
