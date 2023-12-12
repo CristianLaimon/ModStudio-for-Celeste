@@ -25,7 +25,7 @@ namespace CelesteModStudioGUI
                 if (OutProject.Features.Any())
                 {
                     Form setupForm = new ModSetupForm();
-                    setupForm.ShowDialog(); //This expects a result
+                    setupForm.ShowDialog();
                 }
 
                 Form confirmationForm = new ConfirmationForm();
@@ -49,6 +49,7 @@ namespace CelesteModStudioGUI
 
         private bool TryGetProjectFromForm(out Project OutProject)
         {
+            //TODO: Get textboxes in order
             if (FormValidation.TextBoxesAreValid(this.Controls.OfType<TextBox>().ToArray()))
             {
                 Project newProject = new Project();

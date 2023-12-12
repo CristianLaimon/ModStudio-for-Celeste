@@ -7,7 +7,7 @@ namespace CelesteModStudioGUI.NewProjectForms
 {
     public partial class ModSetupForm : Form
     {
-        private sbyte index;
+        private sbyte _shownFormIndex;
         private Project lastAdded;
 
         public ModSetupForm()
@@ -20,20 +20,43 @@ namespace CelesteModStudioGUI.NewProjectForms
         private void Setup()
         {
             lastAdded = ProjectManager.GetLastProjectAdded();
-            index = -1;
+            _shownFormIndex = -1;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
         private void ShowNextForm()
         {
-            index++;
-            ModFeature actualFeature = lastAdded.Features[index];
-            BaseForm actualControl = FormFabric.GetUserControlFrom(actualFeature);
-            this.Controls.Add(actualControl);
-            actualControl.Show();
+            _shownFormIndex++;
+
+            //If all settings forms have been shown, close this form
+            if (_shownFormIndex == lastAdded.Features.Count)
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Dispose();
+                return;
+            }
+
+            //Get the form
+            ModFeature actualFeature = lastAdded.Features[_shownFormIndex];
+            BaseForm child = FormFabric.GetSettingFormFrom(actualFeature);
+
+            //Setup Form
+            child.AboutToClose = ChildCloseEvent;
+            child.FormBorderStyle = FormBorderStyle.None;
+            child.TopLevel = false;
+            child.Dock = DockStyle.Fill;
+
+            panelForm.Controls.Add(child);
+
+            //Show it
+            child.BringToFront();
+            child.Show();
         }
 
-        private void UserControlClosed(object sender, EventArgs e)
+        //im disposing a form and THEN removing this event (in that order). is it right?
+        private void ChildCloseEvent(object? sender, EventArgs e)
         {
+            ShowNextForm();
         }
     }
 }

@@ -6,7 +6,7 @@ namespace NewProjectGUI
 {
     internal class FormFabric
     {
-        internal static BaseForm GetUserControlFrom(ModFeature feature)
+        internal static BaseForm GetSettingFormFrom(ModFeature feature)
         {
             switch (feature)
             {

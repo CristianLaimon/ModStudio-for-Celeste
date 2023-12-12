@@ -10,13 +10,13 @@ namespace FormsTesting
         private static void Main()
         {
             ApplicationConfiguration.Initialize();
-            SetupProject();
+            ProjectManager.AddProject(TemplatesProjects.GetSimpleProject());
             Application.Run(new ModSetupForm());
         }
 
         private static void SetupProject()
         {
-            ProjectManager.AddProject(TemplatesProjects.GetSimpleProject());
+            SetupProject();
         }
     }
 }

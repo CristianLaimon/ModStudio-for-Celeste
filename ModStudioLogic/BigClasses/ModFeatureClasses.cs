@@ -6,6 +6,7 @@ namespace ModStudioLogic.BigClasses
     {
         public abstract string FolderName { get; }
 
+        //This is bad!
         public virtual DirectoryInfo CreateFolders(Project project)
         {
             string path = Path.Combine(

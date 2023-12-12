@@ -36,14 +36,14 @@
             panelForm.Dock = DockStyle.Fill;
             panelForm.Location = new Point(0, 0);
             panelForm.Name = "panelForm";
-            panelForm.Size = new Size(640, 276);
+            panelForm.Size = new Size(622, 229);
             panelForm.TabIndex = 0;
             // 
             // ModSetupForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(640, 276);
+            ClientSize = new Size(622, 229);
             Controls.Add(panelForm);
             Name = "ModSetupForm";
             Text = "Advanced Settings";
