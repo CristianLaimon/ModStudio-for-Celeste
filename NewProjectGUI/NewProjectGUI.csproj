@@ -19,9 +19,6 @@
     <Compile Update="NewProyectForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="UserControls\MapsControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Update="Utils\ConfirmationForm.cs">
       <SubType>Form</SubType>
     </Compile>

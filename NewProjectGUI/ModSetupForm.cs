@@ -1,7 +1,7 @@
-﻿using ModStudioLogic;
+﻿using NewProjectGUI;
+using NewProjectGUI.Forms;
+using ModStudioLogic;
 using ModStudioLogic.BigClasses;
-using NewProjectGUI;
-using System.Xml;
 
 namespace CelesteModStudioGUI.NewProjectForms
 {
@@ -27,7 +27,7 @@ namespace CelesteModStudioGUI.NewProjectForms
         {
             index++;
             ModFeature actualFeature = lastAdded.Features[index];
-            var actualControl = UserControlFabric.GetUserControlFrom(actualFeature);
+            BaseForm actualControl = FormFabric.GetUserControlFrom(actualFeature);
             this.Controls.Add(actualControl);
             actualControl.Show();
         }

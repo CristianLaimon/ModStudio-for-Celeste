@@ -1,6 +1,7 @@
-﻿namespace CelesteModStudioGUI.NewProjectForms
+﻿
+namespace NewProjectGUI.Forms
 {
-    partial class ModSetupForm
+    partial class Dialogform
     {
         /// <summary>
         /// Required designer variable.
@@ -26,32 +27,40 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        private new void InitializeComponent()
         {
-            panelForm = new Panel();
+            label1 = new Label();
             SuspendLayout();
             // 
-            // panelForm
+            // label1
             // 
-            panelForm.Dock = DockStyle.Fill;
-            panelForm.Location = new Point(0, 0);
-            panelForm.Name = "panelForm";
-            panelForm.Size = new Size(640, 276);
-            panelForm.TabIndex = 0;
+            label1.AutoSize = true;
+            label1.Location = new Point(265, 58);
+            label1.Name = "label1";
+            label1.Size = new Size(50, 20);
+            label1.TabIndex = 2;
+            label1.Text = "label1";
             // 
-            // ModSetupForm
+            // Dialogform
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(640, 276);
-            Controls.Add(panelForm);
-            Name = "ModSetupForm";
-            Text = "Advanced Settings";
+            ClientSize = new Size(622, 229);
+            Controls.Add(label1);
+            Name = "Dialogform";
+            Controls.SetChildIndex(label1, 0);
             ResumeLayout(false);
+            PerformLayout();
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            this.Size = base.Size;
         }
 
         #endregion
 
-        private Panel panelForm;
+        private Label label1;
     }
 }

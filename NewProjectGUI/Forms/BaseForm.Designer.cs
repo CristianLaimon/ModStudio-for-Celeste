@@ -1,6 +1,6 @@
-﻿namespace CelesteModStudioGUI.NewProjectForms
+﻿namespace NewProjectGUI.Forms
 {
-    partial class ModSetupForm
+    partial class BaseForm
     {
         /// <summary>
         /// Required designer variable.
@@ -26,32 +26,46 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        protected void InitializeComponent()
         {
-            panelForm = new Panel();
+            button1 = new Button();
+            button2 = new Button();
             SuspendLayout();
             // 
-            // panelForm
+            // button1
             // 
-            panelForm.Dock = DockStyle.Fill;
-            panelForm.Location = new Point(0, 0);
-            panelForm.Name = "panelForm";
-            panelForm.Size = new Size(640, 276);
-            panelForm.TabIndex = 0;
+            button1.Location = new Point(516, 188);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 29);
+            button1.TabIndex = 0;
+            button1.Text = "Next";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += CloseForm;
             // 
-            // ModSetupForm
+            // button2
+            // 
+            button2.Location = new Point(12, 188);
+            button2.Name = "button2";
+            button2.Size = new Size(94, 29);
+            button2.TabIndex = 1;
+            button2.Text = "Back";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // BaseForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(640, 276);
-            Controls.Add(panelForm);
-            Name = "ModSetupForm";
-            Text = "Advanced Settings";
+            ClientSize = new Size(622, 229);
+            Controls.Add(button2);
+            Controls.Add(button1);
+            Name = "BaseForm";
+            Text = "Form1";
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Panel panelForm;
+        private Button button1;
+        private Button button2;
     }
 }

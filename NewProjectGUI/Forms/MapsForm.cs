@@ -7,20 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using NewProjectGUI.UserControls;
 
-namespace NewProjectGUI.View.Forms
+namespace NewProjectGUI.Forms
 {
-    internal partial class MapsControl : UserControl
+    internal partial class MapsForm : BaseForm
     {
-        public MapsControl()
+        internal MapsForm()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Dispose();
+            base.InitializeComponent();
         }
     }
 }

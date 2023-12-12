@@ -1,17 +1,17 @@
 ﻿using ModStudioLogic.BigClasses;
 using ModStudioLogic.Exceptions;
-using NewProjectGUI.View.Forms;
+using NewProjectGUI.Forms;
 
 namespace NewProjectGUI
 {
-    internal class UserControlFabric
+    internal class FormFabric
     {
-        internal static UserControl GetUserControlFrom(ModFeature feature)
+        internal static BaseForm GetUserControlFrom(ModFeature feature)
         {
             switch (feature)
             {
                 case ModFeatureMaps:
-                    return new MapsControl();
+                    return new MapsForm();
 
                 //case ModFeatureLoenn:
                 //    break;
@@ -19,8 +19,8 @@ namespace NewProjectGUI
                 //case ModFeatureDLL:
                 //    break;
 
-                //case ModFeatureDialog:
-                //    break;
+                case ModFeatureDialog:
+                    return new Dialogform();
 
                 //case ModFeatureAudio:
                 //    break;

@@ -33,7 +33,7 @@ namespace CelesteModStudioGUI
 
                 if (result == DialogResult.OK)
                 {
-                    CreateModFolders();
+                    CreateModFolders(); //Pending
                     this.DialogResult = DialogResult.OK;
                 }
                 else

@@ -18,6 +18,7 @@ namespace ModStudioTesting
 
             //Setup Features
             simpleProject.Features.Add(new ModFeatureMaps());
+            simpleProject.Features.Add(new ModFeatureDialog());
 
             return simpleProject;
         }
