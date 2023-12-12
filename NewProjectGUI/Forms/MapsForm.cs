@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ModStudioLogic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,14 @@ namespace NewProjectGUI.Forms
         {
             InitializeComponent();
             base.InitializeComponent();
+        }
+
+        protected override void CloseFormNext(object sender, EventArgs e)
+        {
+            Project actualProject = ProjectManager.GetLastProjectAdded();
+            actualProject.CampaignName = textBox1.Text;
+
+            base.CloseFormNext(sender, e);
         }
     }
 }

@@ -22,23 +22,32 @@ namespace CelesteModStudioGUI
             {
                 ProjectManager.AddProject(OutProject);
 
+                //checa si hay alguna feature y trabaja de acuerdo si hay o no+
+                //si hay entonces va a desplegar una ventana
+                //si se realizar toda la config de la ventana, se hace algo
+                //sino otra cosa
                 if (OutProject.Features.Any())
                 {
                     Form setupForm = new ModSetupForm();
-                    setupForm.ShowDialog();
-                }
+                    DialogResult setupFlag = setupForm.ShowDialog();
 
-                Form confirmationForm = new ConfirmationForm();
-                DialogResult result = confirmationForm.ShowDialog();
+                    if (setupFlag == DialogResult.OK)
+                    {
+                        Form confirmationForm = new ConfirmationForm();
+                        DialogResult result = confirmationForm.ShowDialog();
 
-                if (result == DialogResult.OK)
-                {
-                    CreateModFolders(); //Pending
-                    this.DialogResult = DialogResult.OK;
-                }
-                else
-                {
-                    ProjectManager.RemoveLastProject();
+                        if (result == DialogResult.OK)
+                        {
+                            CreateModFolders(); //Pending
+                            this.DialogResult = DialogResult.OK;
+                        }
+                        else
+                            ProjectManager.RemoveLastProject();
+                    }
+                    else
+                    {
+                        ProjectManager.RemoveLastProject();
+                    }
                 }
             }
             else

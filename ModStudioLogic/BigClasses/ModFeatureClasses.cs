@@ -2,12 +2,18 @@
 
 namespace ModStudioLogic.BigClasses
 {
+    //ModFeatures are independent from project class!? (are they generic? for every project)
+    //TODO: Possible rethinking about how this classes are gonna work in future
+
     public abstract class ModFeature
     {
         public abstract string FolderName { get; }
 
-        //This is bad!
-        public virtual DirectoryInfo CreateFolders(Project project)
+        /// <summary>
+        /// Create all necessary subfolders to implement this modfeature.
+        /// </summary>
+        /// <returns>All info related to the new folder created (and it's subfolders)</returns>
+        public virtual DirectoryInfo CreateFoldersWith(Project project)
         {
             string path = Path.Combine(
                 project.FullPath,
@@ -23,7 +29,7 @@ namespace ModStudioLogic.BigClasses
         public override string FolderName
         { get { return "Maps"; } }
 
-        public override DirectoryInfo CreateFolders(Project project)
+        public override DirectoryInfo CreateFoldersWith(Project project)
         {
             string path = Path.Combine(
                 project.FullPath,
@@ -37,6 +43,8 @@ namespace ModStudioLogic.BigClasses
 
     public class ModFeatureDialog : ModFeature
     {
+        public List<string> Languages = new();
+
         public override string FolderName
         { get { return "Dialog"; } }
     }
@@ -75,7 +83,7 @@ namespace ModStudioLogic.BigClasses
     {
         public override string FolderName => throw new NotImplementedException();
 
-        public override DirectoryInfo CreateFolders(Project project)
+        public override DirectoryInfo CreateFoldersWith(Project project)
         {
             throw new NotImplementedException();
         }

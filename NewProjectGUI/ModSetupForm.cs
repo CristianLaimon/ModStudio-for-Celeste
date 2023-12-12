@@ -14,6 +14,7 @@ namespace CelesteModStudioGUI.NewProjectForms
         {
             InitializeComponent();
             Setup();
+            CenterToScreen();
             ShowNextForm();
         }
 
@@ -28,10 +29,18 @@ namespace CelesteModStudioGUI.NewProjectForms
         {
             _shownFormIndex++;
 
-            //If all settings forms have been shown, close this form
+            //If all settings forms have been shown, close this form (Completed)
             if (_shownFormIndex == lastAdded.Features.Count)
             {
                 this.DialogResult = DialogResult.OK;
+                this.Dispose();
+                return;
+            }
+
+            //If user go back 'til the beginning and doesnt complete this form
+            if (_shownFormIndex == -1)
+            {
+                this.DialogResult = DialogResult.Cancel;
                 this.Dispose();
                 return;
             }
@@ -41,7 +50,8 @@ namespace CelesteModStudioGUI.NewProjectForms
             BaseForm child = FormFabric.GetSettingFormFrom(actualFeature);
 
             //Setup Form
-            child.AboutToClose = ChildCloseEvent;
+            child.AboutToCloseNext = ChildClosenext;
+            child.AboutToCloseBack = ChildCloseBack;
             child.FormBorderStyle = FormBorderStyle.None;
             child.TopLevel = false;
             child.Dock = DockStyle.Fill;
@@ -54,8 +64,15 @@ namespace CelesteModStudioGUI.NewProjectForms
         }
 
         //im disposing a form and THEN removing this event (in that order). is it right?
-        private void ChildCloseEvent(object? sender, EventArgs e)
+        private void ChildClosenext(object? sender, EventArgs e)
         {
+            ShowNextForm();
+        }
+
+        private void ChildCloseBack(object? sender, EventArgs e)
+        {
+            //two steps back, one forward (thats how i think to go back one index)
+            _shownFormIndex -= 2;
             ShowNextForm();
         }
     }

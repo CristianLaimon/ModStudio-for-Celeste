@@ -28,6 +28,7 @@
         /// </summary>
         protected void InitializeComponent()
         {
+
             button1 = new Button();
             button2 = new Button();
             SuspendLayout();
@@ -40,7 +41,7 @@
             button1.TabIndex = 0;
             button1.Text = "Next";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += CloseForm;
+            button1.Click += CloseFormNext;
             // 
             // button2
             // 
@@ -50,6 +51,7 @@
             button2.TabIndex = 1;
             button2.Text = "Back";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += CloseFormBack;
             // 
             // BaseForm
             // 

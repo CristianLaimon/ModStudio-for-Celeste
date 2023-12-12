@@ -56,9 +56,9 @@ namespace ModStudioLogic
         {
             Directory.CreateDirectory(project.FullPath);
 
-            foreach (ModFeature f in project.Features)
+            foreach (ModFeature genericFeature in project.Features)
             {
-                f.CreateFolders();
+                genericFeature.CreateFoldersWith(project);
             }
         }
     }
