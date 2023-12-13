@@ -11,58 +11,27 @@ namespace CelesteModStudioGUI
         public NewProyectForm()
         {
             InitializeComponent();
-            SetState(new FormStateDefault());
-            CenterToScreen();
-            FormBorderStyle = FormBorderStyle.FixedSingle;
+            SetupThisForm();
         }
 
         private void OKLogic()
         {
-            if (!TryGetProjectFromForm(out Project OutProject))
+            if (TryGetProjectFromForm(out Project proj))
             {
-                SetState(new FormStateError("No valid input. Please try again"));
-                return;
-            }
+                ProjectManager.AddProject(proj);
 
-            ProjectManager.AddProject(OutProject);
+                if (!AreThereModFeatures(proj))
+                    return;
 
-            if (!OutProject.Features.Any())
-            {
-                this.DialogResult = DialogResult.OK;
-                return;
-            }
-
-            if (ShowModSetupForm())
-            {
-                if (ShowConfirmationForm())
+                if (CheckIfCompletesAllFeaturesConfig() && CheckIfConfirmationOK())
                 {
                     CreateModFolders();
                     this.DialogResult = DialogResult.OK;
                 }
-                else
-                {
-                    ProjectManager.RemoveLastProject();
-                }
             }
             else
             {
-                ProjectManager.RemoveLastProject();
-            }
-        }
-
-        private bool ShowModSetupForm()
-        {
-            using (Form setupForm = new ModSetupForm())
-            {
-                return setupForm.ShowDialog() == DialogResult.OK;
-            }
-        }
-
-        private bool ShowConfirmationForm()
-        {
-            using (Form confirmationForm = new ConfirmationForm())
-            {
-                return confirmationForm.ShowDialog() == DialogResult.OK;
+                SetState(new FormStateError("No valid input. Please try again"));
             }
         }
 
@@ -113,10 +82,35 @@ namespace CelesteModStudioGUI
 
         #region Utilities
 
+        private void SetupThisForm()
+        {
+            SetState(new FormStateDefault());
+            CenterToScreen();
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+        }
+
         private void SetState(IModStudioState newState)
         {
             _formState = newState;
             stripLabelActualStatus.Text = StateFormat.GetFormattedMessage(newState);
+        }
+
+        private bool AreThereModFeatures(Project proj) => proj.Features.Any();
+
+        private bool CheckIfConfirmationOK()
+        {
+            using (Form confirmationForm = new ConfirmationForm())
+            {
+                return confirmationForm.ShowDialog() == DialogResult.OK;
+            }
+        }
+
+        private bool CheckIfCompletesAllFeaturesConfig()
+        {
+            using (Form setupForm = new ModSetupForm())
+            {
+                return setupForm.ShowDialog() == DialogResult.OK;
+            }
         }
 
         private void ChooseDirectory()

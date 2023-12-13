@@ -7,73 +7,108 @@ namespace CelesteModStudioGUI.NewProjectForms
 {
     public partial class ModSetupForm : Form
     {
-        private sbyte _shownFormIndex;
-        private Project lastAdded;
+        private sbyte _actualIndex;
+        private Project _actualProject;
+        private BaseForm[] _loadedForms;
 
         public ModSetupForm()
         {
             InitializeComponent();
-            Setup();
-            CenterToScreen();
-            ShowNextForm();
+            SetupThisForm();
+            LoadForms();
+            ShowActualForm();
         }
 
-        private void Setup()
+        #region Setup
+
+        private void SetupThisForm()
         {
-            lastAdded = ProjectManager.GetLastProjectAdded();
-            _shownFormIndex = -1;
+            _actualProject = ProjectManager.GetLastProjectAdded();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            _actualIndex = 0;
+            this.CenterToScreen();
         }
 
-        private void ShowNextForm()
+        private void LoadForms()
         {
-            _shownFormIndex++;
+            _loadedForms = new BaseForm[_actualProject.Features.Count];
 
-            //If all settings forms have been shown, close this form (Completed)
-            if (_shownFormIndex == lastAdded.Features.Count)
+            for (int i = 0; i < _actualProject.Features.Count; i++)
             {
-                this.DialogResult = DialogResult.OK;
-                this.Dispose();
-                return;
+                BaseForm newForm = FormFabric.GetSettingFormFrom(_actualProject.Features[i]);
+                SetupBaseForm(newForm);
+                _loadedForms[i] = newForm;
+                panelForm.Controls.Add(newForm);
             }
-
-            //If user go back 'til the beginning and doesnt complete this form
-            if (_shownFormIndex == -1)
-            {
-                this.DialogResult = DialogResult.Cancel;
-                this.Dispose();
-                return;
-            }
-
-            //Get the form
-            ModFeature actualFeature = lastAdded.Features[_shownFormIndex];
-            BaseForm child = FormFabric.GetSettingFormFrom(actualFeature);
-
-            //Setup Form
-            child.AboutToCloseNext = ChildClosenext;
-            child.AboutToCloseBack = ChildCloseBack;
-            child.FormBorderStyle = FormBorderStyle.None;
-            child.TopLevel = false;
-            child.Dock = DockStyle.Fill;
-
-            panelForm.Controls.Add(child);
-
-            //Show it
-            child.BringToFront();
-            child.Show();
         }
 
-        //im disposing a form and THEN removing this event (in that order). is it right?
+        #endregion Setup
+
+        private void ShowActualForm()
+        {
+            if (HasFinishedSetup(out DialogResult result))
+            {
+                this.DialogResult = result;
+                this.Dispose();
+                this.DisposeAllChilds();
+                return;
+            }
+
+            BaseForm actualForm = _loadedForms[_actualIndex];
+            actualForm.BringToFront();
+            actualForm.Show();
+        }
+
+        #region Utilities
+
+        private bool HasFinishedSetup(out DialogResult result)
+        {
+            if (_actualIndex == _actualProject.Features.Count)
+            {
+                result = DialogResult.OK;
+                return true;
+            }
+            else if (_actualIndex == -1)
+            {
+                result = DialogResult.Cancel;
+                return true;
+            }
+
+            result = DialogResult.None;
+            return false;
+        }
+
+        private void DisposeAllChilds()
+        {
+            for (int i = 0; i < _loadedForms.Length; i++)
+                _loadedForms[i].Dispose();
+        }
+
+        private void SetupBaseForm(BaseForm f)
+        {
+            f.AboutToCloseNext = ChildClosenext;
+            f.AboutToCloseBack = ChildCloseBack;
+            f.FormBorderStyle = FormBorderStyle.None;
+            f.TopLevel = false;
+            f.Dock = DockStyle.Fill;
+        }
+
+        #endregion Utilities
+
+        #region ChildEvents
+
         private void ChildClosenext(object? sender, EventArgs e)
         {
-            ShowNextForm();
+            _actualIndex++;
+            ShowActualForm();
         }
 
         private void ChildCloseBack(object? sender, EventArgs e)
         {
-            //two steps back, one forward (thats how i think to go back one index)
-            _shownFormIndex -= 2;
-            ShowNextForm();
+            _actualIndex--;
+            ShowActualForm();
         }
+
+        #endregion ChildEvents
     }
 }

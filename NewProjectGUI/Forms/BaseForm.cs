@@ -16,14 +16,14 @@
         {
             AboutToCloseNext?.Invoke(sender, e);
             this.DialogResult = DialogResult.OK;
-            this.Dispose();
+            this.Hide();
         }
 
         private void CloseFormBack(object sender, EventArgs e)
         {
             AboutToCloseBack?.Invoke(sender, e);
             this.DialogResult = DialogResult.Cancel;
-            this.Dispose();
+            this.Hide();
         }
     }
 }

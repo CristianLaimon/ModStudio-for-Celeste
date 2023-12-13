@@ -55,11 +55,10 @@ namespace ModStudioLogic
         public static void CreateSubDirsWithProject(Project project)
         {
             Directory.CreateDirectory(project.FullPath);
+            File.Create(Path.Combine(project.FullPath, "everest.yaml")); //Make this a configurable window, mod object or just the file? .... i'll need to overwrite its contents over time
 
             foreach (ModFeature genericFeature in project.Features)
-            {
                 genericFeature.CreateFoldersBasedOn(project);
-            }
         }
     }
 }

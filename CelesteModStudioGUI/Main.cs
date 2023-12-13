@@ -10,6 +10,7 @@ using ModStudioLogic.BigClasses;
 //Hacer que el visual studio pueda agrupar los #regions con el atajo para hacer fold a los métodos. ay dios, que enfadoso
 namespace CelesteModStudioGUI
 {
+    //Hacer que se pueda cerrar la conexión con un projecto abierto (eliminarlo de ProjectManager)
     public partial class Main : Form
     {
         private IModStudioState _formState;

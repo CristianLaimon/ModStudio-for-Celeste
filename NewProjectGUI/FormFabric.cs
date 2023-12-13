@@ -29,7 +29,7 @@ namespace NewProjectGUI
                 //    break;
 
                 default:
-                    throw new ModException("Fail to instancer a user control" +
+                    throw new ModException("Fail to instance a user control" +
                         "from ModFeature object", feature);
             }
         }
