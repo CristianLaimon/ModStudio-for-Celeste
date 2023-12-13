@@ -18,41 +18,51 @@ namespace CelesteModStudioGUI
 
         private void OKLogic()
         {
-            if (TryGetProjectFromForm(out Project OutProject))
+            if (!TryGetProjectFromForm(out Project OutProject))
             {
-                ProjectManager.AddProject(OutProject);
+                SetState(new FormStateError("No valid input. Please try again"));
+                return;
+            }
 
-                //checa si hay alguna feature y trabaja de acuerdo si hay o no+
-                //si hay entonces va a desplegar una ventana
-                //si se realizar toda la config de la ventana, se hace algo
-                //sino otra cosa
-                if (OutProject.Features.Any())
+            ProjectManager.AddProject(OutProject);
+
+            if (!OutProject.Features.Any())
+            {
+                this.DialogResult = DialogResult.OK;
+                return;
+            }
+
+            if (ShowModSetupForm())
+            {
+                if (ShowConfirmationForm())
                 {
-                    Form setupForm = new ModSetupForm();
-                    DialogResult setupFlag = setupForm.ShowDialog();
-
-                    if (setupFlag == DialogResult.OK)
-                    {
-                        Form confirmationForm = new ConfirmationForm();
-                        DialogResult result = confirmationForm.ShowDialog();
-
-                        if (result == DialogResult.OK)
-                        {
-                            CreateModFolders(); //Pending
-                            this.DialogResult = DialogResult.OK;
-                        }
-                        else
-                            ProjectManager.RemoveLastProject();
-                    }
-                    else
-                    {
-                        ProjectManager.RemoveLastProject();
-                    }
+                    CreateModFolders();
+                    this.DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    ProjectManager.RemoveLastProject();
                 }
             }
             else
             {
-                SetState(new FormStateError("No valid input. Please try again"));
+                ProjectManager.RemoveLastProject();
+            }
+        }
+
+        private bool ShowModSetupForm()
+        {
+            using (Form setupForm = new ModSetupForm())
+            {
+                return setupForm.ShowDialog() == DialogResult.OK;
+            }
+        }
+
+        private bool ShowConfirmationForm()
+        {
+            using (Form confirmationForm = new ConfirmationForm())
+            {
+                return confirmationForm.ShowDialog() == DialogResult.OK;
             }
         }
 

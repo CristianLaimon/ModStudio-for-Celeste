@@ -58,7 +58,7 @@ namespace ModStudioLogic
 
             foreach (ModFeature genericFeature in project.Features)
             {
-                genericFeature.CreateFoldersWith(project);
+                genericFeature.CreateFoldersBasedOn(project);
             }
         }
     }
