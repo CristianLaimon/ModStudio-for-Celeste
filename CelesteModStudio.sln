@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModStudioTesting", "tests\M
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FormsTesting", "tests\FormsTesting\FormsTesting.csproj", "{4DDB5081-922A-4C11-AE74-671842BD258B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C58696A8-9140-48DA-B87D-6F66F30F5C79}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ModStudioGUI", "ModStudioGUI", "{F1022788-980C-4146-91E4-DA49C8A25CCE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +46,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{45C00B5D-2F86-4278-BB6A-3BF4D4516C10} = {F1022788-980C-4146-91E4-DA49C8A25CCE}
+		{0D333BE5-B386-4B8E-AA33-5CCCA4DC7CA3} = {F1022788-980C-4146-91E4-DA49C8A25CCE}
+		{1C26AEFC-441C-405B-A4FD-CB5737520ADE} = {C58696A8-9140-48DA-B87D-6F66F30F5C79}
+		{4DDB5081-922A-4C11-AE74-671842BD258B} = {C58696A8-9140-48DA-B87D-6F66F30F5C79}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9F80BC64-3C3C-4EE5-AF7E-7C06C4869449}
