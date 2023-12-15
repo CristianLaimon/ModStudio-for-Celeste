@@ -9,14 +9,8 @@ namespace ModStudioLogic.Exceptions
 {
     public class ModException : ApplicationException
     {
-        private ModFeature _caller;
-        private string _message;
-
-        public ModFeature Caller
-        { get { return _caller; } }
-
-        public String ErrorMessage
-        { get { return _message; } }
+        public readonly ModFeature _caller;
+        public readonly string _message;
 
         public ModException(string message, ModFeature caller) : base(message)
         {

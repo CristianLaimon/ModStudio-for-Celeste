@@ -9,10 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CelesteModStudioGUI\CelesteModStudioGUI.csproj" />
-    <ProjectReference Include="..\ModStudioLogic\ModStudioLogic.csproj" />
+    <ProjectReference Include="..\..\src\CelesteModStudioGUI\CelesteModStudioGUI.csproj" />
+    <ProjectReference Include="..\..\src\ModStudioLogic\ModStudioLogic.csproj" />
+    <ProjectReference Include="..\..\src\NewProjectGUI\NewProjectGUI.csproj" />
     <ProjectReference Include="..\ModStudioTesting\ModStudioTesting.csproj" />
-    <ProjectReference Include="..\NewProjectGUI\NewProjectGUI.csproj" />
   </ItemGroup>
 
 </Project>

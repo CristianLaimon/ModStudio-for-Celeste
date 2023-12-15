@@ -1,6 +1,6 @@
 ﻿namespace ModStudioLogic
 {
-    public class ProjectManager
+    public class Projects
     {
         private static List<Project> _openedProjects = new List<Project>();
 

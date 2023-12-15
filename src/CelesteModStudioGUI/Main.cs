@@ -30,7 +30,7 @@ namespace CelesteModStudioGUI
             {
                 Project opened = new Project();
                 opened.FullPath = dir;
-                ProjectManager.AddProject(opened);
+                Projects.AddProject(opened);
                 SetState(new FormStateDefault());
             }
             else
@@ -47,7 +47,7 @@ namespace CelesteModStudioGUI
 
             if (result == DialogResult.OK)
             {
-                Project tempLast = ProjectManager.GetLastProjectAdded();
+                Project tempLast = Projects.GetLastProjectAdded();
                 SetState(new FormStateCustomMessage("Project " + tempLast.ModName + " Version: " + tempLast.ModVersion.ToString() + " created"));
             }
             else

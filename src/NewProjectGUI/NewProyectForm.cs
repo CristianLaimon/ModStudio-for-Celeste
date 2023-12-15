@@ -18,7 +18,7 @@ namespace CelesteModStudioGUI
         {
             if (TryGetProjectFromForm(out Project proj))
             {
-                ProjectManager.AddProject(proj);
+                Projects.AddProject(proj);
 
                 if (!AreThereModFeatures(proj))
                     return;
@@ -149,7 +149,7 @@ namespace CelesteModStudioGUI
 
         private void CreateModFolders()
         {
-            Project project = ProjectManager.GetLastProjectAdded();
+            Project project = Projects.GetLastProjectAdded();
             FileManager.CreateSubDirsWithProject(project);
         }
 

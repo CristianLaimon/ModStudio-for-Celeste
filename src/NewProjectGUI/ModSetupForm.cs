@@ -23,7 +23,7 @@ namespace CelesteModStudioGUI.NewProjectForms
 
         private void SetupThisForm()
         {
-            _actualProject = ProjectManager.GetLastProjectAdded();
+            _actualProject = Projects.GetLastProjectAdded();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             _actualIndex = 0;
             this.CenterToScreen();
