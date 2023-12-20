@@ -1,6 +1,7 @@
 using ModStudioLogic;
 using ModStudioLogic.BigClasses;
 using ModStudioLogic.ProjectInside;
+using System.CodeDom.Compiler;
 using System.Xml.Linq;
 
 //https://www.reddit.com/r/celestegame/comments/e82ncn/madeline_fanart/ logo.png idea!, TODO:try to find original author...
@@ -61,51 +62,6 @@ namespace CelesteModStudioGUI
             }
         }
 
-        #region TreeDir
-
-        private void LoadDirTree(string directory)
-        {
-            treeViewFiles.Nodes.Clear();
-            LoadTreeView(treeViewFiles, directory);
-        }
-
-        public void LoadTreeView(TreeView tree, string directory)
-        {
-            string[] dirs = Directory.GetDirectories(directory);
-            string[] files = Directory.GetFiles(directory);
-
-            foreach (string path in dirs)
-            {
-                TreeNode node = new TreeNode(Path.GetFileName(path));
-                node.ImageIndex = (byte)ModStudioImage.Folder;
-                node.SelectedImageIndex = node.ImageIndex;
-                LoadRecursive(node, Directory.GetDirectories(Path.GetFullPath(path)));
-                tree.Nodes.Add(node);
-            }
-
-            foreach (string path in files)
-            {
-                TreeNode node = new TreeNode(Path.GetFileName(path));
-                node.ImageIndex = GetImageByExtension(Path.GetExtension(path));
-                node.SelectedImageIndex = node.ImageIndex;
-                tree.Nodes.Add(node);
-            }
-        }
-
-        private void LoadRecursive(TreeNode node, string[] paths)
-        {
-            foreach (string path in paths)
-            {
-                TreeNode childNode = new TreeNode(Path.GetFileName(path));
-                childNode.ImageIndex = (byte)ModStudioImage.Folder;
-                childNode.SelectedImageIndex = node.ImageIndex;
-                LoadRecursive(childNode, Directory.GetDirectories(Path.GetFullPath(path)));
-                node.Nodes.Add(childNode);
-            }
-        }
-
-        #endregion TreeDir
-
         private byte GetImageByExtension(string extension)
         {
             switch (extension)
@@ -126,6 +82,46 @@ namespace CelesteModStudioGUI
             _formState = newState;
             toolStripStatusLabelStatus.Text = StateFormat.GetFormattedMessage(_formState);
         }
+
+        #region TreeDir
+
+        private void LoadDirTree(string directory)
+        {
+            treeViewFiles.Nodes.Clear();
+
+            TreeNode father = new(Projects.LastProject.ModName);
+            LoadRecursive(father, Directory.GetDirectories(directory), Directory.GetFiles(directory));
+
+            treeViewFiles.Nodes.Add(father);
+        }
+
+        private void LoadRecursive(TreeNode node, string[] dirPaths, string[] filePaths)
+        {
+            foreach (string path in dirPaths)
+            {
+                TreeNode childNode = new TreeNode(Path.GetFileName(path));
+                childNode.ImageIndex = (byte)ModStudioImage.Folder;
+                childNode.SelectedImageIndex = childNode.ImageIndex;
+
+                string[] subDirs = Directory.GetDirectories(path);
+                string[] subFiles = Directory.GetFiles(path);
+
+                LoadRecursive(childNode, subDirs, subFiles);
+
+                node.Nodes.Add(childNode);
+            }
+
+            foreach (string path in filePaths)
+            {
+                TreeNode childNode = new TreeNode(Path.GetFileName(path));
+                childNode.ImageIndex = GetImageByExtension(Path.GetExtension(path));
+                childNode.SelectedImageIndex = childNode.ImageIndex;
+
+                node.Nodes.Add(childNode);
+            }
+        }
+
+        #endregion TreeDir
 
         #region FormEvents
 
