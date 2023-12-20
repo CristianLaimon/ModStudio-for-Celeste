@@ -160,6 +160,7 @@
             // checkBoxGraphics
             // 
             checkBoxGraphics.AutoSize = true;
+            checkBoxGraphics.Enabled = false;
             checkBoxGraphics.Location = new Point(23, 97);
             checkBoxGraphics.Name = "checkBoxGraphics";
             checkBoxGraphics.Size = new Size(88, 24);
@@ -190,6 +191,7 @@
             // checkBoxAhorn
             // 
             checkBoxAhorn.AutoSize = true;
+            checkBoxAhorn.Enabled = false;
             checkBoxAhorn.Location = new Point(23, 69);
             checkBoxAhorn.Name = "checkBoxAhorn";
             checkBoxAhorn.Size = new Size(71, 24);
@@ -200,6 +202,7 @@
             // checkBoxLoenn
             // 
             checkBoxLoenn.AutoSize = true;
+            checkBoxLoenn.Enabled = false;
             checkBoxLoenn.Location = new Point(23, 39);
             checkBoxLoenn.Name = "checkBoxLoenn";
             checkBoxLoenn.Size = new Size(71, 24);

@@ -4,6 +4,7 @@ using ModStudioLogic.BigClasses;
 using ModStudioLogic.ProjectInside;
 using ModStudioLogic.ProyectInside;
 
+//Some config are disabled due to they're not implemented yet...
 namespace CelesteModStudioGUI
 {
     public partial class NewProyectForm : Form
