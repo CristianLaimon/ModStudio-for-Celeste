@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            statusStrip1 = new StatusStrip();
+            statusStripFooter = new StatusStrip();
             toolStripStatusLabelStatus = new ToolStripStatusLabel();
-            toolStrip1 = new ToolStrip();
+            toolStripHeader = new ToolStrip();
             toolStripDropDownButtonNew = new ToolStripDropDownButton();
             createNewModProyectToolStripMenuItem1 = new ToolStripMenuItem();
             toolStripDropDownButtonOpen = new ToolStripDropDownButton();
@@ -42,27 +43,28 @@
             panel1 = new Panel();
             label1 = new Label();
             treeViewFiles = new TreeView();
+            imageListTreeView = new ImageList(components);
             RightPanel = new Panel();
             PanelWithTabControl = new Panel();
             tabControl1 = new TabControl();
             tabPage2 = new TabPage();
-            statusStrip1.SuspendLayout();
-            toolStrip1.SuspendLayout();
+            statusStripFooter.SuspendLayout();
+            toolStripHeader.SuspendLayout();
             LeftPanel.SuspendLayout();
             panel1.SuspendLayout();
             PanelWithTabControl.SuspendLayout();
             tabControl1.SuspendLayout();
             SuspendLayout();
             // 
-            // statusStrip1
+            // statusStripFooter
             // 
-            statusStrip1.ImageScalingSize = new Size(20, 20);
-            statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabelStatus });
-            statusStrip1.Location = new Point(0, 598);
-            statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(1069, 26);
-            statusStrip1.TabIndex = 0;
-            statusStrip1.Text = "statusStrip1";
+            statusStripFooter.ImageScalingSize = new Size(20, 20);
+            statusStripFooter.Items.AddRange(new ToolStripItem[] { toolStripStatusLabelStatus });
+            statusStripFooter.Location = new Point(0, 598);
+            statusStripFooter.Name = "statusStripFooter";
+            statusStripFooter.Size = new Size(1069, 26);
+            statusStripFooter.TabIndex = 0;
+            statusStripFooter.Text = "statusStrip1";
             // 
             // toolStripStatusLabelStatus
             // 
@@ -70,15 +72,15 @@
             toolStripStatusLabelStatus.Size = new Size(179, 20);
             toolStripStatusLabelStatus.Text = "--- Startup Completed ---";
             // 
-            // toolStrip1
+            // toolStripHeader
             // 
-            toolStrip1.ImageScalingSize = new Size(20, 20);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripDropDownButtonNew, toolStripDropDownButtonOpen });
-            toolStrip1.Location = new Point(0, 0);
-            toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(1069, 27);
-            toolStrip1.TabIndex = 1;
-            toolStrip1.Text = "toolStrip1";
+            toolStripHeader.ImageScalingSize = new Size(20, 20);
+            toolStripHeader.Items.AddRange(new ToolStripItem[] { toolStripDropDownButtonNew, toolStripDropDownButtonOpen });
+            toolStripHeader.Location = new Point(0, 0);
+            toolStripHeader.Name = "toolStripHeader";
+            toolStripHeader.Size = new Size(1069, 27);
+            toolStripHeader.TabIndex = 1;
+            toolStripHeader.Text = "toolStrip1";
             // 
             // toolStripDropDownButtonNew
             // 
@@ -160,10 +162,23 @@
             // 
             // treeViewFiles
             // 
+            treeViewFiles.ImageIndex = 0;
+            treeViewFiles.ImageList = imageListTreeView;
             treeViewFiles.Location = new Point(0, 32);
             treeViewFiles.Name = "treeViewFiles";
+            treeViewFiles.SelectedImageIndex = 0;
             treeViewFiles.Size = new Size(168, 539);
             treeViewFiles.TabIndex = 0;
+            // 
+            // imageListTreeView
+            // 
+            imageListTreeView.ColorDepth = ColorDepth.Depth32Bit;
+            imageListTreeView.ImageStream = (ImageListStreamer)resources.GetObject("imageListTreeView.ImageStream");
+            imageListTreeView.TransparentColor = Color.Transparent;
+            imageListTreeView.Images.SetKeyName(0, "default.png");
+            imageListTreeView.Images.SetKeyName(1, "folder.png");
+            imageListTreeView.Images.SetKeyName(2, "yaml.png");
+            imageListTreeView.Images.SetKeyName(3, "grengem.png");
             // 
             // RightPanel
             // 
@@ -210,14 +225,14 @@
             Controls.Add(PanelWithTabControl);
             Controls.Add(RightPanel);
             Controls.Add(LeftPanel);
-            Controls.Add(toolStrip1);
-            Controls.Add(statusStrip1);
+            Controls.Add(toolStripHeader);
+            Controls.Add(statusStripFooter);
             Name = "Main";
             Text = "ModStudio for Celeste";
-            statusStrip1.ResumeLayout(false);
-            statusStrip1.PerformLayout();
-            toolStrip1.ResumeLayout(false);
-            toolStrip1.PerformLayout();
+            statusStripFooter.ResumeLayout(false);
+            statusStripFooter.PerformLayout();
+            toolStripHeader.ResumeLayout(false);
+            toolStripHeader.PerformLayout();
             LeftPanel.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -229,9 +244,9 @@
 
         #endregion
 
-        private StatusStrip statusStrip1;
+        private StatusStrip statusStripFooter;
         private ToolStripStatusLabel toolStripStatusLabelStatus;
-        private ToolStrip toolStrip1;
+        private ToolStrip toolStripHeader;
         private ToolStripDropDownButton toolStripDropDownButtonOpen;
         private ToolStripMenuItem openExistingProyectToolStripMenuItem;
         private ToolStripDropDownButton toolStripDropDownButtonNew;
@@ -246,5 +261,6 @@
         private Panel panel1;
         private TreeView treeViewFiles;
         private Label label1;
+        private ImageList imageListTreeView;
     }
 }

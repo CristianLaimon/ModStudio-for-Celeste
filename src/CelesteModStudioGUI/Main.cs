@@ -1,11 +1,11 @@
 using ModStudioLogic;
 using ModStudioLogic.BigClasses;
 using ModStudioLogic.ProjectInside;
+using System.Xml.Linq;
 
 //https://www.reddit.com/r/celestegame/comments/e82ncn/madeline_fanart/ logo.png idea!, TODO:try to find original author...
 //Probably are better ways to implement state pattern, i just wanna learn to use polymorphism. It's curious
 
-//TODO: Make UnitTesting of all this methods
 //En base a los features elegidos, poner su correspondiente form de configuración
 //hacer que el método de añadir features a proyecto sea "params Feature[]" y acepte cualquier cantidad. "Comodidad"
 //Hacer que el visual studio pueda agrupar los #regions con el atajo para hacer fold a los métodos. ay dios, que enfadoso
@@ -14,7 +14,7 @@ namespace CelesteModStudioGUI
     //Hacer que se pueda cerrar la conexión con un projecto abierto (eliminarlo de ProjectManager)
     public partial class Main : Form
     {
-        private IModStudioState _formState;
+        private IModStudioState? _formState;
 
         public Main()
         {
@@ -61,13 +61,15 @@ namespace CelesteModStudioGUI
             }
         }
 
+        #region TreeDir
+
         private void LoadDirTree(string directory)
         {
             treeViewFiles.Nodes.Clear();
-            LoadNodes(treeViewFiles, directory);
+            LoadTreeView(treeViewFiles, directory);
         }
 
-        private void LoadNodes(TreeView tree, string directory)
+        public void LoadTreeView(TreeView tree, string directory)
         {
             tree.Nodes.Clear();
             string[] paths = Directory.GetDirectories(directory);
@@ -76,12 +78,34 @@ namespace CelesteModStudioGUI
             foreach (string path in paths)
             {
                 TreeNode node = new TreeNode(Path.GetFileName(path));
+                node.ImageIndex = (byte)ModStudioImage.Folder;
+                node.SelectedImageIndex = node.ImageIndex;
                 LoadRecursive(node, Directory.GetDirectories(Path.GetFullPath(path)));
                 tree.Nodes.Add(node);
             }
 
             foreach (string path in files)
-                tree.Nodes.Add(Path.GetFileName(path));
+            {
+                TreeNode node = new TreeNode(Path.GetFileName(path));
+                node.ImageIndex = GetImageByExtension(Path.GetExtension(path));
+                node.SelectedImageIndex = node.ImageIndex;
+                tree.Nodes.Add(node);
+            }
+        }
+
+        private byte GetImageByExtension(string extension)
+        {
+            switch (extension)
+            {
+                case ".yaml":
+                    return (byte)ModStudioImage.Mountain; //Mountain.png
+
+                case ".dat":
+                    return (byte)ModStudioImage.GreenGem;
+
+                default:
+                    return (byte)ModStudioImage.DefaultFile;
+            }
         }
 
         private void LoadRecursive(TreeNode node, string[] paths)
@@ -89,26 +113,14 @@ namespace CelesteModStudioGUI
             foreach (string path in paths)
             {
                 TreeNode childNode = new TreeNode(Path.GetFileName(path));
+                childNode.ImageIndex = (byte)ModStudioImage.Folder;
+                childNode.SelectedImageIndex = node.ImageIndex;
                 LoadRecursive(childNode, Directory.GetDirectories(Path.GetFullPath(path)));
                 node.Nodes.Add(childNode);
             }
         }
 
-        #region FormEvents
-
-        private void openExistingProyectToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenProject();
-        }
-
-        private void createNewModProyectToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            CreateProject();
-        }
-
-        #endregion FormEvents
-
-        #region Utilities
+        #endregion TreeDir
 
         private void SetState(IModStudioState newState)
         {
@@ -116,6 +128,12 @@ namespace CelesteModStudioGUI
             toolStripStatusLabelStatus.Text = StateFormat.GetFormattedMessage(_formState);
         }
 
-        #endregion Utilities
+        #region FormEvents
+
+        private void openExistingProyectToolStripMenuItem_Click(object sender, EventArgs e) => OpenProject();
+
+        private void createNewModProyectToolStripMenuItem1_Click(object sender, EventArgs e) => CreateProject();
+
+        #endregion FormEvents
     }
 }
