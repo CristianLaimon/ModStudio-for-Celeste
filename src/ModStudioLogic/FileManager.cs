@@ -1,4 +1,5 @@
 ﻿using ModStudioLogic.BigClasses;
+using ModStudioLogic.ProjectInside;
 using System.Windows.Forms;
 
 namespace ModStudioLogic
@@ -52,7 +53,7 @@ namespace ModStudioLogic
         //        return false;
         //}
 
-        public static void CreateSubDirsWithProject(Project project)
+        public static void CreateSubDirsWithProject(Proyect project)
         {
             Directory.CreateDirectory(project.FullPath);
             File.Create(Path.Combine(project.FullPath, "everest.yaml")); //Make this a configurable window, mod object or just the file? .... i'll need to overwrite its contents over time

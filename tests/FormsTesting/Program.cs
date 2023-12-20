@@ -1,7 +1,6 @@
-using CelesteModStudioGUI.NewProjectForms;
-using ModStudioLogic;
+using CelesteModStudioGUI;
+using ModStudioLogic.ProjectInside;
 using ModStudioTesting;
-using NewProjectGUI;
 
 namespace FormsTesting
 {
@@ -11,7 +10,8 @@ namespace FormsTesting
         {
             ApplicationConfiguration.Initialize();
             Projects.AddProject(TemplatesProjects.GetSimpleProject());
-            Application.Run(new ModSetupForm());
+            //Application.Run(new ModSetupForm());
+            Application.Run(new Main());
         }
 
         private static void SetupProject()

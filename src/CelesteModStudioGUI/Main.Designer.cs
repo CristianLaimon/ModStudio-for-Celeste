@@ -39,12 +39,17 @@
             createNewModProyectToolStripMenuItem = new ToolStripMenuItem();
             toolStripSplitButtonNew = new ToolStripSplitButton();
             LeftPanel = new Panel();
+            panel1 = new Panel();
+            label1 = new Label();
+            treeViewFiles = new TreeView();
             RightPanel = new Panel();
             PanelWithTabControl = new Panel();
             tabControl1 = new TabControl();
             tabPage2 = new TabPage();
             statusStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
+            LeftPanel.SuspendLayout();
+            panel1.SuspendLayout();
             PanelWithTabControl.SuspendLayout();
             tabControl1.SuspendLayout();
             SuspendLayout();
@@ -127,11 +132,38 @@
             // 
             // LeftPanel
             // 
+            LeftPanel.Controls.Add(panel1);
+            LeftPanel.Controls.Add(treeViewFiles);
             LeftPanel.Dock = DockStyle.Left;
             LeftPanel.Location = new Point(0, 27);
             LeftPanel.Name = "LeftPanel";
             LeftPanel.Size = new Size(168, 571);
             LeftPanel.TabIndex = 3;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(label1);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(168, 31);
+            panel1.TabIndex = 1;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(3, 5);
+            label1.Name = "label1";
+            label1.Size = new Size(38, 20);
+            label1.TabIndex = 0;
+            label1.Text = "Files";
+            // 
+            // treeViewFiles
+            // 
+            treeViewFiles.Location = new Point(0, 32);
+            treeViewFiles.Name = "treeViewFiles";
+            treeViewFiles.Size = new Size(168, 539);
+            treeViewFiles.TabIndex = 0;
             // 
             // RightPanel
             // 
@@ -186,6 +218,9 @@
             statusStrip1.PerformLayout();
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
+            LeftPanel.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             PanelWithTabControl.ResumeLayout(false);
             tabControl1.ResumeLayout(false);
             ResumeLayout(false);
@@ -208,5 +243,8 @@
         private Panel PanelWithTabControl;
         private TabControl tabControl1;
         private TabPage tabPage2;
+        private Panel panel1;
+        private TreeView treeViewFiles;
+        private Label label1;
     }
 }

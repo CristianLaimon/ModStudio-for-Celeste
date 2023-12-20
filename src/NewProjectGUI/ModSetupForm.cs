@@ -1,14 +1,13 @@
 ﻿using NewProjectGUI;
 using NewProjectGUI.Forms;
-using ModStudioLogic;
-using ModStudioLogic.BigClasses;
+using ModStudioLogic.ProjectInside;
 
 namespace CelesteModStudioGUI.NewProjectForms
 {
     public partial class ModSetupForm : Form
     {
         private sbyte _actualIndex;
-        private Project _actualProject;
+        private Proyect _actualProject;
         private BaseForm[] _loadedForms;
 
         public ModSetupForm()

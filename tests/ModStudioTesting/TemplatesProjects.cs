@@ -1,14 +1,14 @@
-﻿using ModStudioLogic;
-using ModStudioLogic.BigClasses;
-using Version = ModStudioLogic.Version;
+﻿using ModStudioLogic.BigClasses;
+using ModStudioLogic.ProjectInside;
+using Version = ModStudioLogic.ProyectInside.Version;
 
 namespace ModStudioTesting
 {
     public class TemplatesProjects
     {
-        public static Project GetSimpleProject()
+        public static Proyect GetSimpleProject()
         {
-            Project simpleProject = new Project();
+            Proyect simpleProject = new Proyect();
 
             simpleProject.FullPath = "C:\\Users\\itan_\\Desktop\\SimpleProject";
             simpleProject.AuthorName = "Christian Laimon";

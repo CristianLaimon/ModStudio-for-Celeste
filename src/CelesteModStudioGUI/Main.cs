@@ -1,5 +1,6 @@
 using ModStudioLogic;
 using ModStudioLogic.BigClasses;
+using ModStudioLogic.ProjectInside;
 
 //https://www.reddit.com/r/celestegame/comments/e82ncn/madeline_fanart/ logo.png idea!, TODO:try to find original author...
 //Probably are better ways to implement state pattern, i just wanna learn to use polymorphism. It's curious
@@ -23,14 +24,17 @@ namespace CelesteModStudioGUI
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
+        //Pending
         private void OpenProject()
         {
             SetState(new FormStateChoosingDirectory());
             if (FileManager.ShowOpenDirectoryDialog(out string dir) && FileManager.IsValidModProyect(dir))
             {
-                Project opened = new Project();
+                Proyect opened = new Proyect();
                 opened.FullPath = dir;
                 Projects.AddProject(opened);
+                LoadDirTree(opened.FullPath);
+                //message form: "proyect" loaded
                 SetState(new FormStateDefault());
             }
             else
@@ -47,12 +51,46 @@ namespace CelesteModStudioGUI
 
             if (result == DialogResult.OK)
             {
-                Project tempLast = Projects.GetLastProjectAdded();
+                Proyect tempLast = Projects.LastProject;
+                LoadDirTree(tempLast.FullPath);
                 SetState(new FormStateCustomMessage("Project " + tempLast.ModName + " Version: " + tempLast.ModVersion.ToString() + " created"));
             }
             else
             {
                 SetState(new FormStateCustomMessage("Canceled Project"));
+            }
+        }
+
+        private void LoadDirTree(string directory)
+        {
+            treeViewFiles.Nodes.Clear();
+            LoadNodes(treeViewFiles, directory);
+        }
+
+        private void LoadNodes(TreeView tree, string directory)
+        {
+            tree.Nodes.Clear();
+            string[] paths = Directory.GetDirectories(directory);
+            string[] files = Directory.GetFiles(directory);
+
+            foreach (string path in paths)
+            {
+                TreeNode node = new TreeNode(Path.GetFileName(path));
+                LoadRecursive(node, Directory.GetDirectories(Path.GetFullPath(path)));
+                tree.Nodes.Add(node);
+            }
+
+            foreach (string path in files)
+                tree.Nodes.Add(Path.GetFileName(path));
+        }
+
+        private void LoadRecursive(TreeNode node, string[] paths)
+        {
+            foreach (string path in paths)
+            {
+                TreeNode childNode = new TreeNode(Path.GetFileName(path));
+                LoadRecursive(childNode, Directory.GetDirectories(Path.GetFullPath(path)));
+                node.Nodes.Add(childNode);
             }
         }
 

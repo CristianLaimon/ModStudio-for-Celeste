@@ -1,8 +1,10 @@
 ﻿using ModStudioLogic.BigClasses;
+using ModStudioLogic.ProyectInside;
+using Version = ModStudioLogic.ProyectInside.Version;
 
-namespace ModStudioLogic
+namespace ModStudioLogic.ProjectInside
 {
-    public class Project
+    public class Proyect
     {
         /// <summary>
         /// This includes the full path including "...ParentFolder/ModName/..."
@@ -14,5 +16,6 @@ namespace ModStudioLogic
         public string CampaignName = string.Empty;
         public Version ModVersion = new Version(0, 1, 0);
         public List<ModFeature> Features = new List<ModFeature>();
+        public EverestYaml Yaml;
     }
 }

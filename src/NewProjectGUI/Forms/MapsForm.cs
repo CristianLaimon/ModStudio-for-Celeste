@@ -1,13 +1,4 @@
-﻿using ModStudioLogic;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using ModStudioLogic.ProjectInside;
 
 namespace NewProjectGUI.Forms
 {
@@ -21,7 +12,7 @@ namespace NewProjectGUI.Forms
 
         protected override void CloseFormNext(object sender, EventArgs e)
         {
-            Project actualProject = Projects.GetLastProjectAdded();
+            Proyect actualProject = Projects.GetLastProjectAdded();
             actualProject.CampaignName = textBox1.Text;
 
             base.CloseFormNext(sender, e);

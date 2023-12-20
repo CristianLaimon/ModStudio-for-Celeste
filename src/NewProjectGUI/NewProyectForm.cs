@@ -1,6 +1,8 @@
 ﻿using CelesteModStudioGUI.NewProjectForms;
 using ModStudioLogic;
 using ModStudioLogic.BigClasses;
+using ModStudioLogic.ProjectInside;
+using ModStudioLogic.ProyectInside;
 
 namespace CelesteModStudioGUI
 {
@@ -16,7 +18,7 @@ namespace CelesteModStudioGUI
 
         private void OKLogic()
         {
-            if (TryGetProjectFromForm(out Project proj))
+            if (TryGetProjectFromForm(out Proyect proj))
             {
                 Projects.AddProject(proj);
 
@@ -35,16 +37,17 @@ namespace CelesteModStudioGUI
             }
         }
 
-        private bool TryGetProjectFromForm(out Project OutProject)
+        private bool TryGetProjectFromForm(out Proyect OutProject)
         {
             //TODO: Get textboxes in order
             if (FormValidation.TextBoxesAreValid(this.Controls.OfType<TextBox>().ToArray()))
             {
-                Project newProject = new Project();
+                Proyect newProject = new Proyect();
                 newProject.FullPath = Path.Combine(textBoxDirectorySelected.Text, textBoxModName.Text);
                 newProject.ModVersion = new ModStudioLogic.Version(0, 1, 0);
                 newProject.ModName = textBoxModName.Text;
                 newProject.AuthorName = textBoxUsernameMod.Text;
+                newProject.Yaml = new EverestYaml(newProject.ModName, newProject.ModVersion);
 
                 foreach (ModFeature m in GetFeaturesSelected())
                     newProject.Features.Add(m);
@@ -95,7 +98,7 @@ namespace CelesteModStudioGUI
             stripLabelActualStatus.Text = StateFormat.GetFormattedMessage(newState);
         }
 
-        private bool AreThereModFeatures(Project proj) => proj.Features.Any();
+        private bool AreThereModFeatures(Proyect proj) => proj.Features.Any();
 
         private bool CheckIfConfirmationOK()
         {
@@ -149,7 +152,7 @@ namespace CelesteModStudioGUI
 
         private void CreateModFolders()
         {
-            Project project = Projects.GetLastProjectAdded();
+            Proyect project = Projects.GetLastProjectAdded();
             FileManager.CreateSubDirsWithProject(project);
         }
 

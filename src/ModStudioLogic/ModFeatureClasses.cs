@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using ModStudioLogic.ProjectInside;
+using System.Windows.Forms;
 
 namespace ModStudioLogic.BigClasses
 {
@@ -14,7 +15,7 @@ namespace ModStudioLogic.BigClasses
         /// Create all necessary subfolders to implement this modfeature.
         /// </summary>
         /// <returns>All info related to the new folder created (and it's subfolders)</returns>
-        public virtual DirectoryInfo CreateFoldersBasedOn(Project project)
+        public virtual DirectoryInfo CreateFoldersBasedOn(Proyect project)
         {
             string path = Path.Combine(
                 project.FullPath,
@@ -42,7 +43,7 @@ namespace ModStudioLogic.BigClasses
         public override string Extension
         { get { return ".dat"; } }
 
-        public override DirectoryInfo CreateFoldersBasedOn(Project project)
+        public override DirectoryInfo CreateFoldersBasedOn(Proyect project)
         {
             string path = Path.Combine(
                 project.FullPath,
@@ -108,7 +109,7 @@ namespace ModStudioLogic.BigClasses
         public override string Extension
         { get { return "ModNullFeatureNoExtension"; } }
 
-        public override DirectoryInfo CreateFoldersBasedOn(Project project)
+        public override DirectoryInfo CreateFoldersBasedOn(Proyect project)
         {
             throw new NotImplementedException();
         }
