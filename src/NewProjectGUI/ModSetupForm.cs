@@ -7,7 +7,7 @@ namespace CelesteModStudioGUI.NewProjectForms
     public partial class ModSetupForm : Form
     {
         private sbyte _actualIndex;
-        private Proyect _actualProject;
+        private Project _actualProject;
         private BaseForm[] _loadedForms;
 
         public ModSetupForm()

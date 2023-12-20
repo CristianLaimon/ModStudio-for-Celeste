@@ -2,9 +2,9 @@
 {
     public class Projects
     {
-        private static List<Proyect> _openedProjects = new List<Proyect>();
+        private static List<Project> _openedProjects = new List<Project>();
 
-        public static Proyect LastProject
+        public static Project LastProject
         { get { return _openedProjects.Last(); } }
 
         public static int Count
@@ -12,24 +12,24 @@
             get { return _openedProjects.Count; }
         }
 
-        public static void AddProject(Proyect project)
+        public static void AddProject(Project project)
         {
             _openedProjects.Add(project);
         }
 
-        public static void RemoveProject(Proyect project)
+        public static void RemoveProject(Project project)
         {
             _openedProjects.Remove(project);
         }
 
-        public static Proyect GetProjectByPath(string projectPath)
+        public static Project GetProjectByPath(string projectPath)
         {
-            Proyect? found = _openedProjects.Find(p => p.FullPath == projectPath);
+            Project? found = _openedProjects.Find(p => p.FullPath == projectPath);
 
-            return found == null ? new Proyect() : found;
+            return found == null ? new Project() : found;
         }
 
-        public static Proyect GetLastProjectAdded()
+        public static Project GetLastProjectAdded()
         {
             return _openedProjects.Last();
         }

@@ -6,9 +6,9 @@ namespace ModStudioTesting
 {
     public class TemplatesProjects
     {
-        public static Proyect GetSimpleProject()
+        public static Project GetSimpleProject()
         {
-            Proyect simpleProject = new Proyect();
+            Project simpleProject = new Project();
 
             simpleProject.FullPath = "C:\\Users\\itan_\\Desktop\\SimpleProject";
             simpleProject.AuthorName = "Christian Laimon";

@@ -19,7 +19,7 @@ namespace CelesteModStudioGUI
 
         private void OKLogic()
         {
-            if (TryGetProjectFromForm(out Proyect proj))
+            if (TryGetProjectFromForm(out Project proj))
             {
                 Projects.AddProject(proj);
 
@@ -38,12 +38,12 @@ namespace CelesteModStudioGUI
             }
         }
 
-        private bool TryGetProjectFromForm(out Proyect OutProject)
+        private bool TryGetProjectFromForm(out Project OutProject)
         {
             //TODO: Get textboxes in order
             if (FormValidation.TextBoxesAreValid(this.Controls.OfType<TextBox>().ToArray()))
             {
-                Proyect newProject = new Proyect();
+                Project newProject = new Project();
                 newProject.FullPath = Path.Combine(textBoxDirectorySelected.Text, textBoxModName.Text);
                 newProject.ModVersion = new ModStudioLogic.Version(0, 1, 0);
                 newProject.ModName = textBoxModName.Text;
@@ -99,7 +99,7 @@ namespace CelesteModStudioGUI
             stripLabelActualStatus.Text = StateFormat.GetFormattedMessage(newState);
         }
 
-        private bool AreThereModFeatures(Proyect proj) => proj.Features.Any();
+        private bool AreThereModFeatures(Project proj) => proj.Features.Any();
 
         private bool CheckIfConfirmationOK()
         {
@@ -153,7 +153,7 @@ namespace CelesteModStudioGUI
 
         private void CreateModFolders()
         {
-            Proyect project = Projects.GetLastProjectAdded();
+            Project project = Projects.GetLastProjectAdded();
             FileManager.CreateSubDirsWithProject(project);
         }
 

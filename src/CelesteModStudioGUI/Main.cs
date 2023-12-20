@@ -30,7 +30,7 @@ namespace CelesteModStudioGUI
             SetState(new FormStateChoosingDirectory());
             if (FileManager.ShowOpenDirectoryDialog(out string dir) && FileManager.IsValidModProyect(dir))
             {
-                Proyect opened = new Proyect();
+                Project opened = new Project();
                 opened.FullPath = dir;
                 Projects.AddProject(opened);
                 LoadDirTree(opened.FullPath);
@@ -51,7 +51,7 @@ namespace CelesteModStudioGUI
 
             if (result == DialogResult.OK)
             {
-                Proyect tempLast = Projects.LastProject;
+                Project tempLast = Projects.LastProject;
                 LoadDirTree(tempLast.FullPath);
                 SetState(new FormStateCustomMessage("Project " + tempLast.ModName + " Version: " + tempLast.ModVersion.ToString() + " created"));
             }
@@ -71,11 +71,10 @@ namespace CelesteModStudioGUI
 
         public void LoadTreeView(TreeView tree, string directory)
         {
-            tree.Nodes.Clear();
-            string[] paths = Directory.GetDirectories(directory);
+            string[] dirs = Directory.GetDirectories(directory);
             string[] files = Directory.GetFiles(directory);
 
-            foreach (string path in paths)
+            foreach (string path in dirs)
             {
                 TreeNode node = new TreeNode(Path.GetFileName(path));
                 node.ImageIndex = (byte)ModStudioImage.Folder;
@@ -93,6 +92,20 @@ namespace CelesteModStudioGUI
             }
         }
 
+        private void LoadRecursive(TreeNode node, string[] paths)
+        {
+            foreach (string path in paths)
+            {
+                TreeNode childNode = new TreeNode(Path.GetFileName(path));
+                childNode.ImageIndex = (byte)ModStudioImage.Folder;
+                childNode.SelectedImageIndex = node.ImageIndex;
+                LoadRecursive(childNode, Directory.GetDirectories(Path.GetFullPath(path)));
+                node.Nodes.Add(childNode);
+            }
+        }
+
+        #endregion TreeDir
+
         private byte GetImageByExtension(string extension)
         {
             switch (extension)
@@ -107,20 +120,6 @@ namespace CelesteModStudioGUI
                     return (byte)ModStudioImage.DefaultFile;
             }
         }
-
-        private void LoadRecursive(TreeNode node, string[] paths)
-        {
-            foreach (string path in paths)
-            {
-                TreeNode childNode = new TreeNode(Path.GetFileName(path));
-                childNode.ImageIndex = (byte)ModStudioImage.Folder;
-                childNode.SelectedImageIndex = node.ImageIndex;
-                LoadRecursive(childNode, Directory.GetDirectories(Path.GetFullPath(path)));
-                node.Nodes.Add(childNode);
-            }
-        }
-
-        #endregion TreeDir
 
         private void SetState(IModStudioState newState)
         {

@@ -15,7 +15,7 @@ namespace ModStudioLogic.BigClasses
         /// Create all necessary subfolders to implement this modfeature.
         /// </summary>
         /// <returns>All info related to the new folder created (and it's subfolders)</returns>
-        public virtual DirectoryInfo CreateFoldersBasedOn(Proyect project)
+        public virtual DirectoryInfo CreateDirsAndFiles(Project project)
         {
             string path = Path.Combine(
                 project.FullPath,
@@ -43,7 +43,7 @@ namespace ModStudioLogic.BigClasses
         public override string Extension
         { get { return ".dat"; } }
 
-        public override DirectoryInfo CreateFoldersBasedOn(Proyect project)
+        public override DirectoryInfo CreateDirsAndFiles(Project project)
         {
             string path = Path.Combine(
                 project.FullPath,
@@ -59,6 +59,18 @@ namespace ModStudioLogic.BigClasses
     {
         public List<string> Languages = new();
         public override string Extension => ".txt";
+
+        public override DirectoryInfo CreateDirsAndFiles(Project project)
+        {
+            DirectoryInfo info = base.CreateDirsAndFiles(project);
+
+            foreach (string str in Languages)
+            {
+                File.Create(Path.Combine(info.FullName, str + Extension));
+            }
+
+            return info;
+        }
 
         public override string FolderName
         { get { return "Dialog"; } }
@@ -109,7 +121,7 @@ namespace ModStudioLogic.BigClasses
         public override string Extension
         { get { return "ModNullFeatureNoExtension"; } }
 
-        public override DirectoryInfo CreateFoldersBasedOn(Proyect project)
+        public override DirectoryInfo CreateDirsAndFiles(Project project)
         {
             throw new NotImplementedException();
         }

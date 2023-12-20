@@ -12,7 +12,7 @@ namespace NewProjectGUI.Forms
 
         protected override void CloseFormNext(object sender, EventArgs e)
         {
-            Proyect actualProject = Projects.GetLastProjectAdded();
+            Project actualProject = Projects.GetLastProjectAdded();
             actualProject.CampaignName = textBox1.Text;
 
             base.CloseFormNext(sender, e);

@@ -32,9 +32,9 @@ namespace NewProjectGUI.Forms
             checkBoxEnglish = new CheckBox();
             checkBoxSpanish = new CheckBox();
             groupBoxSelectDialog = new GroupBox();
-            label1 = new Label();
-            textBoxCustomDialog = new TextBox();
             label2 = new Label();
+            textBoxCustomDialog = new TextBox();
+            label1 = new Label();
             groupBoxSelectDialog.SuspendLayout();
             SuspendLayout();
             // 
@@ -47,6 +47,7 @@ namespace NewProjectGUI.Forms
             checkBoxEnglish.Name = "checkBoxEnglish";
             checkBoxEnglish.Size = new Size(98, 24);
             checkBoxEnglish.TabIndex = 2;
+            checkBoxEnglish.Tag = "English";
             checkBoxEnglish.Text = "English.txt";
             checkBoxEnglish.UseVisualStyleBackColor = true;
             // 
@@ -57,6 +58,7 @@ namespace NewProjectGUI.Forms
             checkBoxSpanish.Name = "checkBoxSpanish";
             checkBoxSpanish.Size = new Size(102, 24);
             checkBoxSpanish.TabIndex = 3;
+            checkBoxSpanish.Tag = "Spanish";
             checkBoxSpanish.Text = "Spanish.txt";
             checkBoxSpanish.UseVisualStyleBackColor = true;
             // 
@@ -74,22 +76,6 @@ namespace NewProjectGUI.Forms
             groupBoxSelectDialog.TabStop = false;
             groupBoxSelectDialog.Text = "Language dialogs to include:";
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(333, 23);
-            label1.Name = "label1";
-            label1.Size = new Size(131, 20);
-            label1.TabIndex = 4;
-            label1.Text = "Custom Language:";
-            // 
-            // textBoxCustomDialog
-            // 
-            textBoxCustomDialog.Location = new Point(333, 56);
-            textBoxCustomDialog.Name = "textBoxCustomDialog";
-            textBoxCustomDialog.Size = new Size(131, 27);
-            textBoxCustomDialog.TabIndex = 5;
-            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -99,6 +85,22 @@ namespace NewProjectGUI.Forms
             label2.Size = new Size(151, 17);
             label2.TabIndex = 6;
             label2.Text = "No need to include \".txt\"";
+            // 
+            // textBoxCustomDialog
+            // 
+            textBoxCustomDialog.Location = new Point(333, 56);
+            textBoxCustomDialog.Name = "textBoxCustomDialog";
+            textBoxCustomDialog.Size = new Size(131, 27);
+            textBoxCustomDialog.TabIndex = 5;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(333, 23);
+            label1.Name = "label1";
+            label1.Size = new Size(131, 20);
+            label1.TabIndex = 4;
+            label1.Text = "Custom Language:";
             // 
             // Dialogform
             // 
