@@ -50,6 +50,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(679, 388);
             Controls.Add(pictureBox1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "LoadForm";
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

@@ -227,6 +227,7 @@
             Controls.Add(LeftPanel);
             Controls.Add(toolStripHeader);
             Controls.Add(statusStripFooter);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Main";
             Text = "ModStudio for Celeste";
             statusStripFooter.ResumeLayout(false);
