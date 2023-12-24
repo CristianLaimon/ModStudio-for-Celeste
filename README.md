@@ -19,5 +19,7 @@ First View:
 ![mainProject](github/images/projectMain.png)
 
 Note:
+
 <img src="github/images/logo.png" alt="logo" width="150"/>
+
 This is on development, not finished yet.
