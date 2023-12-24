@@ -155,6 +155,7 @@
             imageListTreeView.Images.SetKeyName(1, "folder.png");
             imageListTreeView.Images.SetKeyName(2, "yaml.png");
             imageListTreeView.Images.SetKeyName(3, "grengem.png");
+            imageListTreeView.Images.SetKeyName(4, "Strawberry_ingame.png");
             // 
             // PanelWithTabControl
             // 

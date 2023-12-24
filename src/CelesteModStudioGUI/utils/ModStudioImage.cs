@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace CelesteModStudioGUI.utils
 {
-    internal enum ModStudioImage : byte
+    internal enum ModStudioImage : int
     {
         DefaultFile,
         Folder,
         Mountain,
-        GreenGem
+        GreenGem,
+        RedStrawberry
     }
 }

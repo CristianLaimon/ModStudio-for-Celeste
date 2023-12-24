@@ -100,7 +100,12 @@ namespace CelesteModStudioGUI
             treeViewFiles.Nodes.Clear();
 
             TreeNode father = new(Projects.LastProject.ModName);
-            LoadRecursive(father, Directory.GetDirectories(directory), Directory.GetFiles(directory));
+            father.ImageIndex = (int)ModStudioImage.RedStrawberry;
+            father.SelectedImageIndex = father.ImageIndex;
+
+            string[] dirs = Directory.GetDirectories(directory);
+            string[] files = Directory.GetFiles(directory);
+            LoadRecursive(father, dirs, files);
 
             treeViewFiles.Nodes.Add(father);
         }
@@ -110,7 +115,7 @@ namespace CelesteModStudioGUI
             foreach (string path in dirPaths)
             {
                 TreeNode childNode = new TreeNode(Path.GetFileName(path));
-                childNode.ImageIndex = (byte)ModStudioImage.Folder;
+                childNode.ImageIndex = (int)ModStudioImage.Folder;
                 childNode.SelectedImageIndex = childNode.ImageIndex;
 
                 string[] subDirs = Directory.GetDirectories(path);
