@@ -9,13 +9,13 @@ namespace ModStudioLogic
 {
     internal class Cache
     {
-        internal static void SaveLastProject(Project proj)
+        internal static void SaveLastProject(string projFullPath)
         {
             SetCacheFolder();
 
             using (StreamWriter stream = new StreamWriter("utils\\last_project.txt"))
             {
-                stream.WriteLine(proj.FullPath);
+                stream.WriteLine(projFullPath);
             }
         }
 
@@ -28,7 +28,7 @@ namespace ModStudioLogic
                 projFullPath = stream.ReadLine();
             }
 
-            return projFullPath == String.Empty;
+            return projFullPath != String.Empty;
         }
 
         private static void SetCacheFolder()

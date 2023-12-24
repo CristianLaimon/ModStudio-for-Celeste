@@ -23,16 +23,25 @@ namespace CelesteModStudioGUI
             SetState(new FormStateStartup());
             this.CenterToScreen();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
+
+            if (Cache.TryGetLastProject(out string lastFullPath))
+                OpenDir(lastFullPath);
         }
 
-        //Pending
         private void OpenProject()
         {
+            if (FileManager.ShowOpenDirectoryDialog(out string asdf))
+                OpenDir(asdf);
+        }
+
+        private void OpenDir(string dir)
+        {
             SetState(new FormStateChoosingDirectory());
-            if (FileManager.ShowOpenDirectoryDialog(out string dir) && FileManager.IsValidModProyect(dir))
+            if (FileManager.IsValidModProyect(dir))
             {
                 Project opened = FileManager.GetProjectDataFromDirectory(dir);
                 Projects.AddProject(opened);
+                Cache.SaveLastProject(opened.FullPath);
                 LoadDirTree(opened.FullPath);
                 SetState(new FormStateCustomMessage($"Opened: {opened.ModName}"));
             }
@@ -50,9 +59,10 @@ namespace CelesteModStudioGUI
 
             if (result == DialogResult.OK)
             {
-                Project tempLast = Projects.LastProject;
-                LoadDirTree(tempLast.FullPath);
-                SetState(new FormStateCustomMessage("Project " + tempLast.ModName + " Version: " + tempLast.ModVersion.ToString() + " created"));
+                Project last = Projects.LastProject;
+                LoadDirTree(last.FullPath);
+                Cache.SaveLastProject(last.FullPath);
+                SetState(new FormStateCustomMessage("Project " + last.ModName + " Version: " + last.ModVersion.ToString() + " created"));
             }
             else
             {
