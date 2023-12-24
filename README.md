@@ -16,5 +16,7 @@ First View:
 
 ![mainform](github/images/mainform.png)
 
+![mainProject](github/images/projectMain.png)
+
 Note:
 This is on development, not finished yet.
