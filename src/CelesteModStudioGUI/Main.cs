@@ -23,20 +23,21 @@ namespace CelesteModStudioGUI
             SetState(new FormStateStartup());
             this.CenterToScreen();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
+
+            if (Cache.TryGetLastProject(out string lastFullPath))
+                OpenProject(lastFullPath);
         }
 
-        //Pending
-        private void OpenProject()
+        private void OpenProject(string dir)
         {
             SetState(new FormStateChoosingDirectory());
-            if (FileManager.ShowOpenDirectoryDialog(out string dir) && FileManager.IsValidModProyect(dir))
+            if (FileManager.IsValidModProyect(dir))
             {
-                Project opened = new Project();
-                opened.FullPath = dir;
+                Project opened = FileManager.GetProjectDataFromDirectory(dir);
                 Projects.AddProject(opened);
+                Cache.SaveLastProject(opened.FullPath);
                 LoadDirTree(opened.FullPath);
-                //message form: "proyect" loaded
-                SetState(new FormStateDefault());
+                SetState(new FormStateCustomMessage($"Opened: {opened.ModName}"));
             }
             else
             {
@@ -52,9 +53,10 @@ namespace CelesteModStudioGUI
 
             if (result == DialogResult.OK)
             {
-                Project tempLast = Projects.LastProject;
-                LoadDirTree(tempLast.FullPath);
-                SetState(new FormStateCustomMessage("Project " + tempLast.ModName + " Version: " + tempLast.ModVersion.ToString() + " created"));
+                Project last = Projects.LastProject;
+                LoadDirTree(last.FullPath);
+                Cache.SaveLastProject(last.FullPath);
+                SetState(new FormStateCustomMessage("Project " + last.ModName + " Version: " + last.ModVersion.ToString() + " created"));
             }
             else
             {
@@ -81,6 +83,12 @@ namespace CelesteModStudioGUI
         {
             _formState = newState;
             toolStripStatusLabelStatus.Text = StateFormat.GetFormattedMessage(_formState);
+        }
+
+        private void OpenProjWithDialog()
+        {
+            if (FileManager.ShowOpenDirectoryDialog(out string asdf))
+                OpenProject(asdf);
         }
 
         #region TreeDir
@@ -125,7 +133,7 @@ namespace CelesteModStudioGUI
 
         #region FormEvents
 
-        private void openExistingProyectToolStripMenuItem_Click(object sender, EventArgs e) => OpenProject();
+        private void openExistingProyectToolStripMenuItem_Click(object sender, EventArgs e) => OpenProjWithDialog();
 
         private void createNewModProyectToolStripMenuItem1_Click(object sender, EventArgs e) => CreateProject();
 
