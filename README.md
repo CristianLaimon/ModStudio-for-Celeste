@@ -10,7 +10,7 @@ A mod studio to help you manage all your stuff related to celeste modding. Manag
 
 Create easily new projects without to worry how are celeste mods structured, focus on what matters.
 
-![logo](github/images/logo.png)
+![logo](github/images/logo.png =250x)
 
 First View:
 
