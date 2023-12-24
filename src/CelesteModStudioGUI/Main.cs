@@ -31,12 +31,10 @@ namespace CelesteModStudioGUI
             SetState(new FormStateChoosingDirectory());
             if (FileManager.ShowOpenDirectoryDialog(out string dir) && FileManager.IsValidModProyect(dir))
             {
-                Project opened = new Project();
-                opened.FullPath = dir;
+                Project opened = FileManager.GetProjectDataFromDirectory(dir);
                 Projects.AddProject(opened);
                 LoadDirTree(opened.FullPath);
-                //message form: "proyect" loaded
-                SetState(new FormStateDefault());
+                SetState(new FormStateCustomMessage($"Opened: {opened.ModName}"));
             }
             else
             {

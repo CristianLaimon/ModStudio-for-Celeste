@@ -38,21 +38,46 @@ namespace ModStudioLogic
         /// <returns>True if it's a valid directory otherwise false</returns>
         public static bool IsValidModProyect(string directoryPath)
         {
-            //TODO: Check if has a valid mod structure... subfolders and that stuff
+            //TODO: Check if has a valid mod structure... subfolders and that stuff ...
             string[] directoryFiles = Directory.GetFiles(directoryPath, "everest.yaml");
             return directoryFiles.Any() ? true : false;
         }
 
-        /// <summary>
-        /// Get all data related to project: ModName, Author... from directory mod. This store that
-        /// info into project manager class (temp info)
-        /// </summary>
-        /// <returns>True if operation sucess otherwise false</returns>
-        //public static bool GetProjectDataFromDirectory(string directoryPath)
-        //{
-        //    if (!Directory.Exists(directoryPath) || !IsValidModProyect(directoryPath))
-        //        return false;
-        //}
+        public static Project GetProjectDataFromDirectory(string directoryPath)
+        {
+            var openedProj = new Project();
+            string[] rawDirs = Directory.GetDirectories(directoryPath);
+            string[] dirs = new string[rawDirs.Length];
+
+            for (int i = 0; i < rawDirs.Length; i++)
+                dirs[i] = Path.GetFileName(rawDirs[i]);
+
+            if (dirs.Contains("Maps"))
+            {
+                openedProj.Features.Add(new ModFeatureMaps());
+                string[] insideDirs = Directory.GetDirectories(Path.Combine(directoryPath, "Maps"));
+
+                openedProj.AuthorName = Path.GetFileName(insideDirs[0]);
+            }
+
+            if (dirs.Contains("Dialog"))
+            {
+                var dialogFeature = new ModFeatureDialog();
+                string[] insideFiles = Directory.GetFiles(Path.Combine(directoryPath, "Dialog"));
+
+                foreach (string file in insideFiles)
+                {
+                    string lang = Path.GetFileNameWithoutExtension(file);
+                    dialogFeature.Languages.Add(lang);
+                }
+                openedProj.Features.Add(dialogFeature);
+            }
+
+            openedProj.FullPath = directoryPath;
+
+            openedProj.ModName = Path.GetFileName(directoryPath);
+            return openedProj;
+        }
 
         public static void CreateSubDirsWithProject(Project project)
         {

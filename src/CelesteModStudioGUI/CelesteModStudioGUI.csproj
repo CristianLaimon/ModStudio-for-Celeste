@@ -19,4 +19,10 @@
     <ProjectReference Include="..\NewProjectGUI\NewProjectGUI.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="utils\last_project.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

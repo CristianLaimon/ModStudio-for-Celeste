@@ -43,9 +43,9 @@
             imageListTreeView = new ImageList(components);
             PanelWithTabControl = new Panel();
             splitContainer1 = new SplitContainer();
+            splitContainer2 = new SplitContainer();
             tabControl1 = new TabControl();
             tabPage2 = new TabPage();
-            splitContainer2 = new SplitContainer();
             statusStripFooter.SuspendLayout();
             toolStripHeader.SuspendLayout();
             PanelWithTabControl.SuspendLayout();
@@ -53,10 +53,10 @@
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
-            tabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer2).BeginInit();
             splitContainer2.Panel1.SuspendLayout();
             splitContainer2.SuspendLayout();
+            tabControl1.SuspendLayout();
             SuspendLayout();
             // 
             // statusStripFooter
@@ -182,6 +182,19 @@
             splitContainer1.SplitterDistance = 178;
             splitContainer1.TabIndex = 0;
             // 
+            // splitContainer2
+            // 
+            splitContainer2.Dock = DockStyle.Fill;
+            splitContainer2.Location = new Point(0, 0);
+            splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            splitContainer2.Panel1.Controls.Add(tabControl1);
+            splitContainer2.Size = new Size(887, 571);
+            splitContainer2.SplitterDistance = 672;
+            splitContainer2.TabIndex = 1;
+            // 
             // tabControl1
             // 
             tabControl1.Controls.Add(tabPage2);
@@ -201,19 +214,6 @@
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Blank Project";
             tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // splitContainer2
-            // 
-            splitContainer2.Dock = DockStyle.Fill;
-            splitContainer2.Location = new Point(0, 0);
-            splitContainer2.Name = "splitContainer2";
-            // 
-            // splitContainer2.Panel1
-            // 
-            splitContainer2.Panel1.Controls.Add(tabControl1);
-            splitContainer2.Size = new Size(887, 571);
-            splitContainer2.SplitterDistance = 672;
-            splitContainer2.TabIndex = 1;
             // 
             // Main
             // 
@@ -235,10 +235,10 @@
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
-            tabControl1.ResumeLayout(false);
             splitContainer2.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
             splitContainer2.ResumeLayout(false);
+            tabControl1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
