@@ -1,18 +1,11 @@
+using CelesteModStudioGUI.utils;
 using ModStudioLogic;
 using ModStudioLogic.BigClasses;
 using ModStudioLogic.ProjectInside;
-using System.CodeDom.Compiler;
-using System.Xml.Linq;
 
-//https://www.reddit.com/r/celestegame/comments/e82ncn/madeline_fanart/ logo.png idea!, TODO:try to find original author...
-//Probably are better ways to implement state pattern, i just wanna learn to use polymorphism. It's curious
-
-//En base a los features elegidos, poner su correspondiente form de configuración
-//hacer que el método de añadir features a proyecto sea "params Feature[]" y acepte cualquier cantidad. "Comodidad"
-//Hacer que el visual studio pueda agrupar los #regions con el atajo para hacer fold a los métodos. ay dios, que enfadoso
 namespace CelesteModStudioGUI
 {
-    //Hacer que se pueda cerrar la conexión con un projecto abierto (eliminarlo de ProjectManager)
+    //TODO: Close temp project opened when creating or opening a project, and avoid storing twice or more the same project in Projects Class
     public partial class Main : Form
     {
         private IModStudioState? _formState;
@@ -20,34 +13,45 @@ namespace CelesteModStudioGUI
         public Main()
         {
             InitializeComponent();
+            SetupForm();
+            SetupCache();
             SetState(new FormStateStartup());
+        }
+
+        #region Setup
+
+        private void SetupForm()
+        {
             this.CenterToScreen();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
+        }
 
+        private void SetupCache()
+        {
             if (Cache.TryGetLastProject(out string lastFullPath))
                 OpenProject(lastFullPath);
         }
 
-        private void OpenProject(string dir)
+        #endregion Setup
+
+        #region Events
+
+        private void createNewModButton(object sender, EventArgs e) => CreateProject();
+
+        private void openExistingModButton(object sender, EventArgs e) => OpenProjWithDialog();
+
+        private void OpenProjWithDialog()
         {
-            SetState(new FormStateChoosingDirectory());
-            if (FileManager.IsValidModProyect(dir))
-            {
-                Project opened = FileManager.GetProjectDataFromDirectory(dir);
-                Projects.AddProject(opened);
-                Cache.SaveLastProject(opened.FullPath);
-                LoadDirTree(opened.FullPath);
-                SetState(new FormStateCustomMessage($"Opened: {opened.ModName}"));
-            }
-            else
-            {
-                SetState(new FormStateError("Error: Opened Project is not a celeste mod or valid directory to work with"));
-            }
+            if (FileManager.ShowOpenDirectoryDialog(out string asdf))
+                OpenProject(asdf);
         }
+
+        #endregion Events
 
         private void CreateProject()
         {
             SetState(new FormStateCreatingProject());
+
             var newProyectForm = new NewProyectForm();
             DialogResult result = newProyectForm.ShowDialog();
 
@@ -64,31 +68,29 @@ namespace CelesteModStudioGUI
             }
         }
 
-        private byte GetImageByExtension(string extension)
+        private void OpenProject(string dir)
         {
-            switch (extension)
+            SetState(new FormStateChoosingDirectory());
+
+            if (FileManager.IsValidModProyect(dir))
             {
-                case ".yaml":
-                    return (byte)ModStudioImage.Mountain; //Mountain.png
+                Project opened = FileManager.GetProjectDataFromDirectory(dir);
 
-                case ".dat":
-                    return (byte)ModStudioImage.GreenGem;
+                if (!Projects.Exists(opened))
+                    Projects.AddProject(opened);
 
-                default:
-                    return (byte)ModStudioImage.DefaultFile;
+                Cache.SaveLastProject(opened.FullPath);
+                LoadDirTree(opened.FullPath);
+                SetState(new FormStateCustomMessage($"Opened: {opened.ModName}"));
             }
+            else
+                SetState(new FormStateError("Error: Opened Project is not a celeste mod or valid directory to work with"));
         }
 
         private void SetState(IModStudioState newState)
         {
             _formState = newState;
             toolStripStatusLabelStatus.Text = StateFormat.GetFormattedMessage(_formState);
-        }
-
-        private void OpenProjWithDialog()
-        {
-            if (FileManager.ShowOpenDirectoryDialog(out string asdf))
-                OpenProject(asdf);
         }
 
         #region TreeDir
@@ -122,7 +124,7 @@ namespace CelesteModStudioGUI
             foreach (string path in filePaths)
             {
                 TreeNode childNode = new TreeNode(Path.GetFileName(path));
-                childNode.ImageIndex = GetImageByExtension(Path.GetExtension(path));
+                childNode.ImageIndex = ModStudio.GetImageByExtension(Path.GetExtension(path));
                 childNode.SelectedImageIndex = childNode.ImageIndex;
 
                 node.Nodes.Add(childNode);
@@ -130,13 +132,5 @@ namespace CelesteModStudioGUI
         }
 
         #endregion TreeDir
-
-        #region FormEvents
-
-        private void openExistingProyectToolStripMenuItem_Click(object sender, EventArgs e) => OpenProjWithDialog();
-
-        private void createNewModProyectToolStripMenuItem1_Click(object sender, EventArgs e) => CreateProject();
-
-        #endregion FormEvents
     }
 }

@@ -12,6 +12,11 @@
             get { return _openedProjects.Count; }
         }
 
+        public static bool Exists(Project project)
+        {
+            return _openedProjects.Contains(project);
+        }
+
         public static void AddProject(Project project)
         {
             _openedProjects.Add(project);

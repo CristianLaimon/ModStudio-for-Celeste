@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CelesteModStudioGUI
+namespace CelesteModStudioGUI.utils
 {
     internal enum ModStudioImage : byte
     {

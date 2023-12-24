@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ModStudioLogic
+namespace CelesteModStudioGUI.utils
 {
     internal class Cache
     {
@@ -19,7 +19,7 @@ namespace ModStudioLogic
             }
         }
 
-        internal static bool TryGetLastProject(out string projFullPath)
+        internal static bool TryGetLastProject(out string? projFullPath)
         {
             SetCacheFolder();
 
@@ -28,21 +28,17 @@ namespace ModStudioLogic
                 projFullPath = stream.ReadLine();
             }
 
-            return projFullPath != String.Empty;
+            return projFullPath != null;
         }
 
         private static void SetCacheFolder()
         {
             //Brief Checking
             if (!Directory.Exists("utils"))
-            {
                 Directory.CreateDirectory("utils");
 
-                if (!File.Exists("last_project.txt"))
-                {
-                    File.Create("last_project.txt");
-                }
-            }
+            if (!File.Exists("utils\\last_project.txt"))
+                File.Create("utils\\last_project.txt");
         }
     }
 }

@@ -100,7 +100,7 @@
             createNewModProyectToolStripMenuItem1.Name = "createNewModProyectToolStripMenuItem1";
             createNewModProyectToolStripMenuItem1.Size = new Size(255, 26);
             createNewModProyectToolStripMenuItem1.Text = "Create new mod proyect";
-            createNewModProyectToolStripMenuItem1.Click += createNewModProyectToolStripMenuItem1_Click;
+            createNewModProyectToolStripMenuItem1.Click += createNewModButton;
             // 
             // toolStripDropDownButtonOpen
             // 
@@ -117,7 +117,7 @@
             openExistingProyectToolStripMenuItem.Name = "openExistingProyectToolStripMenuItem";
             openExistingProyectToolStripMenuItem.Size = new Size(246, 26);
             openExistingProyectToolStripMenuItem.Text = "Open existing proyect...";
-            openExistingProyectToolStripMenuItem.Click += openExistingProyectToolStripMenuItem_Click;
+            openExistingProyectToolStripMenuItem.Click += openExistingModButton;
             // 
             // createNewModProyectToolStripMenuItem
             // 
