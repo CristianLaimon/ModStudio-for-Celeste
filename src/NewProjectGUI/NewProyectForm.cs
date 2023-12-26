@@ -41,7 +41,7 @@ namespace CelesteModStudioGUI
         private bool TryGetProjectFromForm(out Project OutProject)
         {
             //TODO: Get textboxes in order
-            if (FormValidation.TextBoxesAreValid(this.Controls.OfType<TextBox>().ToArray()))
+            if (FormValidation.TextBoxesAreValid(textBoxModName, textBoxUsernameMod))
             {
                 Project newProject = new Project();
                 newProject.FullPath = Path.Combine(textBoxDirectorySelected.Text, textBoxModName.Text);

@@ -15,7 +15,7 @@ namespace CelesteModStudioGUI.Utils
                 case ".yaml":
                     return (byte)ModStudioImage.Mountain; //Mountain.png
 
-                case ".dat":
+                case ".bin":
                     return (byte)ModStudioImage.GreenGem;
 
                 default:

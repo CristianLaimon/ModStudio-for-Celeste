@@ -9,7 +9,7 @@ namespace ModStudioLogic.BigClasses
     public abstract class ModFeature
     {
         public abstract string FolderName { get; }
-        public abstract string Extension { get; }
+        public virtual string Extension { get; }
 
         /// <summary>
         /// Create all necessary subfolders to implement this modfeature.
@@ -40,9 +40,6 @@ namespace ModStudioLogic.BigClasses
         public override string FolderName
         { get { return "Maps"; } }
 
-        public override string Extension
-        { get { return ".dat"; } }
-
         public override DirectoryInfo CreateDirsAndFiles(Project project)
         {
             string path = Path.Combine(
@@ -53,9 +50,9 @@ namespace ModStudioLogic.BigClasses
 
             DirectoryInfo returnInfo = Directory.CreateDirectory(path);
 
-            foreach (string map in project.Maps)
+            foreach (string mapName in project.Maps)
             {
-                File.Create(Path.Combine(returnInfo.FullName, map + Extension));
+                Loenn.CreateNewMap(path, mapName);
             }
 
             return returnInfo;

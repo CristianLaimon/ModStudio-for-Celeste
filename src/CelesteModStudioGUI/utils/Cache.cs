@@ -28,7 +28,7 @@ namespace CelesteModStudioGUI.Utils
                 projFullPath = stream.ReadLine();
             }
 
-            return projFullPath != null && File.Exists(projFullPath);
+            return projFullPath != null && Directory.Exists(projFullPath);
         }
 
         private static void SetCacheFolder()
