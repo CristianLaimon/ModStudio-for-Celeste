@@ -1,4 +1,4 @@
-using CelesteModStudioGUI.utils;
+using CelesteModStudioGUI.Utils;
 using ModStudioLogic;
 using ModStudioLogic.BigClasses;
 using ModStudioLogic.ProjectInside;
@@ -137,5 +137,9 @@ namespace CelesteModStudioGUI
         }
 
         #endregion TreeDir
+
+        private void NewMapButton(object sender, EventArgs e)
+        {
+        }
     }
 }

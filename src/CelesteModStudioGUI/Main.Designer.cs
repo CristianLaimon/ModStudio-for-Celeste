@@ -46,6 +46,7 @@
             splitContainer2 = new SplitContainer();
             tabControl1 = new TabControl();
             tabPage2 = new TabPage();
+            addToolStripMenuItem = new ToolStripMenuItem();
             statusStripFooter.SuspendLayout();
             toolStripHeader.SuspendLayout();
             PanelWithTabControl.SuspendLayout();
@@ -88,7 +89,7 @@
             // toolStripDropDownButtonNew
             // 
             toolStripDropDownButtonNew.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            toolStripDropDownButtonNew.DropDownItems.AddRange(new ToolStripItem[] { createNewModProyectToolStripMenuItem1 });
+            toolStripDropDownButtonNew.DropDownItems.AddRange(new ToolStripItem[] { createNewModProyectToolStripMenuItem1, addToolStripMenuItem });
             toolStripDropDownButtonNew.Image = (Image)resources.GetObject("toolStripDropDownButtonNew.Image");
             toolStripDropDownButtonNew.ImageTransparentColor = Color.Magenta;
             toolStripDropDownButtonNew.Name = "toolStripDropDownButtonNew";
@@ -216,6 +217,13 @@
             tabPage2.Text = "Blank Project";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // addToolStripMenuItem
+            // 
+            addToolStripMenuItem.Name = "addToolStripMenuItem";
+            addToolStripMenuItem.Size = new Size(255, 26);
+            addToolStripMenuItem.Text = "New map";
+            addToolStripMenuItem.Click += NewMapButton;
+            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -262,5 +270,6 @@
         private ImageList imageListTreeView;
         private SplitContainer splitContainer1;
         private SplitContainer splitContainer2;
+        private ToolStripMenuItem addToolStripMenuItem;
     }
 }

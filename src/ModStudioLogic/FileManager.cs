@@ -40,23 +40,21 @@ namespace ModStudioLogic
         {
             //TODO: Check if has a valid mod structure... subfolders and that stuff ...
             string[] directoryFiles = Directory.GetFiles(directoryPath, "everest.yaml");
-            return directoryFiles.Any() ? true : false;
+            return directoryFiles.Any();
         }
 
         public static Project GetProjectDataFromDirectory(string directoryPath)
         {
             var openedProj = new Project();
-            string[] rawDirs = Directory.GetDirectories(directoryPath);
-            string[] dirs = new string[rawDirs.Length];
+            openedProj.FullPath = directoryPath;
+            openedProj.ModName = Path.GetFileName(directoryPath);
 
-            for (int i = 0; i < rawDirs.Length; i++)
-                dirs[i] = Path.GetFileName(rawDirs[i]);
+            string[] dirs = Directory.GetDirectories(directoryPath).Select(Path.GetFileName).ToArray();
 
             if (dirs.Contains("Maps"))
             {
                 openedProj.Features.Add(new ModFeatureMaps());
                 string[] insideDirs = Directory.GetDirectories(Path.Combine(directoryPath, "Maps"));
-
                 openedProj.AuthorName = Path.GetFileName(insideDirs[0]);
             }
 
@@ -64,18 +62,10 @@ namespace ModStudioLogic
             {
                 var dialogFeature = new ModFeatureDialog();
                 string[] insideFiles = Directory.GetFiles(Path.Combine(directoryPath, "Dialog"));
-
-                foreach (string file in insideFiles)
-                {
-                    string lang = Path.GetFileNameWithoutExtension(file);
-                    dialogFeature.Languages.Add(lang);
-                }
+                dialogFeature.Languages.AddRange(insideFiles.Select(Path.GetFileNameWithoutExtension));
                 openedProj.Features.Add(dialogFeature);
             }
 
-            openedProj.FullPath = directoryPath;
-
-            openedProj.ModName = Path.GetFileName(directoryPath);
             return openedProj;
         }
 

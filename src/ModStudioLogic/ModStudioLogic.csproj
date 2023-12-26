@@ -16,4 +16,10 @@
     </Reference>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="LoennTemplates\emptyLoennMap.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

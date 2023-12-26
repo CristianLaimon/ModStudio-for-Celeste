@@ -51,7 +51,14 @@ namespace ModStudioLogic.BigClasses
                 project.AuthorName,
                 project.CampaignName);
 
-            return Directory.CreateDirectory(path);
+            DirectoryInfo returnInfo = Directory.CreateDirectory(path);
+
+            foreach (string map in project.Maps)
+            {
+                File.Create(Path.Combine(returnInfo.FullName, map + Extension));
+            }
+
+            return returnInfo;
         }
     }
 

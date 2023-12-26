@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CelesteModStudioGUI.utils
+namespace CelesteModStudioGUI.Utils
 {
     internal class Cache
     {
@@ -28,7 +28,7 @@ namespace CelesteModStudioGUI.utils
                 projFullPath = stream.ReadLine();
             }
 
-            return projFullPath != null;
+            return projFullPath != null && File.Exists(projFullPath);
         }
 
         private static void SetCacheFolder()

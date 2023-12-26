@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace ModStudioLogic
 {
@@ -6,17 +7,15 @@ namespace ModStudioLogic
     {
         public static bool TextBoxesAreValid(params TextBox[] textBoxes)
         {
-            bool theyreValid = true;
+            string pattern = @"^[a-zA-Z0-9\-_]+$";
 
             foreach (var txtBox in textBoxes)
             {
-                if (txtBox == null || txtBox.Text == "")
-                {
-                    theyreValid = false;
-                }
+                if (!Regex.IsMatch(txtBox.Text, pattern))
+                    return false;
             }
 
-            return theyreValid;
+            return true;
         }
     }
 }
