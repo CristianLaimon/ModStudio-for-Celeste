@@ -31,5 +31,10 @@ namespace ModStudioLogic.ProjectInside
 
             return this.FullPath == other.FullPath;
         }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }
