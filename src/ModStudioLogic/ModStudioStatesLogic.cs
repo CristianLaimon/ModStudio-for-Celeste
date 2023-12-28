@@ -5,7 +5,6 @@ namespace ModStudioLogic.BigClasses
     /// <summary>
     /// Class to manage IModStudio objects to interact with GUI forms
     /// </summary>
-    //[Obsolete("Old way to manage states, i'll be working on another way manage states")]
     public class StateFormat
     {
         public static string GetFormattedMessage(IModStudioState actualState)

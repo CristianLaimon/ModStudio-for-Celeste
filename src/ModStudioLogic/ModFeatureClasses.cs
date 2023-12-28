@@ -1,5 +1,4 @@
 ﻿using ModStudioLogic.ProjectInside;
-using System.Windows.Forms;
 
 namespace ModStudioLogic.BigClasses
 {
@@ -9,7 +8,7 @@ namespace ModStudioLogic.BigClasses
     public abstract class ModFeature
     {
         public abstract string FolderName { get; }
-        public abstract string Extension { get; }
+        public virtual string Extension { get; }
 
         /// <summary>
         /// Create all necessary subfolders to implement this modfeature.
@@ -26,11 +25,19 @@ namespace ModStudioLogic.BigClasses
         }
     }
 
+    public class ModFeatureYAML : ModFeature
+    {
+        public override string FolderName
+        { get { return "None"; } }
+
+        public override string Extension
+        { get { return ".yaml"; } }
+    }
+
     public class ModFeatureMaps : ModFeature
     {
-        public override string FolderName => "Maps";
-
-        public override string Extension => ".bin";
+        public override string FolderName
+        { get { return "Maps"; } }
 
         public override DirectoryInfo CreateDirsAndFiles(Project project)
         {
@@ -55,7 +62,6 @@ namespace ModStudioLogic.BigClasses
     {
         public List<string> Languages = new();
         public override string Extension => ".txt";
-        public override string FolderName => "Dialog";
 
         public override DirectoryInfo CreateDirsAndFiles(Project project)
         {
@@ -68,21 +74,55 @@ namespace ModStudioLogic.BigClasses
 
             return info;
         }
+
+        public override string FolderName
+        { get { return "Dialog"; } }
     }
+
+    //public class FeatureGraphics : ModFeature
+    //{
+    //    public override string FolderName
+    //    { get { return "Graphics"; } }
+    //}
+
+    //public class ModFeatureAhorn : ModFeature
+    //{
+    //    public override string FolderName
+    //    { get { return "Ahorn"; } }
+    //}
 
     public class ModFeatureLoenn : ModFeature
     {
-        public override string FolderName => "Loenn";
-        public override string Extension => ".lua";
+        public override string Extension
+        { get { return ".lua"; } }
 
         public readonly string LanguageExtension = ".language";
+
+        public override string FolderName
+        { get { return "Loenn"; } }
     }
+
+    //public class ModFeatureDLL : ModFeature
+    //{
+    //    public override string Extension
+    //    { get { return ".dll"; } }
+
+    //    public override string FolderName
+    //    { get { return "bin"; } }
+    //}
+
+    //public class ModFeatureAudio : ModFeature
+    //{
+    //    public override string FolderName
+    //    { get { return "Audio"; } }
+    //}
 
     public class ModNullFeature : ModFeature
     {
         public override string FolderName => throw new NotImplementedException();
 
-        public override string Extension => throw new NotImplementedException();
+        public override string Extension
+        { get { return "ModNullFeatureNoExtension"; } }
 
         public override DirectoryInfo CreateDirsAndFiles(Project project)
         {
@@ -102,8 +142,20 @@ namespace ModStudioLogic.BigClasses
                 case "dialog":
                     return new ModFeatureDialog();
 
+                //case "graphics":
+                //    return new FeatureGraphics();
+
+                //case "ahorn":
+                //    return new ModFeatureAhorn();
+
                 case "loenn":
                     return new ModFeatureLoenn();
+
+                //case "dll":
+                //    return new ModFeatureDLL();
+
+                //case "audio":
+                //    return new ModFeatureAudio();
 
                 default:
                     return new ModNullFeature();
@@ -111,51 +163,3 @@ namespace ModStudioLogic.BigClasses
         }
     }
 }
-
-//case "graphics":
-//    return new FeatureGraphics();
-
-//case "ahorn":
-//    return new ModFeatureAhorn();
-
-//case "dll":
-//    return new ModFeatureDLL();
-
-//case "audio":
-//    return new ModFeatureAudio();
-
-//public class FeatureGraphics : ModFeature
-//{
-//    public override string FolderName
-//    { get { return "Graphics"; } }
-//}
-
-//public class ModFeatureAhorn : ModFeature
-//{
-//    public override string FolderName
-//    { get { return "Ahorn"; } }
-//}
-
-//public class ModFeatureDLL : ModFeature
-//{
-//    public override string Extension
-//    { get { return ".dll"; } }
-
-//    public override string FolderName
-//    { get { return "bin"; } }
-//}
-
-//public class ModFeatureAudio : ModFeature
-//{
-//    public override string FolderName
-//    { get { return "Audio"; } }
-//}
-
-//public class ModFeatureYAML : ModFeature
-//{
-//    public new static string FolderName
-//    { get { return "None"; } }
-
-//    public override string Extension
-//    { get { return ".yaml"; } }
-//}

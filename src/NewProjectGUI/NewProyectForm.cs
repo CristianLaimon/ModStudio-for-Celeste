@@ -154,7 +154,7 @@ namespace CelesteModStudioGUI
         private void CreateModFolders()
         {
             Project project = Projects.GetLastProjectAdded();
-            FileManager.CreateAllDirsWithProject(project);
+            FileManager.CreateSubDirsWithProject(project);
         }
 
         #endregion Utilities
