@@ -140,7 +140,6 @@
             loennMapsToolStripMenuItem.Name = "loennMapsToolStripMenuItem";
             loennMapsToolStripMenuItem.Size = new Size(172, 26);
             loennMapsToolStripMenuItem.Text = "Loenn Maps";
-            loennMapsToolStripMenuItem.Click += loennMapsToolStripMenuItem_Click;
             // 
             // createNewModProyectToolStripMenuItem
             // 
