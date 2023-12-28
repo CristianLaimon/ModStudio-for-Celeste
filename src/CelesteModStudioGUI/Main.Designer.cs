@@ -35,8 +35,11 @@
             toolStripHeader = new ToolStrip();
             toolStripDropDownButtonNew = new ToolStripDropDownButton();
             createNewModProyectToolStripMenuItem1 = new ToolStripMenuItem();
+            addToolStripMenuItem = new ToolStripMenuItem();
             toolStripDropDownButtonOpen = new ToolStripDropDownButton();
             openExistingProyectToolStripMenuItem = new ToolStripMenuItem();
+            tabsToolStripMenuItem = new ToolStripMenuItem();
+            loennMapsToolStripMenuItem = new ToolStripMenuItem();
             createNewModProyectToolStripMenuItem = new ToolStripMenuItem();
             toolStripSplitButtonNew = new ToolStripSplitButton();
             treeViewFiles = new TreeView();
@@ -46,7 +49,6 @@
             splitContainer2 = new SplitContainer();
             tabControl1 = new TabControl();
             tabPage2 = new TabPage();
-            addToolStripMenuItem = new ToolStripMenuItem();
             statusStripFooter.SuspendLayout();
             toolStripHeader.SuspendLayout();
             PanelWithTabControl.SuspendLayout();
@@ -103,10 +105,16 @@
             createNewModProyectToolStripMenuItem1.Text = "Create new mod proyect";
             createNewModProyectToolStripMenuItem1.Click += createNewModButton;
             // 
+            // addToolStripMenuItem
+            // 
+            addToolStripMenuItem.Name = "addToolStripMenuItem";
+            addToolStripMenuItem.Size = new Size(255, 26);
+            addToolStripMenuItem.Text = "New map";
+            // 
             // toolStripDropDownButtonOpen
             // 
             toolStripDropDownButtonOpen.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            toolStripDropDownButtonOpen.DropDownItems.AddRange(new ToolStripItem[] { openExistingProyectToolStripMenuItem });
+            toolStripDropDownButtonOpen.DropDownItems.AddRange(new ToolStripItem[] { openExistingProyectToolStripMenuItem, tabsToolStripMenuItem });
             toolStripDropDownButtonOpen.Image = (Image)resources.GetObject("toolStripDropDownButtonOpen.Image");
             toolStripDropDownButtonOpen.ImageTransparentColor = Color.Magenta;
             toolStripDropDownButtonOpen.Name = "toolStripDropDownButtonOpen";
@@ -119,6 +127,20 @@
             openExistingProyectToolStripMenuItem.Size = new Size(246, 26);
             openExistingProyectToolStripMenuItem.Text = "Open existing proyect...";
             openExistingProyectToolStripMenuItem.Click += openExistingModButton;
+            // 
+            // tabsToolStripMenuItem
+            // 
+            tabsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { loennMapsToolStripMenuItem });
+            tabsToolStripMenuItem.Name = "tabsToolStripMenuItem";
+            tabsToolStripMenuItem.Size = new Size(246, 26);
+            tabsToolStripMenuItem.Text = "Tabs";
+            // 
+            // loennMapsToolStripMenuItem
+            // 
+            loennMapsToolStripMenuItem.Name = "loennMapsToolStripMenuItem";
+            loennMapsToolStripMenuItem.Size = new Size(172, 26);
+            loennMapsToolStripMenuItem.Text = "Loenn Maps";
+            loennMapsToolStripMenuItem.Click += loennMapsToolStripMenuItem_Click;
             // 
             // createNewModProyectToolStripMenuItem
             // 
@@ -146,6 +168,7 @@
             treeViewFiles.SelectedImageIndex = 0;
             treeViewFiles.Size = new Size(178, 571);
             treeViewFiles.TabIndex = 0;
+            treeViewFiles.NodeMouseDoubleClick += treeViewFiles_NodeMouseDoubleClick;
             // 
             // imageListTreeView
             // 
@@ -194,7 +217,7 @@
             // 
             splitContainer2.Panel1.Controls.Add(tabControl1);
             splitContainer2.Size = new Size(887, 571);
-            splitContainer2.SplitterDistance = 672;
+            splitContainer2.SplitterDistance = 673;
             splitContainer2.TabIndex = 1;
             // 
             // tabControl1
@@ -204,7 +227,7 @@
             tabControl1.Location = new Point(0, 0);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(672, 571);
+            tabControl1.Size = new Size(673, 571);
             tabControl1.TabIndex = 0;
             // 
             // tabPage2
@@ -212,17 +235,10 @@
             tabPage2.Location = new Point(4, 29);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(664, 538);
+            tabPage2.Size = new Size(665, 538);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Blank Project";
             tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // addToolStripMenuItem
-            // 
-            addToolStripMenuItem.Name = "addToolStripMenuItem";
-            addToolStripMenuItem.Size = new Size(255, 26);
-            addToolStripMenuItem.Text = "New map";
-            addToolStripMenuItem.Click += NewMapButton;
             // 
             // Main
             // 
@@ -271,5 +287,7 @@
         private SplitContainer splitContainer1;
         private SplitContainer splitContainer2;
         private ToolStripMenuItem addToolStripMenuItem;
+        private ToolStripMenuItem tabsToolStripMenuItem;
+        private ToolStripMenuItem loennMapsToolStripMenuItem;
     }
 }

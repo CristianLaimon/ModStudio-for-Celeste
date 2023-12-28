@@ -6,6 +6,16 @@ using ModStudioLogic.ProjectInside;
 namespace CelesteModStudioGUI
 {
     //TODO: Close temp project opened when creating or opening a project, and avoid storing twice or more the same project in Projects Class
+    //TODO:
+    /*Open map with loenn editor
+	    - Replace temp lastopen text to open new file with loenn
+		    - Recognize if os have loenn installed
+			    - installed with everest
+			    - installed custom by user (get path by user)
+
+			    if (Loenn != State.Installed)
+				    Download Loenn separately (inside this project) */
+
     public partial class Main : Form
     {
         private IModStudioState? _formState;
@@ -15,7 +25,23 @@ namespace CelesteModStudioGUI
             InitializeComponent();
             SetupForm();
             SetupCache();
+            Test();
             SetState(new FormStateStartup());
+        }
+
+        private void Test()
+        {
+            //tabControl1.TabPages.Clear();
+            tabControl1.TabPages.RemoveAt(0);
+            var tab = new TabPage("TextUp");
+            tab.Name = "testing tab";
+            tabControl1.TabPages.Add(tab);
+            var usercon = new BaseTabControl();
+            usercon.Name = "UserControl";
+            usercon.Dock = DockStyle.Fill;
+
+            tabControl1.TabPages["testing tab"].Controls.Add(usercon);
+            //usercon.Show();
         }
 
         #region Setup
@@ -108,6 +134,12 @@ namespace CelesteModStudioGUI
             LoadRecursive(father, dirs, files);
 
             treeViewFiles.Nodes.Add(father);
+
+#if DEBUG
+            treeViewFiles.ExpandAll();
+#else
+            father.Expand();
+#endif
         }
 
         private void LoadRecursive(TreeNode node, string[] dirPaths, string[] filePaths)
@@ -138,8 +170,45 @@ namespace CelesteModStudioGUI
 
         #endregion TreeDir
 
-        private void NewMapButton(object sender, EventArgs e)
+        private void loennMapsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        }
+
+        private void treeViewFiles_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (e.Node.Text.Contains(".bin"))
+            {
+                //CLEAN THIS UP!!!!!!!!!!!!!!
+
+                //to give the possibility to have multiple mods loaded!!
+                //Get project full path
+                //get actual project from this map selected
+                //search in opened projects for the name and give the full path
+
+                TreeNode root = GetRootNode(e.Node);
+                Project proj = Projects.GetProjectByName(root.Text);
+
+                Loenn.SetMapCacheOnLoenn(Path.Combine(
+                    proj.FullPath,
+                    "Maps",
+                    proj.AuthorName,
+                    proj.CampaignName,
+                    e.Node.Text
+                    ));
+
+                Loenn.Launch();
+                //recursively get project name
+            }
+        }
+
+        private TreeNode GetRootNode(TreeNode node)
+        {
+            TreeNode pointer = node;
+
+            while (pointer.Parent != null)
+                pointer = pointer.Parent;
+
+            return pointer;
         }
     }
 }

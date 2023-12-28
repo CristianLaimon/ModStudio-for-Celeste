@@ -27,9 +27,9 @@
             _openedProjects.Remove(project);
         }
 
-        public static Project GetProjectByPath(string projectPath)
+        public static Project GetProjectByName(string name)
         {
-            Project? found = _openedProjects.Find(p => p.FullPath == projectPath);
+            Project? found = _openedProjects.Find(p => p.ModName == name);
 
             return found == null ? new Project() : found;
         }
