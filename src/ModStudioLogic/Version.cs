@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ModStudioLogic.ProyectInside
+namespace ModStudioLogic
 {
     public class Version
     {

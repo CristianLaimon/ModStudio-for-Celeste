@@ -3,6 +3,7 @@ using ModStudioLogic;
 using ModStudioLogic.BigClasses;
 using ModStudioLogic.ProjectInside;
 using ModStudioLogic.ProyectInside;
+using Version = ModStudioLogic.Version;
 
 //Some config are disabled due to they're not implemented yet...
 namespace CelesteModStudioGUI
@@ -45,7 +46,7 @@ namespace CelesteModStudioGUI
             {
                 Project newProject = new Project();
                 newProject.FullPath = Path.Combine(textBoxDirectorySelected.Text, textBoxModName.Text);
-                newProject.ModVersion = new ModStudioLogic.Version(0, 1, 0);
+                newProject.ModVersion = new Version(0, 1, 0);
                 newProject.ModName = textBoxModName.Text;
                 newProject.AuthorName = textBoxUsernameMod.Text;
                 newProject.Yaml = new EverestYaml(newProject.ModName, newProject.ModVersion);
@@ -67,20 +68,11 @@ namespace CelesteModStudioGUI
 
         #region FormEvents
 
-        private void buttonSelectNewDirectory_Click(object sender, EventArgs e)
-        {
-            ChooseDirectory();
-        }
+        private void buttonSelectNewDirectory_Click(object sender, EventArgs e) => ChooseDirectory();
 
-        private void buttonOk_Click(object sender, EventArgs e)
-        {
-            OKLogic();
-        }
+        private void buttonOk_Click(object sender, EventArgs e) => OKLogic();
 
-        private void buttonCancel_Click(object sender, EventArgs e)
-        {
-            CancelLogic();
-        }
+        private void buttonCancel_Click(object sender, EventArgs e) => CancelLogic();
 
         #endregion FormEvents
 

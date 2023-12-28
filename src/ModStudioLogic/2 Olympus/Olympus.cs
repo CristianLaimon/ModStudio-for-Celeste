@@ -8,14 +8,14 @@ namespace ModStudioLogic.Olympus
 {
     public class Olympus
     {
-        private static string _everestPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Olympus");
+        private static string _olympusPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Olympus");
 
         public string EverestPath
-        { set { _everestPath = value; } }
+        { set { _olympusPath = value; } }
 
         public static bool CheckIfInstalledDefault()
         {
-            return Directory.Exists(_everestPath);
+            return Directory.Exists(_olympusPath);
         }
     }
 }

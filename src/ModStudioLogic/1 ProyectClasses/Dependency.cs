@@ -1,4 +1,4 @@
-﻿using Version = ModStudioLogic.ProyectInside.Version;
+﻿using Version = ModStudioLogic.Version;
 
 namespace ModStudioLogic.ProyectInside
 {

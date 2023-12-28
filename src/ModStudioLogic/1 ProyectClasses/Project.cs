@@ -1,6 +1,6 @@
 ﻿using ModStudioLogic.BigClasses;
 using ModStudioLogic.ProyectInside;
-using Version = ModStudioLogic.ProyectInside.Version;
+using Version = ModStudioLogic.Version;
 
 namespace ModStudioLogic.ProjectInside
 {
