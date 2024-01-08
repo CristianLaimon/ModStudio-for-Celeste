@@ -168,6 +168,11 @@ namespace CelesteModStudioGUI
         }
 
         #endregion DoubleClickTreeView
+
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Check if project has maps features
+        }
     }
 }
 

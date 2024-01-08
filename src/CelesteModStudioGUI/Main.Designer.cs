@@ -110,6 +110,7 @@
             addToolStripMenuItem.Name = "addToolStripMenuItem";
             addToolStripMenuItem.Size = new Size(255, 26);
             addToolStripMenuItem.Text = "New map";
+            addToolStripMenuItem.Click += addToolStripMenuItem_Click;
             // 
             // toolStripDropDownButtonOpen
             // 

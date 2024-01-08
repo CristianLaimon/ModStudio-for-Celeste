@@ -1,5 +1,7 @@
 ﻿using ModStudioLogic;
+using ModStudioLogic.BigClasses;
 using ModStudioLogic.Olympus;
+using ModStudioLogic.ProjectInside;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +24,15 @@ namespace ModStudioTesting
         private void DefaultLoennPath_returnsbool()
         {
             Assert.True(Loenn.CheckIfInstalledDefault());
+        }
+
+        [Fact]
+        private void FindSpecificType_returnsbool()
+        {
+            Project sample = TemplatesProjects.GetSimpleProject();
+            Projects.AddProject(sample);
+            bool v = Projects.Exists(typeof(ModFeatureMaps));
+            Assert.True(v);
         }
     }
 }

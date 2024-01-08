@@ -15,10 +15,15 @@ namespace ModStudioTesting
             simpleProject.CampaignName = "PortalineCampaign";
             simpleProject.ModName = "PortaLineMod";
             simpleProject.ModVersion = new Version(0, 1, 0);
+            simpleProject.Maps = new List<string>() { "MyFirstMap" };
 
-            //Setup Features
+            //Setup maps
             simpleProject.Features.Add(new ModFeatureMaps());
-            simpleProject.Features.Add(new ModFeatureDialog());
+
+            //Setup dialog
+            var dialog = new ModFeatureDialog();
+            dialog.Languages = new List<string>() { "Spanish", "English" };
+            simpleProject.Features.Add(dialog);
 
             return simpleProject;
         }

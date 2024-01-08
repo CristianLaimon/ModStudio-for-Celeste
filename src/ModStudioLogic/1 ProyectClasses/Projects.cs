@@ -17,6 +17,11 @@
             return _openedProjects.Contains(project);
         }
 
+        public static bool Exists(Type type)
+        {
+            return _openedProjects.Any(x => x.Features.Any(x => x.GetType() == type));
+        }
+
         public static void AddProject(Project project)
         {
             _openedProjects.Add(project);
