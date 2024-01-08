@@ -57,7 +57,7 @@ namespace ModStudioLogic
                 openedProj.AuthorName = Path.GetFileName(insideDirs[0]); //Count Multiple authors maybe...
 
                 string[] insideInsideDirs = Directory.GetDirectories(Path.Combine(directoryPath, "Maps", insideDirs[0]));
-                openedProj.CampaignName = insideInsideDirs[0];
+                openedProj.CampaignName = Path.GetFileName(insideInsideDirs[0]);
             }
 
             if (dirs.Contains("Dialog"))

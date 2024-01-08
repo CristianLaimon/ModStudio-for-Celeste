@@ -4,12 +4,14 @@ using Timer = System.Windows.Forms.Timer;
 
 namespace NewProjectGUI.Forms
 {
-    internal partial class MapsForm : BaseForm
+    public partial class MapsForm : ChildMultiWindow
     {
         private Timer timer;
+        private Project _tempProj;
 
-        internal MapsForm()
+        public MapsForm(Project tempProj)
         {
+            _tempProj = tempProj;
             InitializeComponent();
             Setup();
             base.InitializeComponent();
@@ -21,16 +23,24 @@ namespace NewProjectGUI.Forms
             timer = new Timer();
             timer.Interval = 2500;
             timer.Tick += TimerElapsed;
+            CheckIfHasCampaign();
+        }
+
+        private void CheckIfHasCampaign()
+        {
+            if (_tempProj.CampaignName != String.Empty)
+            {
+                textBoxCampaignName.Text = _tempProj.CampaignName;
+                textBoxCampaignName.ReadOnly = true;
+            }
         }
 
         protected override void CloseFormNext(object sender, EventArgs e)
         {
             if (FormValidation.TextBoxesAreValid(this.Controls.OfType<TextBox>().ToArray()))
             {
-                Project actualProject = Projects.GetLastProjectAdded();
-                actualProject.CampaignName = textBoxCampaignName.Text;
-
-                actualProject.Maps.Add(textBoxFirstMapName.Text);
+                _tempProj.CampaignName = textBoxCampaignName.Text;
+                _tempProj.Maps.Add(textBoxFirstMapName.Text);
                 base.CloseFormNext(sender, e);
             }
             else

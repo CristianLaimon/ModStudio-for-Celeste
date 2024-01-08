@@ -3,6 +3,9 @@ using ModStudioLogic;
 using ModStudioLogic.BigClasses;
 using ModStudioLogic.ProjectInside;
 using ModStudioLogic.ProyectInside;
+using NewProjectGUI;
+using NewProjectGUI.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Version = ModStudioLogic.Version;
 
 //Some config are disabled due to they're not implemented yet...
@@ -11,6 +14,7 @@ namespace CelesteModStudioGUI
     public partial class NewProyectForm : Form
     {
         private IModStudioState _formState;
+        private Project _proj;
 
         public NewProyectForm()
         {
@@ -18,19 +22,43 @@ namespace CelesteModStudioGUI
             SetupThisForm();
         }
 
+        #region Setup
+
+        private void SetupThisForm()
+        {
+            SetState(new FormStateDefault());
+            CenterToScreen();
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+        }
+
+        #endregion Setup
+
+        #region Ok
+
+        private void buttonOk_Click(object sender, EventArgs e) => OKLogic();
+
         private void OKLogic()
         {
             if (TryGetProjectFromForm(out Project proj))
             {
-                Projects.AddProject(proj);
+                _proj = proj;
 
-                if (!AreThereModFeatures(proj))
-                    return;
-
-                if (CheckIfCompletesAllFeaturesConfig() && CheckIfConfirmationOK())
+                if (AreThereModFeatures(_proj))
                 {
-                    CreateModFolders();
-                    this.DialogResult = DialogResult.OK;
+                    if (CheckConfigFormsConfirm() && CheckIfConfirmationOK())
+                    {
+                        FileManager.CreateSubDirsWithProject(_proj);
+                        this.DialogResult = DialogResult.OK;
+                        Projects.AddProject(_proj);
+                        Projects.ActualProject = _proj;
+                        this.Close();
+                        this.Dispose();
+                    }
+                    //Dont add that project here (if project has mods but user doesnt complete mods config)
+                }
+                else
+                {
+                    Projects.AddProject(_proj);
                 }
             }
             else
@@ -64,63 +92,6 @@ namespace CelesteModStudioGUI
             }
         }
 
-        private void CancelLogic() => DialogResult = DialogResult.Cancel;
-
-        #region FormEvents
-
-        private void buttonSelectNewDirectory_Click(object sender, EventArgs e) => ChooseDirectory();
-
-        private void buttonOk_Click(object sender, EventArgs e) => OKLogic();
-
-        private void buttonCancel_Click(object sender, EventArgs e) => CancelLogic();
-
-        #endregion FormEvents
-
-        #region Utilities
-
-        private void SetupThisForm()
-        {
-            SetState(new FormStateDefault());
-            CenterToScreen();
-            FormBorderStyle = FormBorderStyle.FixedSingle;
-        }
-
-        private void SetState(IModStudioState newState)
-        {
-            _formState = newState;
-            stripLabelActualStatus.Text = StateFormat.GetFormattedMessage(newState);
-        }
-
-        private bool AreThereModFeatures(Project proj) => proj.Features.Any();
-
-        private bool CheckIfConfirmationOK()
-        {
-            using (Form confirmationForm = new ConfirmationForm())
-            {
-                return confirmationForm.ShowDialog() == DialogResult.OK;
-            }
-        }
-
-        private bool CheckIfCompletesAllFeaturesConfig()
-        {
-            using (Form setupForm = new ModSetupForm())
-            {
-                return setupForm.ShowDialog() == DialogResult.OK;
-            }
-        }
-
-        private void ChooseDirectory()
-        {
-            SetState(new FormStateChoosingDirectory());
-
-            if (FileManager.ShowOpenDirectoryDialog(out string dir))
-            {
-                textBoxDirectorySelected.Text = dir;
-            }
-
-            SetState(new FormStateDefault());
-        }
-
         private ModFeature[] GetFeaturesSelected()
         {
             List<ModFeature> features = new List<ModFeature>();
@@ -143,12 +114,59 @@ namespace CelesteModStudioGUI
             return features.ToArray();
         }
 
-        private void CreateModFolders()
+        private bool AreThereModFeatures(Project proj) => proj.Features.Any();
+
+        private bool CheckConfigFormsConfirm()
         {
-            Project project = Projects.GetLastProjectAdded();
-            FileManager.CreateSubDirsWithProject(project);
+            bool completedConfig = false;
+            ChildMultiWindow[] forms = FormFabric.GetFeatureSettingForms(_proj);
+
+            using (var setupForm = new MultiWindow(forms))
+                completedConfig = setupForm.ShowDialog() == DialogResult.OK;
+
+            return completedConfig;
         }
 
-        #endregion Utilities
+        private bool CheckIfConfirmationOK()
+        {
+            using (Form confirmationForm = new ConfirmationForm())
+            {
+                return confirmationForm.ShowDialog() == DialogResult.OK;
+            }
+        }
+
+        private void SetState(IModStudioState newState)
+        {
+            _formState = newState;
+            stripLabelActualStatus.Text = StateFormat.GetFormattedMessage(newState);
+        }
+
+        #endregion Ok
+
+        #region Cancel
+
+        private void buttonCancel_Click(object sender, EventArgs e) => CancelLogic();
+
+        private void CancelLogic() => DialogResult = DialogResult.Cancel;
+
+        #endregion Cancel
+
+        #region ChooseDirectory
+
+        private void buttonSelectNewDirectory_Click(object sender, EventArgs e) => ChooseDirectory();
+
+        private void ChooseDirectory()
+        {
+            SetState(new FormStateChoosingDirectory());
+
+            if (FileManager.ShowOpenDirectoryDialog(out string dir))
+            {
+                textBoxDirectorySelected.Text = dir;
+            }
+
+            SetState(new FormStateDefault());
+        }
+
+        #endregion ChooseDirectory
     }
 }

@@ -4,18 +4,22 @@ using System.Collections.Generic;
 
 namespace NewProjectGUI.Forms
 {
-    internal partial class Dialogform : BaseForm
+    public partial class Dialogform : ChildMultiWindow
     {
-        internal Dialogform()
+        private Project _tempProj;
+
+        internal Dialogform(Project tempProj)
         {
+            _tempProj = tempProj;
+
             InitializeComponent();
             base.InitializeComponent();
         }
 
         protected override void CloseFormNext(object sender, EventArgs e)
         {
-            List<string> langs = GetLanguagesFromForm();
             ModFeatureDialog diag = GetThisProjectDialog();
+            List<string> langs = GetLanguagesFromForm();
             diag.Languages = langs;
 
             base.CloseFormNext(sender, e);
@@ -34,9 +38,8 @@ namespace NewProjectGUI.Forms
 
         private ModFeatureDialog GetThisProjectDialog()
         {
-            Project last = Projects.LastProject;
-            ModFeatureDialog dialog;
-            foreach (ModFeature feat in last.Features)
+            ModFeatureDialog dialog = null;
+            foreach (ModFeature feat in _tempProj.Features)
             {
                 if (feat is ModFeatureDialog)
                 {
@@ -45,7 +48,7 @@ namespace NewProjectGUI.Forms
                 }
             }
 
-            throw new InvalidOperationException("There aren't ModFeatureDialog object inside this project features...");
+            return dialog ?? new ModFeatureDialog();
         }
     }
 }

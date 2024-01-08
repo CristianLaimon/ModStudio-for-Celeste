@@ -1,37 +1,40 @@
 ﻿using ModStudioLogic.BigClasses;
 using ModStudioLogic.Exceptions;
+using ModStudioLogic.ProjectInside;
 using NewProjectGUI.Forms;
 
 namespace NewProjectGUI
 {
-    internal class FormFabric
+    public class FormFabric
     {
-        internal static BaseForm GetSettingFormFrom(ModFeature feature)
+        public static ChildMultiWindow[] GetFeatureSettingForms(Project fromProject)
         {
-            switch (feature)
+            var output = new List<ChildMultiWindow>();
+            foreach (var feature in fromProject.Features)
             {
-                case ModFeatureMaps:
-                    return new MapsForm();
+                switch (feature)
+                {
+                    case ModFeatureMaps:
+                        output.Add(new MapsForm(fromProject));
+                        break;
 
-                //case ModFeatureLoenn:
-                //    break;
+                    case ModFeatureDialog:
+                        output.Add(new Dialogform(fromProject));
+                        break;
+                        //case ModFeatureLoenn:
+                        //    break;
 
-                //case ModFeatureDLL:
-                //    break;
+                        //case ModFeatureDLL:
+                        //    break;
 
-                case ModFeatureDialog:
-                    return new Dialogform();
+                        //case ModFeatureAudio:
+                        //    break;
 
-                //case ModFeatureAudio:
-                //    break;
-
-                //case ModFeatureAhorn:
-                //    break;
-
-                default:
-                    throw new ModException("Fail to instance a user control" +
-                        "from ModFeature object", feature);
+                        //case ModFeatureAhorn:
+                        //    break;
+                }
             }
+            return output.ToArray(); ;
         }
     }
 }

@@ -2,12 +2,12 @@
 {
     internal delegate void MyDel(object obj, EventArgs e);
 
-    internal partial class BaseForm : Form
+    public partial class ChildMultiWindow : Form
     {
         internal MyDel AboutToCloseNext;
         internal MyDel AboutToCloseBack;
 
-        internal BaseForm()
+        internal ChildMultiWindow()
         {
             InitializeComponent();
         }

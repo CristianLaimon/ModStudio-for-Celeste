@@ -3,6 +3,7 @@
     public class Projects
     {
         private static List<Project> _openedProjects = new List<Project>();
+        public static Project ActualProject;
 
         public static Project LastProject
         { get { return _openedProjects.Last(); } }
@@ -17,19 +18,19 @@
             return _openedProjects.Contains(project);
         }
 
-        public static bool Exists(Type type)
-        {
-            return _openedProjects.Any(x => x.Features.Any(x => x.GetType() == type));
-        }
-
         public static void AddProject(Project project)
         {
             _openedProjects.Add(project);
         }
 
-        public static void RemoveProject(Project project)
+        public static bool RemoveProject(Project project)
         {
-            _openedProjects.Remove(project);
+            bool success = _openedProjects.Remove(project);
+
+            if (success && ActualProject == project)
+                ActualProject = null;
+
+            return success;
         }
 
         public static Project GetProjectByName(string name)
@@ -47,6 +48,12 @@
         public static void RemoveLastProject()
         {
             _openedProjects.Remove(_openedProjects.Last());
+        }
+
+        //static one?....
+        public static bool CheckIfHasFeature(Project actual, Type type)
+        {
+            return actual.Features.Any(x => x.GetType() == type);
         }
     }
 }

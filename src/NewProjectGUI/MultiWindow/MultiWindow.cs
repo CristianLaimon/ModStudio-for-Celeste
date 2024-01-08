@@ -1,47 +1,61 @@
 ﻿using NewProjectGUI;
 using NewProjectGUI.Forms;
 using ModStudioLogic.ProjectInside;
+using ModStudioLogic.BigClasses;
 
 namespace CelesteModStudioGUI.NewProjectForms
 {
-    public partial class ModSetupForm : Form
+    public partial class MultiWindow : Form
     {
+        private ChildMultiWindow[] _childForms;
         private sbyte _actualIndex;
-        private Project _actualProject;
-        private BaseForm[] _loadedForms;
 
-        public ModSetupForm()
+        /// <summary>
+        /// A multi purpose window with multiple screens
+        /// </summary>
+        /// <param name="windows">Needs the windows to display</param>
+        public MultiWindow(params ChildMultiWindow[] windows)
         {
+            _childForms = windows;
+            Check();
             InitializeComponent();
             SetupThisForm();
-            LoadForms();
+            SetupChildForms();
             ShowActualForm();
         }
 
-        #region Setup
-
         private void SetupThisForm()
         {
-            _actualProject = Projects.GetLastProjectAdded();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             _actualIndex = 0;
             this.CenterToScreen();
         }
 
-        private void LoadForms()
+        private void Check()
         {
-            _loadedForms = new BaseForm[_actualProject.Features.Count];
+            if (_childForms == null || !_childForms.Any()) throw new Exception("Can't open multiwindow" +
+            "with no childwindows");
+        }
 
-            for (int i = 0; i < _actualProject.Features.Count; i++)
+        private void SetupChildForms()
+        {
+            for (int i = 0; i < _childForms.Length; i++)
             {
-                BaseForm newForm = FormFabric.GetSettingFormFrom(_actualProject.Features[i]);
-                SetupBaseForm(newForm);
-                _loadedForms[i] = newForm;
-                panelForm.Controls.Add(newForm);
+                SetupChildForm(_childForms[i]);
+                panelForm.Controls.Add(_childForms[i]);
             }
         }
 
-        #endregion Setup
+        private void SetupChildForm(ChildMultiWindow f)
+        {
+            f.AboutToCloseNext = ChildClosenext;
+            f.AboutToCloseBack = ChildCloseBack;
+            f.FormBorderStyle = FormBorderStyle.None;
+            f.TopLevel = false;
+            f.Dock = DockStyle.Fill;
+        }
+
+        #region FormHandling
 
         private void ShowActualForm()
         {
@@ -53,16 +67,14 @@ namespace CelesteModStudioGUI.NewProjectForms
                 return;
             }
 
-            BaseForm actualForm = _loadedForms[_actualIndex];
+            ChildMultiWindow actualForm = _childForms[_actualIndex];
             actualForm.BringToFront();
             actualForm.Show();
         }
 
-        #region Utilities
-
         private bool HasFinishedSetup(out DialogResult result)
         {
-            if (_actualIndex == _actualProject.Features.Count)
+            if (_actualIndex == _childForms.Length)
             {
                 result = DialogResult.OK;
                 return true;
@@ -79,22 +91,14 @@ namespace CelesteModStudioGUI.NewProjectForms
 
         private void DisposeAllChilds()
         {
-            for (int i = 0; i < _loadedForms.Length; i++)
-                _loadedForms[i].Dispose();
+            for (int i = 0; i < _childForms.Length; i++)
+            {
+                _childForms[i].Hide();
+                _childForms[i].Dispose();
+            }
         }
 
-        private void SetupBaseForm(BaseForm f)
-        {
-            f.AboutToCloseNext = ChildClosenext;
-            f.AboutToCloseBack = ChildCloseBack;
-            f.FormBorderStyle = FormBorderStyle.None;
-            f.TopLevel = false;
-            f.Dock = DockStyle.Fill;
-        }
-
-        #endregion Utilities
-
-        #region ChildEvents
+        #endregion FormHandling
 
         private void ChildClosenext(object? sender, EventArgs e)
         {
@@ -107,7 +111,5 @@ namespace CelesteModStudioGUI.NewProjectForms
             _actualIndex--;
             ShowActualForm();
         }
-
-        #endregion ChildEvents
     }
 }

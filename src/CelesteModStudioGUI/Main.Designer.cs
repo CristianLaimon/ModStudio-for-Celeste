@@ -127,7 +127,7 @@
             openExistingProyectToolStripMenuItem.Name = "openExistingProyectToolStripMenuItem";
             openExistingProyectToolStripMenuItem.Size = new Size(246, 26);
             openExistingProyectToolStripMenuItem.Text = "Open existing proyect...";
-            openExistingProyectToolStripMenuItem.Click += openExistingModButton;
+            openExistingProyectToolStripMenuItem.Click += openExistingProjButton;
             // 
             // tabsToolStripMenuItem
             // 

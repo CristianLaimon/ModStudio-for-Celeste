@@ -39,6 +39,15 @@ namespace ModStudioLogic.BigClasses
         public override string FolderName
         { get { return "Maps"; } }
 
+        public static string GetPathWith(Project project)
+        {
+            return Path.Combine(
+                project.FullPath,
+                "Maps",
+                project.AuthorName,
+                project.CampaignName);
+        }
+
         public override DirectoryInfo CreateDirsAndFiles(Project project)
         {
             string path = Path.Combine(

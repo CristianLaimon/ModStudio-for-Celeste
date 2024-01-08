@@ -11,7 +11,7 @@ namespace CelesteModStudioGUI.Utils
     {
         internal static void SaveLastProject(string projFullPath)
         {
-            SetCacheFolder();
+            CacheFolderChecking();
 
             using (StreamWriter stream = new StreamWriter("utils\\last_project.txt"))
             {
@@ -21,7 +21,7 @@ namespace CelesteModStudioGUI.Utils
 
         internal static bool TryGetLastProject(out string? projFullPath)
         {
-            SetCacheFolder();
+            CacheFolderChecking();
 
             using (StreamReader stream = new StreamReader("utils\\last_project.txt"))
             {
@@ -31,7 +31,7 @@ namespace CelesteModStudioGUI.Utils
             return projFullPath != null && Directory.Exists(projFullPath);
         }
 
-        private static void SetCacheFolder()
+        private static void CacheFolderChecking()
         {
             //Brief Checking
             if (!Directory.Exists("utils"))

@@ -31,7 +31,7 @@ namespace ModStudioTesting
         {
             Project sample = TemplatesProjects.GetSimpleProject();
             Projects.AddProject(sample);
-            bool v = Projects.Exists(typeof(ModFeatureMaps));
+            bool v = Projects.CheckIfHasFeature(sample, typeof(ModFeatureMaps));
             Assert.True(v);
         }
     }

@@ -13,11 +13,13 @@ namespace ModStudioLogic.ProjectInside
 
         public EverestYaml Yaml;
         public string ModName = string.Empty;
-        public string AuthorName = string.Empty;//I think this should be, more than one
+        public string AuthorName = string.Empty; //I think this should be, more than one
         public string CampaignName = string.Empty;
         public Version ModVersion = new Version(0, 1, 0);
         public List<ModFeature> Features = new List<ModFeature>();
         public List<string> Maps = new List<string>();
+
+        #region Essential
 
         public override bool Equals(object obj)
         {
@@ -36,5 +38,7 @@ namespace ModStudioLogic.ProjectInside
         {
             return base.GetHashCode();
         }
+
+        #endregion Essential
     }
 }
